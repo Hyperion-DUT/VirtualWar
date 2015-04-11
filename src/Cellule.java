@@ -1,4 +1,10 @@
+package main;
 
+/**
+ * 
+ * @author noxilex
+ *
+ */
 abstract public class Cellule {
 	protected int mine;
 	protected int base;
@@ -6,32 +12,66 @@ abstract public class Cellule {
 	private Coordonnees coord;
 	private Robot robot;
 	
+	/**
+	 * 
+	 * @param X
+	 * @param Y
+	 */
 	public Cellule(int X, int Y){
 		coord = new Coordonnees(X,Y);
 	}
+	
 	/**
-	 * Renvoie 0 si il n'y a pas de mine, 
-	 * 1 pour une mine de l'équipe 1,
-	 * 2 pour une mine de l'équipe 2
+	 * 
 	 * @return
 	 */
-	public int contientMine(){
-		return mine;
+	public boolean estMine(){
+		return mine != 0;
 	}
 	
 	/**
-	 * Renvoie 0 si la case n'est pas une base,
-	 * 1 si c'est la base de l'équipe 1
-	 * 2 si c'est la base de l'équipe 2
 	 * @return
 	 */
-	public int estBase(){
-		return base;
+	public boolean estBase(){
+		return base != 0;
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	public Coordonnees getCoordonnees(){
 		return coord;
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
+	public Robot getContenu(){
+		return robot;
+	}
+	
+	@Override
+	public String toString() {
+		return "Cellule [mine=" + mine + ", base=" + base + ", image=" + image
+				+ ", coord=" + coord + ", robot=" + robot + "]";
+	}
+	
+	/**
+	 * 
+	 */
 	abstract public void videCase();
+	
+	/**
+	 * 
+	 * @param equipe
+	 */
+	abstract public void ajoute(int equipe);
+	
+	/**
+	 * 
+	 * @param robot
+	 */
+	abstract public void deplaceSur(Robot robot);
 }
