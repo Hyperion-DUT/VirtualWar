@@ -11,7 +11,7 @@ public class Coordonnees {
 
 	}
 
-	// Constructeur -> Acceptant un abcisse
+	// Constructeur -> Acceptant un abcisse et une ordonnée
 	public Coordonnees(int X, int Y) {
 		this.X = X;
 		this.Y = Y;
