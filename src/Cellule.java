@@ -54,8 +54,7 @@ abstract public class Cellule {
 	
 	@Override
 	public String toString() {
-		return "Cellule [mine=" + mine + ", base=" + base + ", image=" + image
-				+ ", coord=" + coord + ", robot=" + robot + "]";
+		return image;
 	}
 	
 	/**
