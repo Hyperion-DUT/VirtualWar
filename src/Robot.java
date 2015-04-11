@@ -4,8 +4,8 @@ public abstract class Robot {
 
 	// **Variables du robot en fonction de son type**//
 	private int Equipe;
-	private int Porte;
-	private int DepMax;
+	private int Portee;
+	private int Depmax;
 	private int Energie;
 	private int EnergieInitiale;
 	private int RegenBase;
@@ -15,6 +15,23 @@ public abstract class Robot {
 
 	// Variable -> Vue du robot
 	Vue vue_robot = new Vue();
+
+	public int getPortee() {
+		return Portee;
+	}
+
+	public void setPortee(int portee) {
+		Portee = portee;
+	}
+
+	public void setCoutDep(int coutDep) {
+		CoutDep = coutDep;
+	}
+
+	public void setEquipe(int equipe) {
+		Equipe = equipe;
+	}
+
 	// Variable -> Coordonnées du robot
 	Coordonnees coords_robot = new Coordonnees();
 
@@ -22,7 +39,9 @@ public abstract class Robot {
 	public Robot() {
 
 	}
-	// Constructeur -> Acceptant une vue , des coordonnées , ainsi qu'une équipe à laquelle le robot appartient
+
+	// Constructeur -> Acceptant une vue , des coordonnées , ainsi qu'une équipe
+	// à laquelle le robot appartient
 	public Robot(Vue vue, int X, int Y, int Equipe) {
 		this.vue_robot = vue;
 		this.Equipe = Equipe;
@@ -62,7 +81,7 @@ public abstract class Robot {
 	public Coordonnees getCoordonnees() {
 		return coords_robot;
 	}
-	
+
 	// Méthode -> Pour récuperer la vue du robot
 	public Vue getVue() {
 		return vue_robot;
@@ -76,6 +95,29 @@ public abstract class Robot {
 	// Méthode -> Pour attribuer l'energie actuelle du robot
 	public void setEnergie(int energie) {
 		this.Energie = energie;
+	}
+
+	public int getPorte() {
+		return Portee;
+	}
+
+	public void setPorte(int porte) {
+		Portee = porte;
+	}
+
+	public int getEnergieInitiale() {
+		return EnergieInitiale;
+	}
+
+	public void setEnergieInitiale(int energieInitiale) {
+		EnergieInitiale = energieInitiale;
+	}
+	public int getDepmax() {
+		return Depmax;
+	}
+
+	public void setDepmax(int depmax) {
+		Depmax = depmax;
 	}
 
 	// Méthode -> Pour récuperer l'energie actuelle du robot
@@ -98,7 +140,8 @@ public abstract class Robot {
 		this.setEnergie(this.getEnergie() - this.Degats);
 	}
 
-	// Méthode -> toString() , par défaut, pour montrer les caractéristiques du robot
+	// Méthode -> toString() , par défaut, pour montrer les caractéristiques du
+	// robot
 	public String toString() {
 		return "[ROBOT]\r\n" + "Equipe -> " + Equipe + "\r\n" + "Porte -> "
 				+ Porte + "\r\n" + "DeplacementMax -> " + DepMax + "\r\n"
