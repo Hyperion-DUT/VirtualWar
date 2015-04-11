@@ -1,18 +1,41 @@
-
 public class Coordonnees {
-	int X;
-	int Y;
-	
-	public Coordonnees(int X, int Y){
+
+	// Coordonnée X
+	private int X;
+
+	// Coordonnée Y
+	private int Y;
+
+	// Constructeur -> Par défaut
+	public Coordonnees() {
+
+	}
+
+	// Constructeur -> Acceptant un abcisse et une ordonnée
+	public Coordonnees(int X, int Y) {
 		this.X = X;
 		this.Y = Y;
 	}
-	
-	public int getX(){
+
+	// Méthode -> Pour ajouter une coordonnée
+	public Coordonnees addCords(Coordonnees coords) {
+		return new Coordonnees(X + coords.getX(), Y + coords.getY());
+	}
+
+	// Méthode -> Pour avoir X
+	public int getX() {
 		return X;
 	}
-	
-	public int getY(){
+
+	// Méthode -> Pour avoir Y
+	public int getY() {
 		return Y;
 	}
+
+	// Méthode -> toString() , par défaut , pour afficher les coordonnées sous
+	// forme de chaine
+	public String toString() {
+		return "[Coordonnees] X -> " + X + " , Y -> " + Y;
+	}
+
 }

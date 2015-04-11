@@ -3,10 +3,11 @@ import java.util.ArrayList;
 public abstract class Robot {
 
 	// **Variables du robot en fonction de son type**//
+
 	private int Equipe;
 	private int Portee;
 	private int Depmax;
-	private int Energie;
+	private int energie;
 	private int EnergieInitiale;
 	private int RegenBase;
 	private int CoutTir;
@@ -14,7 +15,7 @@ public abstract class Robot {
 	private int Degats;
 
 	// Variable -> Vue du robot
-	Vue vue_robot = new Vue();
+	Vue vue = new Vue();
 
 	public int getPortee() {
 		return Portee;
@@ -33,17 +34,14 @@ public abstract class Robot {
 	}
 
 	// Variable -> Coordonnées du robot
-	Coordonnees coords_robot = new Coordonnees();
-
-	// Constructeur -> Par défaut
-	public Robot() {
-
-	}
+	private Coordonnees coord;
 
 	// Constructeur -> Acceptant une vue , des coordonnées , ainsi qu'une équipe
 	// à laquelle le robot appartient
+
 	public Robot(Vue vue, int X, int Y, int Equipe) {
-		this.vue_robot = vue;
+		coord = new Coordonnees(X, Y);
+		this.vue = vue;
 		this.Equipe = Equipe;
 	}
 
@@ -70,7 +68,7 @@ public abstract class Robot {
 
 	// Méthode -> Pour savoir si le robot est sur la base
 	public boolean estSurBase() {
-		return false;
+		return coord.equals(vue.getBase(Equipe));
 	}
 
 	// Méthode -> Pour attribuer la position du robot
@@ -79,12 +77,12 @@ public abstract class Robot {
 
 	// Méthode -> Pour savoir la position du robot
 	public Coordonnees getCoordonnees() {
-		return coords_robot;
+		return coord;
 	}
 
 	// Méthode -> Pour récuperer la vue du robot
 	public Vue getVue() {
-		return vue_robot;
+		return vue;
 	}
 
 	// Méthode -> Pour récuperer l'équipe du robot
@@ -94,7 +92,7 @@ public abstract class Robot {
 
 	// Méthode -> Pour attribuer l'energie actuelle du robot
 	public void setEnergie(int energie) {
-		this.Energie = energie;
+		this.energie = energie;
 	}
 
 	public int getPorte() {
@@ -122,34 +120,30 @@ public abstract class Robot {
 
 	// Méthode -> Pour récuperer l'energie actuelle du robot
 	public int getEnergie() {
-		return this.Energie;
+		return this.energie;
 	}
 
 	// Méthode -> Pour attribuer la vue du robot
 	public void setVue(Vue vue) {
-		this.vue_robot = vue;
+		this.vue = vue;
 	}
 
 	// Méthode -> Pour que le robot subisse un tir
-	public void SubitTir() {
-		this.setEnergie(this.getEnergie() - this.Degats);
+	public void subitTir() {
+		energie -= getCoutAction();
 	}
 
 	// Méthode -> Pour que le robot subisse les dégâts d'une mine
-	public void SubitMine() {
-		this.setEnergie(this.getEnergie() - this.Degats);
+	
+	public  void subitMine() {
+		energie -= getCoutAction();
 	}
 
 	// Méthode -> toString() , par défaut, pour montrer les caractéristiques du
 	// robot
 	public String toString() {
-		return "[ROBOT]\r\n" + "Equipe -> " + Equipe + "\r\n" + "Porte -> "
-				+ Porte + "\r\n" + "DeplacementMax -> " + DepMax + "\r\n"
-				+ "Energie -> " + Energie + "\r\n" + "EnergieInitiale -> "
-				+ EnergieInitiale + "\r\n" + "Regeneration sur base -> "
-				+ RegenBase + "\r\n" + "Cout tir -> " + CoutTir + "\r\n"
-				+ "Cout deplacement -> " + CoutDep + "\r\n" + "Degats -> "
-				+ Degats + "\r\n";
+		return "ROBOT[energie=" + energie + ", equipe=" + Equipe + ", coord="
+				+ coord + "]";
 	}
 
 }
