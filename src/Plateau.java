@@ -14,10 +14,19 @@ public class Plateau{
 	int trueHauteur;
 	int trueLargeur;
 	
+
 	/**
-	 * 
+	 * Si le plateau n'a pas de taille,
+	 * la taille par défaut est 10
 	 */
 	Plateau(){
+		truePlateau = new Cellule[10][10];
+		trueHauteur = 10;
+		trueLargeur = 10;
+		initialiser();
+		plateau = new String[10*2+1][10*2+1];
+		this.hauteur = 10*2+1;
+		this.largeur = 10*2+1;
 	}
 	/**
 	 * 
