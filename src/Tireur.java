@@ -7,8 +7,6 @@ public class Tireur  extends Robot {
 	
 	// Variable -> Vue du robot
 	Vue vue_robot = new Vue();
-
-	//Robot tireur = new Robot(vue_robot, Y, X, equipe);
 	
 	ArrayList <Coordonnees> historiqueDep = new ArrayList <Coordonnees>();
 	
@@ -51,9 +49,7 @@ public class Tireur  extends Robot {
 	 */
 	@Override
 	public boolean peutTirer() {
-		if(getEnergie() >= 2)
-		return true;
-		return false;
+	 return getEnergie() >= 2;
 	}
 
 	/**
