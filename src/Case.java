@@ -7,6 +7,11 @@ public class Case extends Cellule {
 		super(x, y);
 	}
 	
+	public Case(int x, int y, Robot robot){
+		super(x, y);
+		this.robot = robot;
+	}
+	
 	public int getTypeCase(){
 		return typeCase;
 	}
@@ -23,8 +28,8 @@ public class Case extends Cellule {
 		return typeCase == 1;
 	}
 	
-	public boolean estRobot(){
-		return typeCase == 2;
+	public void setObstacle(){
+		obstacle = true;
 	}
 	
 	public boolean estObstacle(){
@@ -33,19 +38,24 @@ public class Case extends Cellule {
 	@Override
 	public void videCase() {
 		// TODO Auto-generated method stub
-
+			typeCase = 0;
+			base = 0;
+			mine = 0;
+			robot = null;
+			obstacle = false;
+			image = "";
 	}
 
 	@Override
 	public void ajoute(int equipe) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void deplaceSur(Robot robot) {
 		// TODO Auto-generated method stub
-		
+		this.robot = robot;
 	}
 	
 	//Type case: 0=Neutre, 1= Mine, 2= Robot, 3 = Obstacle
