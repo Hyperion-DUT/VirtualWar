@@ -8,9 +8,10 @@ package main;
 abstract public class Cellule {
 	protected int mine;
 	protected int base;
+	protected boolean obstacle;
 	public String image;
 	private Coordonnees coord;
-	private Robot robot;
+	protected Robot robot;
 	
 	/**
 	 * 
@@ -29,13 +30,31 @@ abstract public class Cellule {
 		return mine != 0;
 	}
 	
+	public int getBase(){
+		return base;
+	}
+	
 	/**
 	 * @return
 	 */
 	public boolean estBase(){
 		return base != 0;
 	}
+	
+	public boolean estObstacle(){
+		return obstacle;
+	}
+	
+	public boolean estRobot(){
+		return robot != null;
+	}
 
+	public boolean estVide(){
+		if(estMine() == false && estRobot() == false && estObstacle() == false && estBase() == false){
+			return true;
+		}
+		return false;
+	}
 	/**
 	 * 
 	 * @return
@@ -54,7 +73,8 @@ abstract public class Cellule {
 	
 	@Override
 	public String toString() {
-		return image;
+		return "Cellule [mine=" + mine + ", base=" + base + ", image=" + image
+				+ ", coord=" + coord + ", robot=" + robot + "]";
 	}
 	
 	/**
