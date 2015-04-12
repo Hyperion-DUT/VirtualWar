@@ -15,17 +15,9 @@ public class Plateau{
 	int trueLargeur;
 	
 	/**
-	 * Si le plateau n'a pas de taille,
-	 * la taille par défaut est 10
+	 * 
 	 */
 	Plateau(){
-		truePlateau = new Cellule[10][10];
-		trueHauteur = 10;
-		trueLargeur = 10;
-		initialiser();
-		plateau = new String[10*2+1][10*2+1];
-		this.hauteur = 10*2+1;
-		this.largeur = 10*2+1;
 	}
 	/**
 	 * 
@@ -61,14 +53,64 @@ public class Plateau{
 		}
 	}
 	
-	/**
-	 * 
-	 * @param x
-	 * @param y
-	 * @param robot
-	 */
-	public void ajouterUneMachine(int x, int y, Robot robot){
-		plateau[x*2+1][y*2+1] = " " + robot + " ";
+	public Coordonnees getBase(int equipe){
+		for(int y = 0; y < trueHauteur; y++){
+			for(int x = 0; x < trueLargeur; x++){
+				if(truePlateau[x][y].estBase() && truePlateau[x][y].getBase() == equipe){
+					return truePlateau[x][y].getCoordonnees();
+				}
+			}
+		}
+		return null;
+	}
+	
+	public Robot getRobot(int x, int y){
+		return truePlateau[x][y].getContenu();
+	}
+	
+	public boolean estMine(int x, int y){
+		return truePlateau[x][y].estMine();
+	}
+	
+	public boolean estBase(int x, int y){
+		return truePlateau[x][y].estBase();
+	}
+	
+	public boolean estObstacle(int x, int y){
+		return truePlateau[x][y].estObstacle();
+	}
+	
+	public boolean estRobot(int x, int y){
+		return truePlateau[x][y].estObstacle();
+	}
+	
+	public boolean estVide(int x, int y){
+		return truePlateau[x][y].estVide();
+	}
+
+	public void setMine(int x, int y){
+		Case a = new Case(x,y);
+		a.setTypeCase(1);
+		truePlateau[x][y] = a;
+	}
+	
+	public void setRobot(int x, int y, Robot robot){
+		Case a = new Case(x,y, robot);
+		truePlateau[x][y] = a;
+	}
+	
+	public void setObstacle(int x, int y){
+		Case a = new Case(x,y);
+		a.setTypeCase(3);
+		truePlateau[x][y] = a;
+	}
+	
+	public void setBase(int x, int y, int equipe){
+		truePlateau[x][y] = new Base(x,y,equipe);
+	}
+	
+	public void Vider(int x, int y){
+		truePlateau[x][y].videCase();
 	}
 	
 	public String toString(){
@@ -92,5 +134,14 @@ public class Plateau{
 			res += "\n";
 		}
 		return res;
+	}
+	
+	/**
+	 * 
+	 * @param args
+	 */
+	public static void main(String[] args){
+		Plateau a = new Plateau(11,11);
+		System.out.println(a.toString());
 	}
 }
