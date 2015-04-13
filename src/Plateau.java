@@ -119,7 +119,7 @@ public class Plateau {
 
 	public String toString() {
 
-		// Création du Plateau ASCII
+		// Crï¿½ation du Plateau ASCII
 		for (int l = 0; l < hauteur; l++) {
 			for (int c = 0; c < largeur; c++) {
 				if (l % 2 == 0 && c % 2 == 0)
@@ -133,14 +133,14 @@ public class Plateau {
 			}
 		}
 
-		// Ajout des données du vrai Plateau
+		// Ajout des donnï¿½es du vrai Plateau
 		for (int l = 0; l < trueHauteur; l++) {
 			for (int c = 0; c < trueLargeur; c++) {
 				plateau[c * 2 + 1][l * 2 + 1] = " " + truePlateau[l][c] + " ";
 			}
 		}
 
-		// Conversion du plateau final en une chaîne de caractère
+		// Conversion du plateau final en une chaï¿½ne de caractï¿½re
 		String res = "";
 		for (String[] l : plateau) {
 			for (String c : l) {

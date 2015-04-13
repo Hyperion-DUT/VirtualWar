@@ -5,39 +5,39 @@
  */
 public class Coordonnees {
 
-	// Coordonnée X
+	// Coordonnï¿½e X
 	private int X;
 
-	// Coordonnée Y
+	// Coordonnï¿½e Y
 	private int Y;
 
-	// Constructeur -> Par défaut
+	// Constructeur -> Par dï¿½faut
 	public Coordonnees() {
 
 	}
 
-	// Constructeur -> Acceptant un abcisse et une ordonnée
+	// Constructeur -> Acceptant un abcisse et une ordonnï¿½e
 	public Coordonnees(int X, int Y) {
 		this.X = X;
 		this.Y = Y;
 	}
 
-	// Méthode -> Pour ajouter une coordonnée
+	// Mï¿½thode -> Pour ajouter une coordonnï¿½e
 	public Coordonnees addCords(Coordonnees coords) {
 		return new Coordonnees(X + coords.getX(), Y + coords.getY());
 	}
 
-	// Méthode -> Pour avoir X
+	// Mï¿½thode -> Pour avoir X
 	public int getX() {
 		return X;
 	}
 
-	// Méthode -> Pour avoir Y
+	// Mï¿½thode -> Pour avoir Y
 	public int getY() {
 		return Y;
 	}
 
-	// Méthode -> toString() , par défaut , pour afficher les coordonnées sous
+	// Mï¿½thode -> toString() , par dï¿½faut , pour afficher les coordonnï¿½es sous
 	// forme de chaine
 	public String toString() {
 		return "[Coordonnees] X -> " + X + " , Y -> " + Y;

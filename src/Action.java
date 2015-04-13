@@ -23,7 +23,7 @@ public abstract class Action {
 	}
 
 	/**
-	 * Méthode -> Pour récupérer le robot qui est source de l'action
+	 * Mï¿½thode -> Pour rï¿½cupï¿½rer le robot qui est source de l'action
 	 * 
 	 * @return
 	 */
@@ -32,7 +32,7 @@ public abstract class Action {
 	}
 
 	/**
-	 * Méthode -> Pour récupérer la direction de l'action
+	 * Mï¿½thode -> Pour rï¿½cupï¿½rer la direction de l'action
 	 * 
 	 * @return
 	 */
@@ -41,7 +41,7 @@ public abstract class Action {
 	}
 
 	/**
-	 * Méthode -> Pour éxécuter l'action
+	 * Mï¿½thode -> Pour ï¿½xï¿½cuter l'action
 	 */
 	abstract void agit();
 

@@ -44,23 +44,23 @@ public class Main {
 		System.out.println("Veuillez renseigner la taille du plateau (min X : "
 				+ minPlateauX + " - minY : " + minPlateauY + ")");
 		System.out.println("");
-		// Vérification plateau
+		// Vï¿½rification plateau
 		while (config_PlateauX < minPlateauX || config_PlateauY < minPlateauY) {
 			// Config -> Plateau
 			config_PlateauX = j.config_TaillePlateauX();
 			config_PlateauY = j.config_TailleTableauY();
 		}
 
-		// Création du plateau
+		// Crï¿½ation du plateau
 		plat = new Plateau(config_PlateauY, config_PlateauY);
-		// Création de la vue
+		// Crï¿½ation de la vue
 		Vue vue_plat = new Vue(plat);
 
 		// Acquisition des bases
 		Coordonnees Base1 = plat.getBase(1);
 		Coordonnees Base2 = plat.getBase(2);
 
-		// Création des robots
+		// Crï¿½ation des robots
 		Robot tireur_eq1 = new Tireur(vue_plat, Base1.getX(), Base1.getY(), 1);
 		plat.setRobot(Base1.getX(), Base1.getY(), tireur_eq1);
 
@@ -84,13 +84,13 @@ public class Main {
 			System.out.println("---------------------------------------");
 			System.out.println("");
 			System.out.println("Que voulez vous faire ?");
-			System.out.println("1.Sélectionner un robot");
+			System.out.println("1.Sï¿½lectionner un robot");
 			System.out.println("2.Afficher mes robots");
 			System.out.println("3.Ne rien faire");
 
-			// Choix 1 - Demande de l'action à executer
+			// Choix 1 - Demande de l'action ï¿½ executer
 			int c_1 = 0;
-			// Vérification données utilisateur
+			// Vï¿½rification donnï¿½es utilisateur
 			while ((c_1 != 1) && (c_1 != 2) && (c_1 != 3)) {
 				System.out.println("");
 				System.out.println("Saisie -> ");

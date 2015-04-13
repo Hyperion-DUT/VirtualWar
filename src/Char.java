@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 
 public class Char extends Robot {
 
@@ -13,7 +11,7 @@ public class Char extends Robot {
 		setCoutDep(5);
 		setEquipe(equipe);
 		setEnergieInitiale(60);
-		typeRobot = "c";
+		super.typeRobot = "Char";
 	}
 
 
@@ -46,19 +44,6 @@ public class Char extends Robot {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-
-	@Override
-	public String getType() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ArrayList<Coordonnees> getDeplacements() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	
 }
 
