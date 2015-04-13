@@ -1,5 +1,3 @@
-package main;
-
 /**
  * 
  * @author noxilex
@@ -73,8 +71,32 @@ abstract public class Cellule {
 	
 	@Override
 	public String toString() {
-		return "Cellule [mine=" + mine + ", base=" + base + ", image=" + image
-				+ ", coord=" + coord + ", robot=" + robot + "]";
+		if(this.estObstacle()){
+			return "#";
+		}
+		else if(this.estBase()){
+			if(base == 1){
+				return "b";
+			}
+			else{
+				return "B";
+			}
+		}
+		else if(this.estMine()){
+			return "*";
+		}
+		else if(this.estRobot()){
+			if(robot.getEquipe() == 1){
+				return robot.toString().toLowerCase();
+			}
+			else{
+				return robot.toString().toUpperCase();
+			}
+			
+		}
+		else{
+			return " ";
+		}
 	}
 	
 	/**

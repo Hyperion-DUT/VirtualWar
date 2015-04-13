@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-public class Tireur  extends Robot {
+public class Tireur extends Robot {
 
 	int X;
 	int Y;
@@ -9,21 +9,6 @@ public class Tireur  extends Robot {
 	Vue vue_robot = new Vue();
 	
 	ArrayList <Coordonnees> historiqueDep = new ArrayList <Coordonnees>();
-	
-	/**
-	 * 
-	 */
-	//constructeur Tireur
-	public Tireur(){
-		setEnergieInitiale(40);
-		setEnergie(40);
-		setPortee(3);
-		setDepMax(1);
-		setRegenBase(2);
-		setCoutTir(2);
-		setCoutDep(1);
-		setDegats(3);
-	}
 	
 	/**
 	 * 
@@ -42,6 +27,7 @@ public class Tireur  extends Robot {
 		setCoutTir(2);
 		setCoutDep(1);
 		setDegats(3);
+		typeRobot = "t";
 	}
 	
 	/**

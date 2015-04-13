@@ -1,5 +1,3 @@
-package main;
-
 public class Vue {
 	private boolean estVisible;
 	private Plateau plateau;
@@ -62,5 +60,9 @@ public class Vue {
 
 	public void setVisible(boolean estVisible) {
 		this.estVisible = estVisible;
+	}
+	
+	public String toString(){
+		return plateau.toString();
 	}
 }

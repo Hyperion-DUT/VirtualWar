@@ -1,5 +1,3 @@
-package main;
-
 public class Case extends Cellule {
 	int typeCase;
 	

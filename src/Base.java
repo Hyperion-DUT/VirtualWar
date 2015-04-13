@@ -1,5 +1,3 @@
-package main;
-
 public class Base extends Cellule {
 	
 	public Base(int x, int y, int equipe){

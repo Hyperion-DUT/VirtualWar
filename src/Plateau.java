@@ -1,6 +1,3 @@
-package main;
-
-
 /**
  * 
  * @author noxilex
@@ -123,6 +120,8 @@ public class Plateau{
 	}
 	
 	public String toString(){
+		
+		//Création du Plateau ASCII
 		for(int l = 0; l < hauteur; l++){
 			for(int c = 0; c < largeur; c++){
 				if(l%2 == 0 && c%2 == 0 )
@@ -135,6 +134,15 @@ public class Plateau{
 					plateau[l][c] = "   ";
 			}
 		}
+		
+		//Ajout des données du vrai Plateau
+		for(int l = 0; l < trueHauteur; l++){
+			for(int c = 0; c < trueLargeur; c++){
+				plateau[c*2+1][l*2+1] = " " + truePlateau[l][c] + " ";
+			}
+		}
+		
+		//Conversion du plateau final en une chaîne de caractère
 		String res = "";
 		for(String[] l: plateau){
 			for(String c: l){			
@@ -151,6 +159,10 @@ public class Plateau{
 	 */
 	public static void main(String[] args){
 		Plateau a = new Plateau(11,11);
-		System.out.println(a.toString());
+		Vue a_p = new Vue(a);
+		Robot tireur = new Tireur(a_p, 2, 3, 1);
+		a.setRobot(2, 3, tireur);
+		a.setObstacle(3, 3);
+		System.out.println(a_p.toString());
 	}
 }

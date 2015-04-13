@@ -3,7 +3,9 @@ import java.util.ArrayList;
 public abstract class Robot {
 
 	// **Variables du robot en fonction de son type**//
-
+	
+	//renvoie une lettre permettant un affichage du robot
+	protected String typeRobot;
 	private int Equipe;
 	private int Portee;
 	private int Depmax;
@@ -13,6 +15,14 @@ public abstract class Robot {
 	private int CoutTir;
 	private int CoutDep;
 	private int Degats;
+
+	public void setCoutTir(int coutTir) {
+		CoutTir = coutTir;
+	}
+
+	public void setDegats(int degats) {
+		Degats = degats;
+	}
 
 	// Variable -> Vue du robot
 	Vue vue = new Vue();
@@ -110,11 +120,11 @@ public abstract class Robot {
 	public void setEnergieInitiale(int energieInitiale) {
 		EnergieInitiale = energieInitiale;
 	}
-	public int getDepmax() {
+	public int getDepMax() {
 		return Depmax;
 	}
 
-	public void setDepmax(int depmax) {
+	public void setDepMax(int depmax) {
 		Depmax = depmax;
 	}
 
@@ -142,8 +152,11 @@ public abstract class Robot {
 	// Méthode -> toString() , par défaut, pour montrer les caractéristiques du
 	// robot
 	public String toString() {
-		return "ROBOT[energie=" + energie + ", equipe=" + Equipe + ", coord="
-				+ coord + "]";
+		return typeRobot;
+	}
+
+	public void setRegenBase(int regenBase) {
+		RegenBase = regenBase;
 	}
 
 }

@@ -6,20 +6,15 @@ public class Char extends Robot {
 	
 	int energie = 60;
 
-	public Char() {}
-
 	public Char(Vue vue,int x, int y, int equipe){
-	
-		
-		setDepmax(2);
+		super(vue, x, y, equipe);
+		setDepMax(2);
 		setPortee(10);
 		setCoutDep(5);
 		setEquipe(equipe);
 		setEnergieInitiale(60);
+		typeRobot = "c";
 	}
-	
-
-	
 
 
 	@Override
