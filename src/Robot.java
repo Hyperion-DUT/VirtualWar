@@ -1,167 +1,221 @@
 /**
- * 
- * @author Jules
- *
+ * La classe Robot représente un robot non-typé, avec les caractéristiques communes à tous les robots : son type, son équipe,
+ * sa portée d'action, sa portée de déplacement, son énergie actuelle, son énergie maximale, le coût d'une action, les dégâts
+ * qu'il peut potentiellement infliger à ses cibles.
+ * @author Jules, Cyrille
  */
 import java.util.ArrayList;
 
 public abstract class Robot {
-
-	// **Variables du robot en fonction de son type**//
 	
-	//renvoie une lettre permettant un affichage du robot
+	/**	Le type du robot, qui sera défini par la suite dans les classes-filles */
 	protected String typeRobot;
-	private int Equipe;
-	private int Portee;
-	private int Depmax;
+	/** L'équipe d'appartenance du Robot */
+	private int equipe;
+	/** La portée d'attaque du Robot */
+	private int portee;
+	/** La portée de déplacement du Robot */
+	private int depMax;
+	/** L'énergie courante du Robot */
 	private int energie;
-	private int EnergieInitiale;
-	private int RegenBase;
-	private int CoutTir;
-	private int CoutDep;
-	private int Degats;
-
-	public void setCoutTir(int coutTir) {
-		CoutTir = coutTir;
-	}
-
-	public void setDegats(int degats) {
-		Degats = degats;
-	}
-
-	// Variable -> Vue du robot
-	Vue vue = new Vue();
-
-	public int getPortee() {
-		return Portee;
-	}
-
-	public void setPortee(int portee) {
-		Portee = portee;
-	}
-
-	public void setCoutDep(int coutDep) {
-		CoutDep = coutDep;
-	}
-
-	public void setEquipe(int equipe) {
-		Equipe = equipe;
-	}
-
-	// Variable -> Coordonn�es du robot
+	/** L'énergie maximale du Robot, celle qu'il possède initialement */
+	private int energieInitiale;
+	/** La quantité d'énergie récupérée par le Robot en base */
+	private int regenBase;
+	/** Le coût d'un tir en énergie */
+	private int coutTir;
+	/** Le coût d'un déplacement en énergie */
+	private int coutDep;
+	/** La perte d'énergie causée par le Robot */
+	private int degats;
+	/**	La vue associée au Robot */
+	private Vue vue = new Vue();
+	/** La position actuelle du Robot, sous forme de Coordonnees */
 	private Coordonnees coord;
+	/** L'historique des déplacements du Robots, sous forme de liste de Coordonnees */
+	private ArrayList<Coordonnees> histoDeplacements = new ArrayList<Coordonnees>();
 
-	// Constructeur -> Acceptant une vue , des coordonn�es , ainsi qu'une �quipe
-	// � laquelle le robot appartient
+	/**
+	 * Attribue un coût d'action de tir au Robot
+	 * @param coutTir - le coût en énergie d'un tir
+	 */
+	public void setCoutTir(int coutTir) { this.coutTir = coutTir; }
 
-	public Robot(Vue vue, int X, int Y, int Equipe) {
-		coord = new Coordonnees(X, Y);
+	/**
+	 * Attribue une quantité de dégâts que peut causer le Robot
+	 * @param degats - les dégâts potentiellement causés par le Robot
+	 */
+	public void setDegats(int degats) { this.degats = degats; }
+
+	/**
+	 * Retourne la portée d'action du Robot
+	 * @return la portée d'action du Robot
+	 */
+	public int getPortee() { return this.portee; }
+
+	/**
+	 * Attribue une portée d'action au Robot
+	 * @param portee - la portée à attribuer au Robot
+	 */
+	public void setPortee(int portee) { this.portee = portee; }
+
+	/**
+	 * Attribue un coût de déplacement (en énergie) au Robot
+	 * @param coutDep - le coût d'un déplacement du Robot
+	 */
+	public void setCoutDep(int coutDep) { this.coutDep = coutDep; }
+
+	/**
+	 * Attribue une équipe au Robot
+	 * @param equipe - l'équipe du Robot
+	 */
+	public void setEquipe(int equipe) { this.equipe = equipe; }
+
+	/**
+	 * Construit un Robot non-typé, associé à une vue, une équipe, et des coordonnées
+	 * @param vue - la vue associée au Robot
+	 * @param x - l'abscisse des coordonnées du Robot
+	 * @param y - l'ordonnée des coordonnées du Robot
+	 * @param equipe - l'équipe d'appartenance du Robot
+	 */
+	public Robot(Vue vue, int x, int y, int equipe) {
+		this.coord = new Coordonnees(x,y);
 		this.vue = vue;
-		this.Equipe = Equipe;
+		this.equipe = equipe;
 	}
 
-	// M�thode abstraite -> Pour savoir si le robot est en mesure de tirer
+	/**
+	 * Retourne vrai si le Robot peut effectuer un tir (i.e. s'il a une ligne de vue), faux sinon
+	 * @return vrai si le Robot peut tirer, faux sinon
+	 */
 	public abstract boolean peutTirer();
 
-	// M�thode abstraite -> Pour avoir le cout d'une action
+	/**
+	 * Retourne le coût (en énergie) d'une action d'attaque du Robot
+	 * @return le coût d'une attaque du Robot
+	 */
 	public abstract int getCoutAction();
 
-	// M�thode abstraite -> Pour avoir le cout d'un deplacement
+	/**
+	 * Retourne le coût (en énergie) d'une action de déplacement du Robot
+	 * @return le coût d'un déplacement du Robot
+	 */
 	public abstract int getCoutDep();
 
-	// M�thode abstraite -> Pour avoir les degats d'un tir
+	/**
+	 * Retourne la quantité de dégâts infligée par un tir du Robot
+	 * @return la quantité d'énergie causée en perte à l'entité ciblée
+	 */
 	public abstract int getDegatTir();
 
-	// M�thode abstraite -> Pour avoir les degats d'une mine
+	/**
+	 * Retourne la quantité de dégâts infligée par une mine
+	 * @return la quantité d'énergie causée en perte à l'entité passant sur une mine posée par ce Robot
+	 */
 	public abstract int getDegatMine();
 
-	// M�thode abstraite -> Pour avoir le type de robot
-	public abstract String getType();
+	/**
+	 * Retourne l'historique des déplacements effectués par le Robot, sous forme de liste de Deplacements
+	 * @return l'ensemble des déplacements passés du Robot
+	 */
+	public ArrayList<Coordonnees> getDeplacements() { return this.histoDeplacements; }
 
-	// M�thode abstraite -> Pour avoir l'historique de deplacement du robot
-	public abstract ArrayList<Coordonnees> getDeplacements();
-
-	// M�thode -> Pour savoir si le robot est sur la base
+	/**
+	 * Retourne vrai si le Robot se situe sur une base (associée à son camp), faux sinon
+	 * @return vrai si le Robot est en base, faux sinon
+	 */
 	public boolean estSurBase() {
-		return coord.equals(vue.getBase(Equipe));
+		return coord.equals(vue.getBase(equipe));
 	}
 
-	// M�thode -> Pour attribuer la position du robot
-	public void setCoordonnees(Coordonnees coords) {
-	}
+	/**
+	 * Attribue une nouvelle position au Robot, via de nouvelles Coordonnees
+	 * @param coords - les nouvelles Coordonnees du Robot
+	 */
+	public void setCoordonnees(Coordonnees coord) { this.coord = coord; }
 
-	// M�thode -> Pour savoir la position du robot
-	public Coordonnees getCoordonnees() {
-		return coord;
-	}
+	/**
+	 * Retourne la position actuelle du Robot, sous forme de Coordonnees
+	 * @return les Coordonnees du Robot
+	 */
+	public Coordonnees getCoordonnees() { return coord; }
 
-	// M�thode -> Pour r�cuperer la vue du robot
-	public Vue getVue() {
-		return vue;
-	}
+	/**
+	 * Retourne la vue associée au Robot
+	 * @return la vue associée au Robot
+	 */
+	public Vue getVue() { return vue; }
 
-	// M�thode -> Pour r�cuperer l'�quipe du robot
-	public int getEquipe() {
-		return this.Equipe;
-	}
+	/**
+	 * Retourne l'équipe d'appartenance du Robot
+	 * @return l'équipe du Robot
+	 */
+	public int getEquipe() { return this.equipe; }
 
-	// M�thode -> Pour attribuer l'energie actuelle du robot
-	public void setEnergie(int energie) {
-		this.energie = energie;
-	}
+	/**
+	 * Attribue au Robot une nouvelle quantité d'énergie
+	 * @param energie - l'énergie à attribuer au robot
+	 */
+	public void setEnergie(int energie) { this.energie = energie; }
 
-	public int getPorte() {
-		return Portee;
-	}
+	/**
+	 * Retourne la quantité d'énergie maximale que peut emmagasiner le Robot, celle qu'il possède initialement
+	 * @return l'énergie initiale du Robot
+	 */
+	public int getEnergieInitiale() { return energieInitiale; }
 
-	public void setPorte(int porte) {
-		Portee = porte;
-	}
-
-	public int getEnergieInitiale() {
-		return EnergieInitiale;
-	}
-
-	public void setEnergieInitiale(int energieInitiale) {
-		EnergieInitiale = energieInitiale;
-	}
-	public int getDepMax() {
-		return Depmax;
-	}
-
-	public void setDepMax(int depmax) {
-		Depmax = depmax;
-	}
-
-	// M�thode -> Pour r�cuperer l'energie actuelle du robot
-	public int getEnergie() {
-		return this.energie;
-	}
-
-	// M�thode -> Pour attribuer la vue du robot
-	public void setVue(Vue vue) {
-		this.vue = vue;
-	}
-
-	// M�thode -> Pour que le robot subisse un tir
-	public void subitTir() {
-		energie -= getCoutAction();
-	}
-
-	// M�thode -> Pour que le robot subisse les d�g�ts d'une mine
+	/**
+	 * Attribue au Robot une énergie initiale
+	 * @param energieInitiale - l'énergie initiale du Robot
+	 */
+	public void setEnergieInitiale(int energieInitiale) { this.energieInitiale = energieInitiale; }
 	
-	public  void subitMine() {
-		energie -= getCoutAction();
-	}
+	/**
+	 * Retourne la portée de déplacement maximale que peut effectuer le Robot
+	 * @return la portée de déplacement maximale du Robot
+	 */
+	public int getDepMax() { return depMax; }
+	
+	/**
+	 * Attribue une portée de déplacement maximale au Robot
+	 * @param depMax - la portée de déplacement maximale du Robot
+	 */
+	public void setDepMax(int depMax) { this.depMax = depMax; }
 
-	// M�thode -> toString() , par d�faut, pour montrer les caract�ristiques du
-	// robot
-	public String toString() {
-		return typeRobot;
-	}
+	/**
+	 * Retourne l'énergie actuelle du Robot
+	 * @return l'énergie du Robot
+	 */
+	public int getEnergie() { return energie; }
 
+	/**
+	 * Affecte une Vue au Robot
+	 * @param vue - la vue affectée au Robot
+	 */
+	public void setVue(Vue vue) { this.vue = vue; }
+
+	/**
+	 * Actualise l'énergie du Robot en fonction des dégâts du tir subi
+	 */
+	public void subitTir(Robot rob) { energie -= rob.getDegatTir(); }
+
+	/**
+	 * Actualise l'énergie du Robot en fonction des dégâts de la mine activée
+	 */
+	public  void subitMine(Robot rob) { energie -= rob.getDegatMine(); }
+
+	/**
+	 * Attribue une quantité d'énergie à récupérer lorsque le Robot est en base
+	 * @param regenBase - l'énergie récupérée en base
+	 */
 	public void setRegenBase(int regenBase) {
-		RegenBase = regenBase;
+		this.regenBase = regenBase;
 	}
+
+	/*
+	 * (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	public String toString() { return this.typeRobot; }
 
 }

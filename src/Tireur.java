@@ -1,14 +1,9 @@
-import java.util.ArrayList;
+
 public class Tireur extends Robot {
 
-	int X;
-	int Y;
+	int x;
+	int y;
 	int equipe;
-	
-	// Variable -> Vue du robot
-	Vue vue_robot = new Vue();
-	
-	ArrayList <Coordonnees> historiqueDep = new ArrayList <Coordonnees>();
 	
 	/**
 	 * 
@@ -17,8 +12,8 @@ public class Tireur extends Robot {
 	 * @param Y
 	 * @param Equipe
 	 */
-	public Tireur(Vue vue_robot,int X, int Y, int Equipe){
-		super(vue_robot,X,Y, Equipe);
+	public Tireur(Vue vue_robot,int x, int y, int equipe){
+		super(vue_robot, x, y, equipe);
 		setEnergieInitiale(40);
 		setEnergie(40);
 		setPortee(3);
@@ -27,65 +22,32 @@ public class Tireur extends Robot {
 		setCoutTir(2);
 		setCoutDep(1);
 		setDegats(3);
-		typeRobot = "t";
+		super.typeRobot = "Tireur";
 	}
-	
-	/**
-	 * 
-	 */
+
 	@Override
 	public boolean peutTirer() {
 	 return getEnergie() >= 2;
 	}
 
-	/**
-	 * 
-	 */
 	@Override
 	public int getCoutAction() {
 		return 2;
 	}
 
-	/**
-	 * 
-	 */
 	@Override
 	public int getCoutDep() {
-		// TODO Auto-generated method stub
 		return 1;
 	}
-	/**
-	 * 
-	 */
-	@Override
-	public int getDegatTir() {
-		// TODO Auto-generated method stub
-		return 2;
-	}
-
-	/**
-	 * 
-	 */
-	@Override
-	public int getDegatMine() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-	/**
-	 * 
-	 */
-	@Override
-	public String getType() {
-		// TODO Auto-generated method stub
-		return "Tireur";
-	}
-
-	/**
-	 * 
-	 */
 	
 	@Override
-	public ArrayList<Coordonnees> getDeplacements() {
-		return historiqueDep;
+	public int getDegatTir() {
+		return 2;
 	}
+	
+	@Override
+	public int getDegatMine() {
+		return 0;
+	}
+	
 }

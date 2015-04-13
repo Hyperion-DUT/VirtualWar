@@ -10,12 +10,12 @@ import java.util.Scanner;
 public class Jeu {
 
 	/**
-	 * Entrée utilistauer
+	 * Entrï¿½e utilistauer
 	 */
 	private Scanner s = new Scanner(System.in);
 
 	/**
-	 * Nombre de robots présents sur le plateau durant la partie
+	 * Nombre de robots prï¿½sents sur le plateau durant la partie
 	 */
 	private int nbRobots;
 
@@ -26,7 +26,7 @@ public class Jeu {
 	private ArrayList<Robot> r_eq2 = new ArrayList<Robot>();
 
 	/**
-	 * Constructeur par défaut
+	 * Constructeur par dï¿½faut
 	 */
 	public Jeu() {
 		// Message de bienvenue
@@ -38,7 +38,7 @@ public class Jeu {
 
 	/**
 	 * Fonction pour attaquer un robot (r1 -> robot attaquant, r2-> robot
-	 * touché)
+	 * touchï¿½)
 	 * 
 	 * @param r1
 	 * @param r2
@@ -47,19 +47,19 @@ public class Jeu {
 	public boolean robotAttaque(Robot r1, Robot r2) {
 		if (r1.getEquipe() != r2.getEquipe()) {
 			if (r1 instanceof Tireur || r1 instanceof Char)
-				r2.subitTir();
+				r2.subitTir(r1);
 			else if (r1 instanceof Piegeur)
-				r2.subitMine();
+				r2.subitMine(r1);
 			return true;
 		} else {
 			System.out
-					.println("[ATTAQUE] Vous ne pouvez pas attaquer un robot de votre équipe");
+					.println("[ATTAQUE] Vous ne pouvez pas attaquer un robot de votre ï¿½quipe");
 		}
 		return false;
 	}
 
 	/**
-	 * Fonction pour déterminer si la partie est terminée et retourner l'équipe gagnante 
+	 * Fonction pour dï¿½terminer si la partie est terminï¿½e et retourner l'ï¿½quipe gagnante 
 	 * @return
 	 */
 	public int partieTerminee() {
@@ -70,7 +70,7 @@ public class Jeu {
 	}
 
 	/**
-	 * Fonction pour ajouter un robot dans une équipe
+	 * Fonction pour ajouter un robot dans une ï¿½quipe
 	 * 
 	 * @param equipe
 	 * @param r
@@ -84,7 +84,7 @@ public class Jeu {
 	}
 
 	/**
-	 * Fonction pour retirer un robot d'une equipe spécifique
+	 * Fonction pour retirer un robot d'une equipe spï¿½cifique
 	 * 
 	 * @param equipe
 	 * @param r
@@ -131,7 +131,7 @@ public class Jeu {
 						.println("Veuillez entrer la largeur du plateau (X) -> ");
 				// Saisie
 				s_x = s.nextInt();
-				// Vérification saisie
+				// Vï¿½rification saisie
 				if (s_x == 0 || s_x == 1)
 					System.out.println("Erreur, veuillez reessayez!");
 			} catch (Exception e) {
@@ -159,7 +159,7 @@ public class Jeu {
 						.println("Veuillez entrer la largeur du plateau (Y) -> ");
 				// Saisie
 				s_y = s.nextInt();
-				// Vérification saisie
+				// Vï¿½rification saisie
 				if (s_y == 0 || s_y == 1)
 					System.out.println("Erreur, veuillez reessayez!");
 			} catch (Exception e) {
