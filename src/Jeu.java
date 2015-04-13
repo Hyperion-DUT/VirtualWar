@@ -46,7 +46,7 @@ public class Jeu {
 	 */
 	public boolean robotAttaque(Robot r1, Robot r2) {
 		if (r1.getEquipe() != r2.getEquipe()) {
-			if (r1 instanceof Tireur)
+			if (r1 instanceof Tireur || r1 instanceof Char)
 				r2.subitTir();
 			else if (r1 instanceof Piegeur)
 				r2.subitMine();
