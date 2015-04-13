@@ -1,3 +1,8 @@
+/**
+ * 
+ * @author Jules
+ *
+ */
 public class Coordonnees {
 
 	// Coordonnée X

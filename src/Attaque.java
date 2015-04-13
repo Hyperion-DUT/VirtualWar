@@ -1,4 +1,8 @@
-
+/**
+ * 
+ * @author Jules
+ *
+ */
 public class Attaque extends Action {
 
 	public Attaque(Robot robot, Coordonnees direction) {

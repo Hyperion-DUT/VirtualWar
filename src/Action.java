@@ -1,3 +1,8 @@
+/**
+ * 
+ * @author Jules
+ *
+ */
 public abstract class Action {
 
 	/** Direction de l'action */

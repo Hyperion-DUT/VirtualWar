@@ -1,4 +1,8 @@
-
+/**
+ * 
+ * @author Jules
+ *
+ */
 public class Deplacement extends Action{
 
 	public Deplacement(Robot robot, Coordonnees direction) {
