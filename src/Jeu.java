@@ -52,8 +52,12 @@ public class Jeu {
 				r2.subitMine(r1);
 			return true;
 		} else {
+<<<<<<< HEAD
 			System.out
 					.println("[ATTAQUE] Vous ne pouvez pas attaquer un robot de votre ï¿½quipe");
+=======
+			System.out.println("[ATTAQUE] Vous ne pouvez pas attaquer un robot de votre équipe");
+>>>>>>> origin/master
 		}
 		return false;
 	}
