@@ -10,12 +10,12 @@ import java.util.Scanner;
 public class Jeu {
 
 	/**
-	 * Entr�e utilistauer
+	 * Entrée utilisateur
 	 */
 	private Scanner s = new Scanner(System.in);
 
 	/**
-	 * Nombre de robots pr�sents sur le plateau durant la partie
+	 * Nombre de robots présents sur le plateau durant la partie
 	 */
 	private int nbRobots;
 
@@ -26,7 +26,7 @@ public class Jeu {
 	private ArrayList<Robot> r_eq2 = new ArrayList<Robot>();
 
 	/**
-	 * Constructeur par d�faut
+	 * Constructeur par défaut
 	 */
 	public Jeu() {
 		// Message de bienvenue
@@ -37,8 +37,7 @@ public class Jeu {
 	}
 
 	/**
-	 * Fonction pour attaquer un robot (r1 -> robot attaquant, r2-> robot
-	 * touch�)
+	 * Fonction pour attaquer un robot (r1 -> robot attaquant, r2-> robot ciblé)
 	 * 
 	 * @param r1
 	 * @param r2
@@ -52,18 +51,15 @@ public class Jeu {
 				r2.subitMine(r1);
 			return true;
 		} else {
-<<<<<<< HEAD
 			System.out
 					.println("[ATTAQUE] Vous ne pouvez pas attaquer un robot de votre �quipe");
-=======
-			System.out.println("[ATTAQUE] Vous ne pouvez pas attaquer un robot de votre �quipe");
->>>>>>> origin/master
+			System.out.println("[ATTAQUE] Vous ne pouvez pas attaquer un robot de votre �quipe");
 		}
 		return false;
 	}
 
 	/**
-	 * Fonction pour d�terminer si la partie est termin�e et retourner l'�quipe gagnante 
+	 * Fonction pour déterminer si la partie est terminée et retourner l'équipe gagnante 
 	 * @return
 	 */
 	public int partieTerminee() {
@@ -74,7 +70,7 @@ public class Jeu {
 	}
 
 	/**
-	 * Fonction pour ajouter un robot dans une �quipe
+	 * Fonction pour ajouter un robot dans une équipe
 	 * 
 	 * @param equipe
 	 * @param r
@@ -88,7 +84,7 @@ public class Jeu {
 	}
 
 	/**
-	 * Fonction pour retirer un robot d'une equipe sp�cifique
+	 * Fonction pour retirer un robot d'une equipe spécifique
 	 * 
 	 * @param equipe
 	 * @param r
