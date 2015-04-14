@@ -20,7 +20,7 @@ public class Piegeur extends Robot {
 		super.setDepMax(1);
 		super.setRegenBase(2);
 		super.setCoutDep(2);
-		super.typeRobot = "Piégeur";
+		super.typeRobot = "p";
 	}
 
 	@Override

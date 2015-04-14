@@ -21,7 +21,7 @@ public class Char extends Robot {
 		super.setPortee(10);
 		super.setCoutDep(5);
 		super.setEquipe(equipe);
-		super.typeRobot = "Char";
+		super.typeRobot = "c";
 	}
 
 	@Override
