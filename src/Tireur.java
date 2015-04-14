@@ -1,3 +1,8 @@
+/**
+ * 
+ * Alexandre
+ **/
+
 
 public class Tireur extends Robot {
 
