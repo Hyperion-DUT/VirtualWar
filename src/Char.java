@@ -1,62 +1,79 @@
+import java.awt.List;
 import java.util.ArrayList;
 
 
 public class Char extends Robot {
 
 	
-	int energie = 60;
+	int equipe;
+	int x;
+	int y;
+/**
+ * 
+ * @param vue
+ * @param x
+ * @param y
+ * @param equipe
+ */
+	
 
-	public Char() {}
-
+	
 	public Char(Vue vue,int x, int y, int equipe){
 	
+		super(vue,x,y,equipe);
 		
 		setDepmax(2);
 		setPortee(10);
 		setCoutDep(5);
-		setEquipe(equipe);
 		setEnergieInitiale(60);
+		setEnergie(60);
+		setRegenBase(2);
+		setCoutTir(1);
+		setCoutDep(5);
+		setDegats(6);
+		
 	}
 	
 
-	
-
-
 	@Override
 	public boolean peutTirer() {
-		// TODO Auto-generated method stub
+		getEnergie();
+		if(getEnergie()>getCoutAction()){
+			return true;
+		}
 		return false;
 	}
 
 	@Override
 	public int getCoutAction() {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		return 1;
 	}
 
 	@Override
 	public int getCoutDep() {
-		// TODO Auto-generated method stub
-		return 2;
+		
+		return 5;
 	}
 
 	@Override
 	public int getDegatTir() {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		return 6;
 	}
 
 	@Override
 	public int getDegatMine() {
-		// TODO Auto-generated method stub
+		
 		return 0;
 	}
 
 	@Override
 	public String getType() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return ("C");
 	}
+
 
 	@Override
 	public ArrayList<Coordonnees> getDeplacements() {
@@ -64,6 +81,7 @@ public class Char extends Robot {
 		return null;
 	}
 
+	
 	
 }
 
