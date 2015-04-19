@@ -1,5 +1,11 @@
 public class Base extends Cellule {
 	
+	
+	
+	/**
+	 * utilise le constructeur herite de cellule pour initialiser les coordonnées de la base et definir l'equipe à laquelle elle appartient.
+	 * 
+	 */
 	public Base(int x, int y, int equipe){
 		super(x,y);
 		super.base = equipe;
@@ -12,6 +18,9 @@ public class Base extends Cellule {
 	}
 
 	@Override
+	/**
+	 * ajoute une equipe à une base existante.
+	 */
 	public void ajoute(int equipe) {
 		super.base = equipe;
 	}

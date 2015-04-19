@@ -31,15 +31,23 @@ public class Char extends Robot {
 	}
 
 	@Override
+	/**
+	 * Retourne le cout de l'action.
+	 */
 	public int getCoutAction() { return 1; }
 
 	@Override
+	/**
+	 * Retourne le cout du deplacement.
+	 */
 	public int getCoutDep() { return 5; }
 
 	@Override
+	/**
+	 * Retourne les dégats des tirs. 
+	 */
 	public int getDegatTir() { return 6; }
 
-	@Override
 	public int getDegatMine() { return 0; }
 	
 }
