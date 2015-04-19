@@ -3,9 +3,12 @@ public class Base extends Cellule {
 	
 	
 	/**
-	 * utilise le constructeur herite de cellule pour initialiser les coordonnées de la base et definir l'equipe à laquelle elle appartient.
-	 * 
+	 *utilise le constructeur herite de cellule pour initialiser les coordonnées de la base et definir l'equipe à laquelle elle appartient.
+	 * @param x abscisse de la case contenant la base.
+	 * @param y ordonnée de la contenant la base.
+	 * @param equipe entier qui caracterise l'equipe.
 	 */
+	 
 	public Base(int x, int y, int equipe){
 		super(x,y);
 		super.base = equipe;

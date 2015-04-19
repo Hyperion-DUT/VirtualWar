@@ -25,9 +25,9 @@ public class Plateau {
 	}
 
 	/**
-	 * 
-	 * @param hauteur
-	 * @param largeur
+	 * Initialise un tableau dont la largeur et la longueur sont definies par l'utilisateur.
+	 * @param hauteur la hauteur definie pour le plateau.
+	 * @param largeur la largeur definie pour le plateau.
 	 */
 	Plateau(int hauteur, int largeur) {
 		truePlateau = new Cellule[hauteur][largeur];
@@ -40,7 +40,7 @@ public class Plateau {
 	}
 
 	/**
-	 * 
+	 * Utilisée dans un constructeur elle permet l'initialisation du tableau.
 	 */
 	public void initialiser() {
 		for (int i = 0; i < trueHauteur; i++) {
@@ -55,7 +55,11 @@ public class Plateau {
 			}
 		}
 	}
-
+	/**
+	 * Retourne les coordonnées de la base de l'equipe qui est passée en paramatre.
+	 * @param equipe valeur caracterisant une equipe.
+	 * @return deux nombres qui donnent les coordonnées de la base.
+	 */
 	public Coordonnees getBase(int equipe) {
 		for (int y = 0; y < trueHauteur; y++) {
 			for (int x = 0; x < trueLargeur; x++) {
@@ -68,55 +72,118 @@ public class Plateau {
 		return null;
 	}
 
+	/**
+	 * retourne le contenu de la case de coordonnées (x,y).
+	 * @param x est l'abscisse de la case.
+	 * @param y est l'ordonnée de la case.
+	 * @return Le robot sur la case de coordonnées (x,y)
+	 */
+
 	public Robot getRobot(int x, int y) {
 		return truePlateau[x][y].getContenu();
 	}
+	/**
+	 * Retourne un booleen qui exprime  si il y a une mine posée sur la case de coordonnées(x,y).
+	 * @param x est l'abscisse de la case .
+	 * @param y est l'ordonnée de la case.
+	 * @return vrai si il y a un mine sur la case(x,y), faux sinon.
 
+	 */
 	public boolean estMine(int x, int y) {
 		return truePlateau[x][y].estMine();
 	}
+	
+	/**
+	 * retourne un booleen qui exprime  si il y a une base posée sur la case de coordonnées(x,y).
+	 * @param x est l'abscisse de la case.
+	 * @param y est l'ordonnée de la case.
+	 * @return vrai si la case du plateau contient une base.
+	 */
 
 	public boolean estBase(int x, int y) {
 		return truePlateau[x][y].estBase();
 	}
-
+	/**
+	 * retourne un booleen qui exprime  si il y a un obstacle posé sur la case de coordonnées(x,y).
+	 * @param x est l'abscisse de la case 
+	 * @param y est l'ordonnée de la case
+	 * @return
+	 */
 	public boolean estObstacle(int x, int y) {
 		return truePlateau[x][y].estObstacle();
 	}
+	/**
+	 * retourne un booleen qui exprime  si il y a un robot posé sur la case de coordonnées(x,y).
+	 * @param x est l'abscisse de la case 
+	 * @param y est l'ordonnée de la case
+	 * @return
 
+	 */
 	public boolean estRobot(int x, int y) {
 		return truePlateau[x][y].estObstacle();
 	}
 
+	/**
+	 * retourne un booleen qui exprime  si la case de coordonnées(x,y) est vide.
+	 * @param x est l'abscisse de la case 
+	 * @param y est l'ordonnée de la case
+	 * @return
+
+	 */
 	public boolean estVide(int x, int y) {
 		return truePlateau[x][y].estVide();
 	}
+	/**
+	 * cette methode permet la pose d'une mine sur le plateau par un piegeur de l'une des deux equipes 
+	 * @param x abscisse de la case ou sera posée la mine.
+	 * @param y est l'ordonnée de la case ou sera posée la mine.
 
+	 */
 	public void setMine(int x, int y) {
 		Case a = new Case(x, y);
 		a.setTypeCase(1);
 		truePlateau[x][y] = a;
 	}
-
+	/**
+	 * Cette methode deploie un robot passe en parametre sur le plateau de jeu au coordonnées (x,y)
+	 * @param x
+	 * @param y
+	 * @param robot
+	 */
 	public void setRobot(int x, int y, Robot robot) {
 		Case a = new Case(x, y, robot);
 		truePlateau[x][y] = a;
 	}
-
+	/**
+	 * 	 * Cette methode place un obstacle sur la case de coordonnees(x,y).
+	 * @param x est l'abscisse de la case sur laquelle sera place l'obstacle. 
+	 * @param y est l'ordonnee de la case sur laquelle sera placé l'obstacle.
+	 */
 	public void setObstacle(int x, int y) {
 		Case a = new Case(x, y);
 		a.setTypeCase(3);
 		truePlateau[x][y] = a;
 	}
-
+	/**
+	 * Cette methode place une base sur la case de coordonnees(x,y).
+	 * @param x est l'abscisse de la case sur laquelle sera placee la base.
+	 * @param y est l'ordonnee de la case sur laquelle sera placee la base.
+	 */
 	public void setBase(int x, int y, int equipe) {
 		truePlateau[x][y] = new Base(x, y, equipe);
 	}
+	/**
+	 * Appelle la fonction videCase() qui permet de vider la case de coordonnees(x,y)
+	 * @param x est l'abscisse de la case à vider.
+	 * @param y est l'ordonnée de la case à vider.
 
+	 */
 	public void Vider(int x, int y) {
 		truePlateau[x][y].videCase();
 	}
-
+	/**
+	 * Retourne une chaine de caractere qui renvoie toutes les informations sur les attributs de la classe.
+	 */
 	public String toString() {
 
 		// Crï¿½ation du Plateau ASCII

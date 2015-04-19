@@ -23,19 +23,23 @@ public class Case extends Cellule {
 		return typeCase;
 	}
 	/**
-	 * Modifie le type de la case.
+	 * * Modifie le type de la case.
+	 * @param type le type de la case.
 	 */
 	public void setTypeCase(int type){
 		typeCase = type;
 	}
 	/**
-	 * Retourne vrai si la case est neutre(pas d'equipe ni d'obstacle).
+	 *Retourne vrai si la case est neutre(pas d'equipe ni d'obstacle).
+	 * @return vrai si la case est neutre,faux sinon
 	 */
+	
 	public boolean estNeutre(){
 		return typeCase == 0;
 	}
 	/**
-	 * Retourne vrai si la case est une mine.
+	 *Retourne vrai si la case est une mine.
+	 * @return vrai si la case contient une mine,faux sinon.
 	 */
 	public boolean estMine(){
 		return typeCase == 1;
@@ -47,14 +51,16 @@ public class Case extends Cellule {
 		obstacle = true;
 	}
 	/**
-	 * Renvoie vrai si la case est un obstacle.
+	 *Renvoie vrai si la case est un obstacle.
+	 * @return vrai si la case contient un obstacle.
 	 */
 	public boolean estObstacle(){
 		return typeCase == 3;
 	}
 	@Override
 	/**
-	 * rend la case neutre et supprime l'obstacle si il y en a un.
+	 *Rend la case neutre et supprime l'obstacle si il y en a un.
+	 
 	 */
 	public void videCase() {
 		// TODO Auto-generated method stub
@@ -74,7 +80,7 @@ public class Case extends Cellule {
 
 	@Override
 	/**
-//	 * Place le robot en parametre sur la case.
+	 *Place le robot en parametre sur la case.
 	 */
 	public void deplaceSur(Robot robot) {
 		// TODO Auto-generated method stub
