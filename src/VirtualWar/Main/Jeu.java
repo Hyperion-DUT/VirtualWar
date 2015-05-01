@@ -1,3 +1,4 @@
+package VirtualWar.Main;
 /**
  * 
  * @author Jules
@@ -6,6 +7,11 @@
 
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import VirtualWar.Unites.Char;
+import VirtualWar.Unites.Piegeur;
+import VirtualWar.Unites.Robot;
+import VirtualWar.Unites.Tireur;
 
 public class Jeu {
 

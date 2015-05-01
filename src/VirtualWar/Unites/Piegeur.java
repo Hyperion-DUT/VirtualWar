@@ -1,3 +1,7 @@
+package VirtualWar.Unites;
+import VirtualWar.Plateau.Vue;
+
+
 
 /**
  * La classe Piegeur représente un robot qui a pour action de poser des mines au sol. Il ne peut pas tirer.

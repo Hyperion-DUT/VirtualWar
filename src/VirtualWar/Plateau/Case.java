@@ -1,3 +1,6 @@
+package VirtualWar.Plateau;
+import VirtualWar.Unites.Robot;
+
 public class Case extends Cellule {
 	/**
 	 * Cnitialisation d'une variable definissant le type de la case.

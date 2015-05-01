@@ -1,3 +1,6 @@
+package VirtualWar.Plateau;
+import VirtualWar.Unites.Robot;
+
 public class Base extends Cellule {
 	
 	

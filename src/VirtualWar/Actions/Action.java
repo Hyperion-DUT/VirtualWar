@@ -1,3 +1,7 @@
+package VirtualWar.Actions;
+import VirtualWar.Plateau.Coordonnees;
+import VirtualWar.Unites.Robot;
+
 /**
  * 
  * @author Jules

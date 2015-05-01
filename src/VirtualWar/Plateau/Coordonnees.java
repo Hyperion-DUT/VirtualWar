@@ -1,3 +1,4 @@
+package VirtualWar.Plateau;
 /**
  * 
  * @author Jules

@@ -1,3 +1,6 @@
+package VirtualWar.Unites;
+import VirtualWar.Plateau.Vue;
+
 
 /**
  * La classe Char représente un Robot particulier, le Char, avec les caractéristiques communes à tous les Robots,

@@ -1,3 +1,9 @@
+package VirtualWar.Plateau;
+
+import VirtualWar.Unites.Robot;
+import VirtualWar.Unites.Tireur;
+
+
 /**
  * 
  * @author noxilex
@@ -29,7 +35,7 @@ public class Plateau {
 	 * @param hauteur la hauteur definie pour le plateau.
 	 * @param largeur la largeur definie pour le plateau.
 	 */
-	Plateau(int hauteur, int largeur) {
+	public Plateau(int hauteur, int largeur) {
 		truePlateau = new Cellule[hauteur][largeur];
 		trueHauteur = hauteur;
 		trueLargeur = largeur;

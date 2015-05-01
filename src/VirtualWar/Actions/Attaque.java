@@ -1,3 +1,11 @@
+package VirtualWar.Actions;
+import VirtualWar.Plateau.Cellule;
+import VirtualWar.Plateau.Coordonnees;
+import VirtualWar.Unites.Char;
+import VirtualWar.Unites.Piegeur;
+import VirtualWar.Unites.Robot;
+import VirtualWar.Unites.Tireur;
+
 /**
  * 
  * @author Jules

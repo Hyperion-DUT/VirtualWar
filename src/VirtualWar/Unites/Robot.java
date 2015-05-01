@@ -1,3 +1,7 @@
+package VirtualWar.Unites;
+
+
+
 /**
  * La classe Robot représente un robot non-typé, avec les caractéristiques communes à tous les robots : son type, son équipe,
  * sa portée d'action, sa portée de déplacement, son énergie actuelle, son énergie maximale, le coût d'une action, les dégâts
@@ -5,6 +9,9 @@
  * @author Jules, Cyrille
  */
 import java.util.ArrayList;
+
+import VirtualWar.Plateau.Coordonnees;
+import VirtualWar.Plateau.Vue;
 
 public abstract class Robot {
 	

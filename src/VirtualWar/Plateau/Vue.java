@@ -1,3 +1,6 @@
+package VirtualWar.Plateau;
+import VirtualWar.Unites.Robot;
+
 public class Vue {
 	/**
 	 * booleen qui donne ou non la visibilité sur un unité.

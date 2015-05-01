@@ -1,4 +1,11 @@
+package VirtualWar.Main;
 import java.util.Scanner;
+
+import VirtualWar.Plateau.Coordonnees;
+import VirtualWar.Plateau.Plateau;
+import VirtualWar.Plateau.Vue;
+import VirtualWar.Unites.Robot;
+import VirtualWar.Unites.Tireur;
 
 public class Main {
 
@@ -44,23 +51,23 @@ public class Main {
 		System.out.println("Veuillez renseigner la taille du plateau (min X : "
 				+ minPlateauX + " - minY : " + minPlateauY + ")");
 		System.out.println("");
-		// Vï¿½rification plateau
+		// Vérification plateau
 		while (config_PlateauX < minPlateauX || config_PlateauY < minPlateauY) {
 			// Config -> Plateau
 			config_PlateauX = j.config_TaillePlateauX();
 			config_PlateauY = j.config_TailleTableauY();
 		}
 
-		// Crï¿½ation du plateau
+		// Création du plateau
 		plat = new Plateau(config_PlateauY, config_PlateauY);
-		// Crï¿½ation de la vue
+		// Création de la vue
 		Vue vue_plat = new Vue(plat);
 
 		// Acquisition des bases
 		Coordonnees Base1 = plat.getBase(1);
 		Coordonnees Base2 = plat.getBase(2);
 
-		// Crï¿½ation des robots
+		// Création des robots
 		Robot tireur_eq1 = new Tireur(vue_plat, Base1.getX(), Base1.getY(), 1);
 		plat.setRobot(Base1.getX(), Base1.getY(), tireur_eq1);
 
@@ -84,7 +91,7 @@ public class Main {
 			System.out.println("---------------------------------------");
 			System.out.println("");
 			System.out.println("Que voulez vous faire ?");
-			System.out.println("1.SÃ©lectionner un robot");
+			System.out.println("1.Sélectionner un robot");
 			System.out.println("2.Afficher mes robots");
 			System.out.println("3.Ne rien faire");
 

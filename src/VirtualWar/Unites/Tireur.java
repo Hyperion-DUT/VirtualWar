@@ -1,3 +1,6 @@
+package VirtualWar.Unites;
+import VirtualWar.Plateau.Vue;
+
 /**
  * 
  * @author Alexandre
