@@ -8,12 +8,12 @@ import VirtualWar.Unites.Robot;
  */
 abstract public class Cellule {
 	/**
-	 * Definition des variables definissant les mines et les bases. Ce sont des réels
+	 * Definition des variables definissant les mines et les bases. Ce sont des rï¿½els
 	 */
 	protected int mine;
 	protected int base;
 	/**
-	 * Définition de la variable qui renvoie si la case est un obstacle ou non. C'est un booleen.
+	 * Dï¿½finition de la variable qui renvoie si la case est un obstacle ou non. C'est un booleen.
 	 */
 	protected boolean obstacle;
 	/**
@@ -21,7 +21,7 @@ abstract public class Cellule {
 	 */
 	public String image;
 	/**
-	 * Coordonnées de la cellule.
+	 * Coordonnï¿½es de la cellule.
 	 */
 	private Coordonnees coord;
 	/**
@@ -30,9 +30,9 @@ abstract public class Cellule {
 	protected Robot robot;
 	
 	/**
-	 * Construit la cellule de coordonnées (x,y).
+	 * Construit la cellule de coordonnï¿½es (x,y).
 	 * @param X abscisse de la cellule.
-	 * @param Y ordonnée de la cellule.
+	 * @param Y ordonnï¿½e de la cellule.
 	 */
 	public Cellule(int X, int Y){
 		coord = new Coordonnees(X,Y);
@@ -78,13 +78,13 @@ abstract public class Cellule {
 	 *Retourne vrai si la case est vide(ni mine, ni robot, ni base, ni obstacle). 
 	 */
 	public boolean estVide(){
-		if(estMine() == false && estRobot() == false && estObstacle() == false && estBase() == false){
-			return true;
+		if(estMine() || estRobot() || estObstacle() || estBase()){
+			return false;
 		}
-		return false;
+		return true;
 	}
 	/**
-	 * Retourne les coordonnées de la cellule
+	 * Retourne les coordonnï¿½es de la cellule
 	 * @return
 	 */
 	public Coordonnees getCoordonnees(){
@@ -101,8 +101,8 @@ abstract public class Cellule {
 	
 	@Override
 	/**
-	 * Affiche un "#" si la case est un obstacle, un "b" si la case est une base appartenant à l'équipe 1, un "B" si la cellule contient une base appartenant à l'equipe 2, une * si la cellule contient une mine,
-	 * le caractere assigné à chaque type de robot en majuscule ou minuscule en fonction de l'equipe et du type de robot.
+	 * Affiche un "#" si la case est un obstacle, un "b" si la case est une base appartenant ï¿½ l'ï¿½quipe 1, un "B" si la cellule contient une base appartenant ï¿½ l'equipe 2, une * si la cellule contient une mine,
+	 * le caractere assignï¿½ ï¿½ chaque type de robot en majuscule ou minuscule en fonction de l'equipe et du type de robot.
 	 * Affiche une blanc si la case est vide.
 	 */
 	public String toString() {
