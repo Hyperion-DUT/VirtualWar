@@ -96,7 +96,7 @@ public class Main {
 			System.out.println("---------------------------------------");
 			System.out.println("");
 			System.out.println("Que voulez vous faire ?");
-			System.out.println("1.Sï¿½lectionner un robot");
+			System.out.println("1.Sélectionner un robot");
 			System.out.println("2.Afficher mes robots");
 			System.out.println("3.Changer de joueur");
 

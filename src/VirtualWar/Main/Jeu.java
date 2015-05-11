@@ -58,8 +58,8 @@ public class Jeu {
 			return true;
 		} else {
 			System.out
-					.println("[ATTAQUE] Vous ne pouvez pas attaquer un robot de votre ï¿½quipe");
-			System.out.println("[ATTAQUE] Vous ne pouvez pas attaquer un robot de votre ï¿½quipe");
+					.println("[ATTAQUE] Vous ne pouvez pas attaquer un robot de votre équipe");
+			System.out.println("[ATTAQUE] Vous ne pouvez pas attaquer un robot de votre équipe");
 		}
 		return false;
 	}
