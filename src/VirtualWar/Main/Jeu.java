@@ -8,12 +8,18 @@ package VirtualWar.Main;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
+import VirtualWar.Plateau.Vue;
 import VirtualWar.Unites.Char;
 import VirtualWar.Unites.Piegeur;
 import VirtualWar.Unites.Robot;
 import VirtualWar.Unites.Tireur;
 
-public class Jeu {
+public class Jeu extends JFrame{
 
 	/**
 	 * EntrÃ©e utilisateur
@@ -35,11 +41,6 @@ public class Jeu {
 	 * Constructeur par dÃ©faut
 	 */
 	public Jeu() {
-		// Message de bienvenue
-		System.out.println("Bienvenue dans VirtualWar - Version 1 - Console ");
-		System.out.println(" ");
-		System.out.println("Lancement de la partie ...");
-		System.out.println(" ");
 	}
 
 	/**
@@ -57,9 +58,7 @@ public class Jeu {
 				r2.subitMine(r1);
 			return true;
 		} else {
-			System.out
-					.println("[ATTAQUE] Vous ne pouvez pas attaquer un robot de votre équipe");
-			System.out.println("[ATTAQUE] Vous ne pouvez pas attaquer un robot de votre équipe");
+			JOptionPane.showMessageDialog(null, "[ATTAQUE] Vous ne pouvez pas attaquer un robot de votre équipe");
 		}
 		return false;
 	}
@@ -129,20 +128,28 @@ public class Jeu {
 	public int config_TaillePlateauX() {
 		// Init
 		int s_x = 0;
+		String saisie = "";
 		// Tant que la saisie n'est pas valide
 		while (s_x == 0 || s_x == 1) {
 			try {
-				// Demande utilisateur
-				System.out
-						.println("Veuillez entrer la largeur du plateau (X) -> ");
 				// Saisie
-				s_x = s.nextInt();
+				saisie = JOptionPane.showInputDialog("Veuillez entrer la largeur du plateau (X): \n Attention ! (La taille minimum est de 11)");
+				s_x = Integer.parseInt(saisie);
 				// Vï¿½rification saisie
-				if (s_x == 0 || s_x == 1)
-					System.out.println("Erreur, veuillez reessayez!");
-			} catch (Exception e) {
+				if (s_x < 11)
+					JOptionPane.showMessageDialog(null, "Attention ! (La taille minimum est de 11)");
+				if (saisie == null){
+					System.exit(0);
+				}
+			} catch (NumberFormatException e) {
 				// Erreur lors de la saisie
-				System.out.println("Erreur, veuillez reessayez!");
+				
+				if(saisie == null)
+					System.exit(0);
+				JOptionPane.showMessageDialog(null, "Erreur ! \n '" + saisie + "' \n n'est pas un nombre réel" );
+				
+			} catch(Exception e){
+				e.printStackTrace();
 			}
 		}
 		// Retourne la largeur
@@ -154,23 +161,24 @@ public class Jeu {
 	 * 
 	 * @return
 	 */
-	public int config_TailleTableauY() {
+	public int config_TaillePlateauY() {
 		// Init
 		int s_y = 0;
-		// Tant que la saisie n'est pas valide
+		String saisie = "";
+		// Tant que la saisie n'est pas valide3
 		while (s_y == 0 || s_y == 1) {
 			try {
 				// Demande utilisateur
-				System.out
-						.println("Veuillez entrer la largeur du plateau (Y) -> ");
-				// Saisie
-				s_y = s.nextInt();
+				saisie = JOptionPane.showInputDialog("Veuillez entrer la largeur du plateau (Y): \n Attention ! (La taille minimum est de 11)");
+				s_y = Integer.parseInt(saisie);
 				// Vï¿½rification saisie
-				if (s_y == 0 || s_y == 1)
-					System.out.println("Erreur, veuillez reessayez!");
+				if (s_y < 11)
+					JOptionPane.showMessageDialog(null, "Attention ! (La taille minimum est de 11)");
 			} catch (Exception e) {
 				// Erreur lors de la saisie
-				System.out.println("Erreur, veuillez reessayez!");
+				if(saisie == null)
+					System.exit(0);
+				JOptionPane.showMessageDialog(null, "Erreur ! \n '" + saisie + "' \n n'est pas un nombre réel" );
 			}
 		}
 		// Retourne la hauteur
