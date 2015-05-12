@@ -3,7 +3,7 @@ package VirtualWar.Plateau;
 import VirtualWar.Unites.Robot;
 import VirtualWar.Unites.Tireur;
 
-
+import java.util.*;
 /**
  * 
  * @author noxilex
@@ -12,11 +12,12 @@ import VirtualWar.Unites.Tireur;
 public class Plateau {
 	Cellule[][] truePlateau;
 	String[][] plateau;
+	static List<Coordonnees> obstacle = new ArrayList<Coordonnees>();
 	int hauteur;
 	int largeur;
 	int trueHauteur;
 	int trueLargeur;
-
+	
 	/**
 	 * Si le plateau n'a pas de taille, la taille par dÃ©faut est 10
 	 */
@@ -237,16 +238,36 @@ public class Plateau {
 		return res;
 	}
 
+    /**
+     * Genere aleatoirement les obstacles sur le plateau.
+     * @param nbObstacle Le nombre d'obstacles souhaités sur le plateau lors de la partie
+     * @param plateau 
+     */
+    public void generationObstacle(int nbObstacle,Plateau plateau){
+    	Random aleatoire = new Random();
+
+    	
+    	while (nbObstacle>0){
+    		int x =aleatoire.nextInt(trueLargeur-1)+1;
+    		int y =aleatoire.nextInt(trueHauteur-1);
+    		Coordonnees coord = new Coordonnees(x,y);
+    		if(obstacle.contains(coord)==false){
+    			plateau.setObstacle(x,y);
+    			obstacle.add(coord);
+    			nbObstacle=nbObstacle-1;
+    		}
+    	}
+    }
 	/**
 	 * 
 	 * @param args
 	 */
 	public static void main(String[] args) {
 		Plateau a = new Plateau(11, 11);
+		a.generationObstacle(20,a);
 		Vue a_p = new Vue(a);
 		Robot tireur = new Tireur(a_p, 2, 3, 1);
 		a.setRobot(2, 3, tireur);
-		a.setObstacle(3, 3);
 		System.out.println(a_p.toString());
 	}
 }
