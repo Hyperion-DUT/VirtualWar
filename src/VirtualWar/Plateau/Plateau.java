@@ -165,9 +165,12 @@ public class Plateau {
 	 * @param robot
 	 */
 	public void setRobot(int x, int y, Robot robot) {
+		robot.setCoordonnees(new Coordonnees(x,y));
 		if(truePlateau[x][y].estVide()){
 			Case a = new Case(x, y, robot);
 			truePlateau[x][y] = a;
+		}else if(truePlateau[x][y].estMine()){
+			//TODO Infliger des degats
 		}
 	}
 	/**

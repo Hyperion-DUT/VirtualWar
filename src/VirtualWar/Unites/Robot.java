@@ -43,6 +43,19 @@ public abstract class Robot {
 	private ArrayList<Coordonnees> histoDeplacements = new ArrayList<Coordonnees>();
 
 	/**
+	 * Construit un Robot non-typé, associé à une vue, une équipe, et des coordonnées
+	 * @param vue - la vue associée au Robot
+	 * @param x - l'abscisse des coordonnées du Robot
+	 * @param y - l'ordonnée des coordonnées du Robot
+	 * @param equipe - l'équipe d'appartenance du Robot
+	 */
+	public Robot(Vue vue, int x, int y, int equipe) {
+		this.coord = new Coordonnees(x,y);
+		this.vue = vue;
+		this.equipe = equipe;
+	}
+	
+	/**
 	 * Attribue un coût d'action de tir au Robot
 	 * @param coutTir - le coût en énergie d'un tir
 	 */
@@ -77,19 +90,6 @@ public abstract class Robot {
 	 * @param equipe - l'équipe du Robot
 	 */
 	public void setEquipe(int equipe) { this.equipe = equipe; }
-
-	/**
-	 * Construit un Robot non-typé, associé à une vue, une équipe, et des coordonnées
-	 * @param vue - la vue associée au Robot
-	 * @param x - l'abscisse des coordonnées du Robot
-	 * @param y - l'ordonnée des coordonnées du Robot
-	 * @param equipe - l'équipe d'appartenance du Robot
-	 */
-	public Robot(Vue vue, int x, int y, int equipe) {
-		this.coord = new Coordonnees(x,y);
-		this.vue = vue;
-		this.equipe = equipe;
-	}
 
 	/**
 	 * Retourne vrai si le Robot peut effectuer un tir (i.e. s'il a une ligne de vue), faux sinon
