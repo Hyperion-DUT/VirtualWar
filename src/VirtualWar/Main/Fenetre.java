@@ -6,6 +6,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextPane;
 
+import VirtualWar.Plateau.Plateau;
 import VirtualWar.Plateau.Vue;
 /**
  * Fenetre permettra de mettre en place un mode graphique au projet
@@ -16,20 +17,17 @@ import VirtualWar.Plateau.Vue;
  */
 public class Fenetre extends JFrame{
 
+	Plateau plat;
+	
 	public Fenetre(){
-		JOptionPane.showMessageDialog(null, "Bienvenue dans VirtualWar - Version Semi-Graphique \n Lancement de la partie...");
 		JFrame fenetre = new JFrame();
-		JPanel container = new JPanel();
-		JLabel plateau = new JLabel();
 		
 		fenetre.setTitle("VirtualWar");
 		fenetre.setSize(500,500);
-		fenetre.setLocation(100, 200);
+		fenetre.setLocationRelativeTo(null);;
 		fenetre.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
-		plateau.setText("OK");
-		container.add(plateau);
-		fenetre.getContentPane().add(container);
+		fenetre.getContentPane().add(new testPlateau(11,11));
 		
 		fenetre.setVisible(true);
 	}
