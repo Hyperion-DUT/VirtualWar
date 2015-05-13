@@ -46,8 +46,15 @@ public class Main {
 	 */
 	
 	public static boolean testDeplacement(Coordonnees robot, Coordonnees arrive){
-		
+		if(robot == arrive){
+			return true;
+		}
 		return true;
+		/*else{
+			if(arrive.getX()-robot.getX() >= arrive.getY()-robot.getY()){
+				
+			}
+		}*/
 	}
 	
 	public static void choixAction(Robot robotSelectionne){
@@ -55,7 +62,10 @@ public class Main {
 		while(choix < 1 || choix > 2){
 			String saisie = "";
 			try{
-				saisie = JOptionPane.showInputDialog("Choisissez l'action du robot \n"
+				saisie = JOptionPane.showInputDialog("Robot Selectionne : "
+						+ robotSelectionne 
+						+ "\n"
+						+ "Choisissez l'action du robot \n"
 						+ "1.Déplacement \n"
 						+ "2.Tir \n");
 				choix = Integer.parseInt(saisie);
@@ -67,7 +77,6 @@ public class Main {
 			if(choix == 1){
 				boolean deplacementNonPossible = true;
 				while(deplacementNonPossible){
-					System.out.println("Saisissez les coordonnées de déplacement:");
 					int choix_x = 0;
 					int choix_y = 0;
 					String saisie1 = "";
@@ -84,8 +93,10 @@ public class Main {
 					//TODO
 					Coordonnees newCoord = new Coordonnees(choix_x, choix_y);
 					if(testDeplacement(robotSelectionne.getCoordonnees(), newCoord )){
-						robotSelectionne.setCoordonnees(newCoord);
+						plat.Vider(robotSelectionne.getCoordonnees().getX(), robotSelectionne.getCoordonnees().getY());
+						plat.setRobot(choix_x, choix_y, robotSelectionne);
 						deplacementNonPossible = false;
+						System.out.println(vue_plat);
 					}
 				}
 			}
@@ -114,17 +125,6 @@ public class Main {
 		// Acquisition des bases
 		Coordonnees Base1 = plat.getBase(1);
 		Coordonnees Base2 = plat.getBase(2);
-
-		// Crï¿½ation des robots
-		Robot tireur_eq1 = new Tireur(vue_plat, Base1.getX(), Base1.getY(), 1);
-		plat.setRobot(Base1.getX(), Base1.getY(), tireur_eq1);
-
-		Robot tireur_eq2 = new Tireur(vue_plat, Base2.getX(), Base2.getY(), 2);
-		plat.setRobot(Base2.getX(), Base2.getY(), tireur_eq2);
-
-		// Ajout des robots
-		j.ajouterRobot(1, tireur_eq1);
-		j.ajouterRobot(2, tireur_eq2);
 		
 		// Affichage menu joueur
 		JOptionPane.showMessageDialog(null, "C'est au tour du joueur " + joueurActuel);
@@ -134,19 +134,18 @@ public class Main {
 
 			// Affichage plateau
 			System.out.println(vue_plat);
-
-;
 			
 			// Choix 1 - Demande de l'action ï¿½ executer
 			int c_1 = 0;
 			String saisie = "";
 			// Vï¿½rification donnï¿½es utilisateur
-			while ((c_1 != 1) && (c_1 != 2) && (c_1 != 3)) {
+			while ((c_1 != 1) && (c_1 != 2) && (c_1 != 3) && (c_1 != 4)) {
 				try{
 				saisie = JOptionPane.showInputDialog("Que voulez vous faire ? \n "
 						+ "1.Sélectionner un robot \n "
 						+ "2.Afficher mes robots \n "
-						+ "3.Changer de joueur");
+						+ "3.Ajouter un robot \n"
+						+ "4.Changer de joueur");
 				c_1 = Integer.parseInt(saisie);
 				}catch(Exception e){
 					if(saisie == null)
@@ -158,15 +157,8 @@ public class Main {
 			// Actions
 			if (c_1 == 1) {
 				/*
-				 * Création d'un faux robot (Test)
-				 */
-				
-				Robot char1 = new Char(vue_plat, Base1.getX(), Base1.getY(), 1);
-				plat.setRobot(3, 3, char1);
-				/*
 				 *Selection des coordonnees du Robot 
 				 */
-				Robot robotSelectionne;
 				int c_x = 0;
 				int c_y = 0;
 				String saisie1;
@@ -182,14 +174,13 @@ public class Main {
 							JOptionPane.showMessageDialog(null, "Les coordonnees ne fonctionnent pas" );
 						}
 				}
-				robotSelectionne = plat.getRobot(c_x,c_y);
+
 				
 				/* tant que aucun choix n'a ete fait, saisir un choix
 				 * Si le choix en deplacement, saisir les coordonnees
 				 * Si le choix est tir/piege, verifier la possibilite du tir, puis tirer
 				 */
-				
-				choixAction(robotSelectionne);
+				choixAction(plat.getRobot(c_x,c_y));
 				
 				
 			} else if (c_1 == 2) {
@@ -199,7 +190,97 @@ public class Main {
 				else{
 					System.out.println(j.getRobots_Equipe2());
 				}
-			} else if (c_1 == 3) {
+			}else if (c_1 == 3) {
+				int cc_1 = 0;
+				while ((cc_1 != 1) && (cc_1 != 2) && (cc_1 != 3)) {
+					try{
+					saisie = JOptionPane.showInputDialog("Quelle unité ? \n "
+							+ "1.Piegeur \n "
+							+ "2.Tireur \n "
+							+ "3.Char \n");
+					System.out.println(Integer.parseInt(saisie));
+					cc_1 = Integer.parseInt(saisie);
+					}catch(Exception e){
+						if(saisie == null)
+							System.exit(0);
+						JOptionPane.showMessageDialog(null, "Erreur ! \n '" + saisie + "' \n ne fait pas partie des réponses possibles." );
+					}
+				}
+				
+				if(cc_1 == 1){
+					int choix_x = -1;
+					int choix_y = -1;
+					
+					while((choix_x < 0 || choix_x > config_PlateauX) || (choix_y < 0 || choix_y > config_PlateauY)){
+						String s = "";
+						String s1 = "";
+						try{
+							s = JOptionPane.showInputDialog("x:");
+							choix_x = Integer.parseInt(s);
+							s1 = JOptionPane.showInputDialog("y:");
+							choix_y = Integer.parseInt(s1);
+							}catch(Exception e){
+								if(saisie == null)
+									System.exit(0);
+								JOptionPane.showMessageDialog(null, "Les coordonnees ne fonctionnent pas" );
+							}
+					}
+					if(plat.estVide(choix_x, choix_y)){
+						Robot piegeur = new Piegeur(vue_plat, choix_x, choix_y, joueurActuel);
+						plat.setRobot(choix_x, choix_y, piegeur);
+						j.ajouterRobot(joueurActuel, piegeur);
+					}
+				} else if(cc_1 == 2){
+					int choix_x = -1;
+					int choix_y = -1;
+					
+					while((choix_x < 0 || choix_x > config_PlateauX) || (choix_y < 0 || choix_y > config_PlateauY)){
+						String s = "";
+						String s1 = "";
+						try{
+							s = JOptionPane.showInputDialog("x:");
+							choix_x = Integer.parseInt(s);
+							s1 = JOptionPane.showInputDialog("y:");
+							choix_y = Integer.parseInt(s1);
+							}catch(Exception e){
+								if(saisie == null)
+									System.exit(0);
+								JOptionPane.showMessageDialog(null, "Les coordonnees ne fonctionnent pas" );
+							}
+					}
+					if(plat.estVide(choix_x, choix_y)){
+						Robot tireur = new Tireur(vue_plat, choix_x, choix_y, joueurActuel);
+						plat.setRobot(choix_x, choix_y, tireur);
+						j.ajouterRobot(joueurActuel, tireur);
+					}
+				} else if(cc_1 == 3){
+					int choix_x = -1;
+					int choix_y = -1;
+					
+					while((choix_x < 0 || choix_x > config_PlateauX) || (choix_y < 0 || choix_y > config_PlateauY)){
+						String s = "";
+						String s1 = "";
+						try{
+							s = JOptionPane.showInputDialog("x:");
+							choix_x = Integer.parseInt(s);
+							s1 = JOptionPane.showInputDialog("y:");
+							choix_y = Integer.parseInt(s1);
+							}catch(Exception e){
+								if(saisie == null)
+									System.exit(0);
+								JOptionPane.showMessageDialog(null, "Les coordonnees ne fonctionnent pas" );
+							}
+					}
+					if(plat.estVide(choix_x, choix_y)){
+						Robot chaR = new Char(vue_plat, choix_x, choix_y, joueurActuel);
+						plat.setRobot(choix_x, choix_y, chaR);
+						j.ajouterRobot(joueurActuel, chaR);
+					}
+				}
+
+							
+				System.out.println(vue_plat);
+			} else if (c_1 == 4) {
 				// Changement du joueur
 				if (joueurActuel == 1)
 					joueurActuel = 2;
@@ -218,3 +299,11 @@ public class Main {
 	}
 
 }
+
+/*
+ * 				
+*	Création d'un faux robot (Test)			  
+*				 
+*				
+*				
+*/
