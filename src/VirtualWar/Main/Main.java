@@ -126,7 +126,37 @@ public class Main {
 		Coordonnees Base1 = plat.getBase(1);
 		Coordonnees Base2 = plat.getBase(2);
 		
+		//Creation des equipes
+		//Equipe 1
+		int cx_x = 0;
+		int cx_y = 0;
+		joueurActuel = 1;
+		Robot piegeur1 = new Piegeur(vue_plat, cx_x+1, cx_y, joueurActuel);
+		plat.setRobot(cx_x+1, cx_y, piegeur1);
+		j.ajouterRobot(joueurActuel, piegeur1);
+		Robot tireur1 = new Tireur(vue_plat, cx_x, cx_y+1, joueurActuel);
+		plat.setRobot(cx_x, cx_y+1, tireur1);
+		j.ajouterRobot(joueurActuel, tireur1);
+		Robot chaR1 = new Char(vue_plat, cx_x+1, cx_y+1, joueurActuel);
+		plat.setRobot(cx_x+1, cx_y+1, chaR1);
+		j.ajouterRobot(joueurActuel, chaR1);
+		
+		//Equipe 2
+		cx_x = config_PlateauX-1;
+		cx_y = config_PlateauY-1;
+		joueurActuel = 2;
+		Robot piegeur2 = new Piegeur(vue_plat, cx_x-1, cx_y, joueurActuel);
+		plat.setRobot(cx_x-1, cx_y, piegeur2);
+		j.ajouterRobot(joueurActuel, piegeur2);
+		Robot tireur2 = new Tireur(vue_plat, cx_x, cx_y-1, joueurActuel);
+		plat.setRobot(cx_x, cx_y-1, tireur2);
+		j.ajouterRobot(joueurActuel, tireur2);
+		Robot chaR2 = new Char(vue_plat, cx_x-1, cx_y-1, joueurActuel);
+		plat.setRobot(cx_x-1, cx_y-1, chaR2);
+		j.ajouterRobot(joueurActuel, chaR2);
+		
 		// Affichage menu joueur
+		joueurActuel = 1;
 		JOptionPane.showMessageDialog(null, "C'est au tour du joueur " + joueurActuel);
 		
 		// Lancement de la partie
@@ -134,6 +164,7 @@ public class Main {
 
 			// Affichage plateau
 			System.out.println(vue_plat);
+			
 			
 			// Choix 1 - Demande de l'action � executer
 			int c_1 = 0;
