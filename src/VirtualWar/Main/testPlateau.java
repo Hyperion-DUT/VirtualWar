@@ -3,7 +3,16 @@ package VirtualWar.Main;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
 
+
+
+
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 import VirtualWar.Plateau.Base;
@@ -15,9 +24,18 @@ public class testPlateau extends JPanel{
 	private Cellule[][] plateau;
 	private int hauteur;
 	private int largeur;
-	
+	private File f;
+	private BufferedImage img;
+
 	public testPlateau(int hauteur, int largeur) {
 		super();
+		try{
+			this.f = new File("C:\\Users\\Benjamin\\Pictures\\bateau clipper.png");
+			this.img = ImageIO.read(f);
+		} catch(IOException e){
+				e.printStackTrace();
+		}
+			
 		this.hauteur = hauteur;
 		this.largeur = largeur;
 		plateau = new Cellule[hauteur][largeur];
@@ -37,6 +55,7 @@ public class testPlateau extends JPanel{
 				g.setColor(Color.WHITE);
 				g.fillRect(cC,cL,taille,taille);
 				g.setFont(new Font("Times New Roman", Font.CENTER_BASELINE, 20));
+				g.drawImage(img, 0, 0, taille, taille, null);
 				if(plateau[l][c].estMine()){
 					g.setColor(Color.WHITE);
 					g.fillRect(cC,cL,taille,taille);
