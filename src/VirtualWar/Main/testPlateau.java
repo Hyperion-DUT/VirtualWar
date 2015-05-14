@@ -7,7 +7,7 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 
 
-
+import VirtualWar.Unites.*;
 
 import java.io.File;
 import java.io.IOException;
@@ -102,9 +102,19 @@ public class testPlateau extends JPanel{
 				} 
 				else if(plateau[h][l].estRobot()){
 					if(plateau[h][l].getContenu().getEquipe() == 1){
-						g.drawImage(home_blue, cL, cH, null);
+						if(plateau[h][l].getContenu() instanceof Piegeur)
+							g.drawImage(miner_blue, cL, cH, null);
+						if(plateau[h][l].getContenu() instanceof Char)
+							g.drawImage(tank_blue, cL, cH, null);
+						if(plateau[h][l].getContenu() instanceof Tireur)
+							g.drawImage(shooter_blue, cL, cH, null);
 					}else{
-						g.drawImage(home_red, cL, cH, null);
+						if(plateau[h][l].getContenu() instanceof Piegeur)
+							g.drawImage(miner_red, cL, cH, null);
+						if(plateau[h][l].getContenu() instanceof Char)
+							g.drawImage(tank_red, cL, cH, null);
+						if(plateau[h][l].getContenu() instanceof Tireur)
+							g.drawImage(shooter_red, cL, cH, null);
 					}
 				}
 				g.setColor(Color.BLACK);
