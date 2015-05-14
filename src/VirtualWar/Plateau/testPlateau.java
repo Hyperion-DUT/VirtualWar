@@ -29,6 +29,7 @@ public class testPlateau extends JPanel{
 	private int hauteur;
 	private int largeur;
 	private File f;
+	private int taille = 40;
 	
 	//Images
 	private BufferedImage home_blue;
@@ -69,7 +70,6 @@ public class testPlateau extends JPanel{
 		} catch(IOException e){
 				e.printStackTrace();
 		}
-			
 		this.hauteur = hauteur;
 		this.largeur = largeur;
 		plateau = new Cellule[hauteur][largeur];
@@ -79,9 +79,6 @@ public class testPlateau extends JPanel{
 	//Equipe 1 = bleu, Equipe 2 = rouge
 	public void paintComponent(Graphics g){
 		super.paintComponents(g);
-		int hauteur = 11;
-		int largeur = 11;
-		int taille = 40;
 		//TODO Parcourir le tableau de case et afficher le contenu
 		for (int h = 0; h < hauteur; h++) {
 			int cH = h*taille;
@@ -138,6 +135,10 @@ public class testPlateau extends JPanel{
 				}
 			}
 		}
+	}
+	
+	public int getTaille(){
+		return taille;
 	}
 	
 	public Coordonnees getBase(int equipe) {

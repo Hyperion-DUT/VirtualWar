@@ -51,8 +51,8 @@ public class Main{
 	public static void initFenetre(testPlateau p){
 		f = new JFrame();
 		f.setTitle("VirtualWar");
-		f.setSize(500, 500);
-		f.setLocation(100, 400);
+		f.setSize(config_PlateauX*p.getTaille()+17, config_PlateauY*p.getTaille()+40);
+		f.setLocation(100, 100);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.getContentPane().add(p);
 		f.setVisible(true);
@@ -105,12 +105,20 @@ public class Main{
 						}
 					//TODO
 					Coordonnees newCoord = new Coordonnees(choix_x, choix_y);
-					if(testDeplacement(robotSelectionne.getCoordonnees(), newCoord )){
+					if(plat.estVide(choix_x, choix_y)){
 						plat.Vider(robotSelectionne.getCoordonnees().getX(), robotSelectionne.getCoordonnees().getY());
 						plat.setRobot(choix_x, choix_y, robotSelectionne);
 						deplacementNonPossible = false;
 						f.repaint();
+					} else{
+						JOptionPane.showMessageDialog(f, "Déplacement impossible, veuillez réessayer");
 					}
+					/*if(testDeplacement(robotSelectionne.getCoordonnees(), newCoord )){
+						plat.Vider(robotSelectionne.getCoordonnees().getX(), robotSelectionne.getCoordonnees().getY());
+						plat.setRobot(choix_x, choix_y, robotSelectionne);
+						deplacementNonPossible = false;
+						f.repaint();
+					}*/
 				}
 			}
 			else{
@@ -230,10 +238,10 @@ public class Main{
 				
 			} else if (c_1 == 2) {
 				if(joueurActuel == 1){
-					System.out.println(j.getRobots_Equipe1());
+					JOptionPane.showMessageDialog(null, j.getRobots_Equipe1());
 				}
 				else{
-					System.out.println(j.getRobots_Equipe2());
+					JOptionPane.showMessageDialog(null, j.getRobots_Equipe2());
 				}
 			}else if (c_1 == 3) {
 				int cc_1 = 0;
