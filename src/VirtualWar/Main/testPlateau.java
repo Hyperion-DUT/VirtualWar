@@ -25,13 +25,34 @@ public class testPlateau extends JPanel{
 	private int hauteur;
 	private int largeur;
 	private File f;
-	private BufferedImage img;
+	
+	//Images
+	private BufferedImage home_blue;
+	private BufferedImage home_red;
+	private BufferedImage mine_blue;
+	private BufferedImage mine_red;
+	private BufferedImage miner_blue;
+	private BufferedImage miner_red;
+	private BufferedImage shooter_blue;
+	private BufferedImage shooter_red;
+	private BufferedImage tank_blue;
+	private BufferedImage tank_red;
+	private BufferedImage wall;
 
 	public testPlateau(int hauteur, int largeur) {
 		super();
 		try{
-			this.f = new File("C:\\Users\\Benjamin\\Pictures\\bateau clipper.png");
-			this.img = ImageIO.read(f);
+			this.home_blue = ImageIO.read(f);
+			this.home_red = ImageIO.read(f);
+			this.mine_blue = ImageIO.read(f);
+			this.mine_red = ImageIO.read(f);
+			this.miner_blue = ImageIO.read(f);
+			this.miner_red = ImageIO.read(f);
+			this.shooter_blue = ImageIO.read(f);
+			this.shooter_red = ImageIO.read(f);
+			this.tank_blue = ImageIO.read(f);
+			this.tank_red = ImageIO.read(f);
+			this.wall = ImageIO.read(f);
 		} catch(IOException e){
 				e.printStackTrace();
 		}
@@ -42,43 +63,41 @@ public class testPlateau extends JPanel{
 		initialiser();
 	}
 	
+	//Equipe 1 = bleu, Equipe 2 = rouge
 	public void paintComponent(Graphics g){
 		super.paintComponents(g);
 		int hauteur = 11;
 		int largeur = 11;
 		int taille = 40;
 		//TODO Parcourir le tableau de case et afficher le contenu
-		for (int l = 0; l < hauteur; l++) {
-			int cL = l*taille;
-			for (int c = 0; c < largeur; c++) {
-				int cC = c*taille;
+		for (int h = 0; h < hauteur; h++) {
+			int cH = h*taille;
+			for (int l = 0; l < largeur; l++) {
+				int cL = l*taille;
 				g.setColor(Color.WHITE);
-				g.fillRect(cC,cL,taille,taille);
-				g.setFont(new Font("Times New Roman", Font.CENTER_BASELINE, 20));
-				g.drawImage(img, 0, 0, taille, taille, null);
-				if(plateau[l][c].estMine()){
-					g.setColor(Color.WHITE);
-					g.fillRect(cC,cL,taille,taille);
-					g.setColor(Color.BLACK);
-					g.drawString("M", cC+(taille/2), cL+(taille/2));
-				} else if(plateau[l][c].estBase()){
-					g.setColor(Color.WHITE);
-					g.fillRect(cC,cL,taille,taille);
-					g.setColor(Color.BLACK);
-					g.drawString("B", cC+(taille/2), cL+(taille/2));
-				} else if(plateau[l][c].estObstacle()){
-					g.setColor(Color.WHITE);
-					g.fillRect(cC,cL,taille,taille);
-					g.setColor(Color.BLACK);
-					g.drawString("O", cC+(taille/2), cL+(taille/2));
-				} else if(plateau[l][c].estRobot()){
-					g.setColor(Color.WHITE);
-					g.fillRect(cC,cL,taille,taille);
-					g.setColor(Color.BLACK);
-					g.drawString("R", cC+(taille/2), cL+(taille/2));
+				g.fillRect(cL,cH,taille,taille);
+				if(plateau[h][l].estMine()){
+					g.drawImage(mine_blue, cL, cH, null);
+				} 
+				else if(plateau[h][l].estBase()){
+					if(plateau[h][l].getBase() == 1){
+						g.drawImage(home_blue, cL, cH, null);
+					}else{
+						g.drawImage(home_red, cL, cH, null);
+					}
+				} 
+				else if(plateau[h][l].estObstacle()){
+						g.drawImage(wall, cL, cH, null);
+				} 
+				else if(plateau[h][l].estRobot()){
+					if(plateau[h][l].getContenu().getEquipe() == 1){
+						g.drawImage(home_blue, cL, cH, null);
+					}else{
+						g.drawImage(home_red, cL, cH, null);
+					}
 				}
 				g.setColor(Color.BLACK);
-				g.drawRect(cC,cL,taille,taille);
+				g.drawRect(cL,cH,taille,taille);
 			}
 		}
 			
