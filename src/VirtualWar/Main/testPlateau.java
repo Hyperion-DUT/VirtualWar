@@ -42,16 +42,27 @@ public class testPlateau extends JPanel{
 	public testPlateau(int hauteur, int largeur) {
 		super();
 		try{
+			this.f = new File("/res/img/home_blue.png");
 			this.home_blue = ImageIO.read(f);
+			this.f = new File("/res/img/home_red.png");
 			this.home_red = ImageIO.read(f);
+			this.f = new File("/res/img/mine_blue.png");
 			this.mine_blue = ImageIO.read(f);
+			this.f = new File("/res/img/mine_red.png");
 			this.mine_red = ImageIO.read(f);
+			this.f = new File("/res/img/miner_blue.png");
 			this.miner_blue = ImageIO.read(f);
+			this.f = new File("/res/img/miner_red.png");
 			this.miner_red = ImageIO.read(f);
+			this.f = new File("/res/img/shooter_blue.png");
 			this.shooter_blue = ImageIO.read(f);
+			this.f = new File("/res/img/shooter_red.png");
 			this.shooter_red = ImageIO.read(f);
+			this.f = new File("/res/img/tank_blue.png");
 			this.tank_blue = ImageIO.read(f);
+			this.f = new File("/res/img/tank_red.png");
 			this.tank_red = ImageIO.read(f);
+			this.f = new File("/res/img/wall.png");
 			this.wall = ImageIO.read(f);
 		} catch(IOException e){
 				e.printStackTrace();
