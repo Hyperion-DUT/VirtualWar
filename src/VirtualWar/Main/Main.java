@@ -1,14 +1,15 @@
 package VirtualWar.Main;
 import java.util.Scanner;
 
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import VirtualWar.Plateau.Coordonnees;
-import VirtualWar.Plateau.Plateau;
 import VirtualWar.Plateau.Vue;
+import VirtualWar.Plateau.testPlateau;
 import VirtualWar.Unites.*;
 
-public class Main {
+public class Main{
 
 	// **Saisie utilisateur**//
 	private static Scanner s = new Scanner(System.in);
@@ -18,7 +19,7 @@ public class Main {
 	private static final int minPlateauY = 11;
 
 	// **Variables d'execution**//
-
+	
 	/**
 	 * Config -> Taille du plateau
 	 */
@@ -32,7 +33,8 @@ public class Main {
 	/**
 	 * Plateau de jeu
 	 */
-	private static Plateau plat;
+	private static JFrame f;
+	private static testPlateau plat;
 
 	/**
 	 * Vue du plateau
@@ -43,7 +45,18 @@ public class Main {
 	 * _main
 	 * 
 	 * @param args
+	 * @return 
 	 */
+	
+	public static void initFenetre(testPlateau p){
+		f = new JFrame();
+		f.setTitle("VirtualWar");
+		f.setSize(config_PlateauX*p.getTaille()+17, config_PlateauY*p.getTaille()+40);
+		f.setLocation(100, 100);
+		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		f.getContentPane().add(p);
+		f.setVisible(true);
+	}
 	
 	public static boolean testDeplacement(Coordonnees robot, Coordonnees arrive){
 		if(robot == arrive){
@@ -92,12 +105,20 @@ public class Main {
 						}
 					//TODO
 					Coordonnees newCoord = new Coordonnees(choix_x, choix_y);
-					if(testDeplacement(robotSelectionne.getCoordonnees(), newCoord )){
+					if(plat.estVide(choix_x, choix_y)){
 						plat.Vider(robotSelectionne.getCoordonnees().getX(), robotSelectionne.getCoordonnees().getY());
 						plat.setRobot(choix_x, choix_y, robotSelectionne);
 						deplacementNonPossible = false;
-						System.out.println(vue_plat);
+						f.repaint();
+					} else{
+						JOptionPane.showMessageDialog(f, "Déplacement impossible, veuillez réessayer");
 					}
+					/*if(testDeplacement(robotSelectionne.getCoordonnees(), newCoord )){
+						plat.Vider(robotSelectionne.getCoordonnees().getX(), robotSelectionne.getCoordonnees().getY());
+						plat.setRobot(choix_x, choix_y, robotSelectionne);
+						deplacementNonPossible = false;
+						f.repaint();
+					}*/
 				}
 			}
 			else{
@@ -115,10 +136,11 @@ public class Main {
 		config_PlateauY = j.config_TaillePlateauY();
 
 		// Crï¿½ation du plateau
-		plat = new Plateau(config_PlateauY, config_PlateauY);
+		plat = new testPlateau(config_PlateauY, config_PlateauY);
 		// Crï¿½ation de la vue
 		Vue vue_plat = new Vue(plat);
 		
+		initFenetre(plat);
 		//TODO
 		//Fenetre f = new Fenetre(vue_plat1);
 
@@ -163,7 +185,7 @@ public class Main {
 		while (j.partieTerminee() == 0) {
 
 			// Affichage plateau
-			System.out.println(vue_plat);
+			f.repaint();
 			
 			
 			// Choix 1 - Demande de l'action ï¿½ executer
@@ -216,10 +238,10 @@ public class Main {
 				
 			} else if (c_1 == 2) {
 				if(joueurActuel == 1){
-					System.out.println(j.getRobots_Equipe1());
+					JOptionPane.showMessageDialog(null, j.getRobots_Equipe1());
 				}
 				else{
-					System.out.println(j.getRobots_Equipe2());
+					JOptionPane.showMessageDialog(null, j.getRobots_Equipe2());
 				}
 			}else if (c_1 == 3) {
 				int cc_1 = 0;
@@ -229,7 +251,6 @@ public class Main {
 							+ "1.Piegeur \n "
 							+ "2.Tireur \n "
 							+ "3.Char \n");
-					System.out.println(Integer.parseInt(saisie));
 					cc_1 = Integer.parseInt(saisie);
 					}catch(Exception e){
 						if(saisie == null)
@@ -310,7 +331,7 @@ public class Main {
 				}
 
 							
-				System.out.println(vue_plat);
+				f.repaint();
 			} else if (c_1 == 4) {
 				// Changement du joueur
 				if (joueurActuel == 1)
@@ -325,7 +346,7 @@ public class Main {
 		}
 
 		// Affichage plateau
-		System.out.println(vue_plat);
+		f.repaint();
 
 	}
 

@@ -7,17 +7,17 @@ public class Vue {
 	 */
 	private boolean estVisible;
 	
-	private Plateau plateau;
+	private testPlateau plateau;
 	
 	public Vue(){
 		
 	}
 	/**
 	 * 
-	 * @param plateau
+	 * @param plat
 	 */
-	public Vue(Plateau plateau){
-		this.plateau = plateau;
+	public Vue(testPlateau plat){
+		this.plateau = plat;
 	}
 	/**
 	 * Retourne le robot sur la case dont les coordonnées sont placées en paramatre
