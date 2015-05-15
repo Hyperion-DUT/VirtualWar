@@ -7,7 +7,7 @@ public class Vue {
 	 */
 	private boolean estVisible;
 	
-	private testPlateau plateau;
+	private Plateau plateau;
 	
 	public Vue(){
 		
@@ -16,7 +16,7 @@ public class Vue {
 	 * 
 	 * @param plat
 	 */
-	public Vue(testPlateau plat){
+	public Vue(Plateau plat){
 		this.plateau = plat;
 	}
 	/**

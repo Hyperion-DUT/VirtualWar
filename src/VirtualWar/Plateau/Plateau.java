@@ -22,7 +22,7 @@ import java.util.Random;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
-public class testPlateau extends JPanel{
+public class Plateau extends JPanel{
 	
 	private Cellule[][] plateau;
 	static List<Coordonnees> obstacle = new ArrayList<Coordonnees>();
@@ -43,7 +43,7 @@ public class testPlateau extends JPanel{
 	private BufferedImage tank_red;
 	private BufferedImage wall;
 
-	public testPlateau(int hauteur, int largeur) {
+	public Plateau(int hauteur, int largeur) {
 		super();
 		try{
 			System.out.println(new File(".").getAbsolutePath());
@@ -284,7 +284,7 @@ public class testPlateau extends JPanel{
      * @param nbObstacle Le nombre d'obstacles souhaités sur le plateau lors de la partie
      * @param plateau 
      */
-    public void generationObstacle(int nbObstacle,testPlateau plateau){
+    public void generationObstacle(int nbObstacle){
     	Random aleatoire = new Random();
 
     	
@@ -293,7 +293,7 @@ public class testPlateau extends JPanel{
     		int y =aleatoire.nextInt(hauteur-1);
     		Coordonnees coord = new Coordonnees(x,y);
     		if(obstacle.contains(coord)==false){
-    			plateau.setObstacle(x,y);
+    			this.setObstacle(x,y);
     			obstacle.add(coord);
     			nbObstacle=nbObstacle-1;
     		}

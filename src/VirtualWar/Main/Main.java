@@ -6,7 +6,7 @@ import javax.swing.JOptionPane;
 
 import VirtualWar.Plateau.Coordonnees;
 import VirtualWar.Plateau.Vue;
-import VirtualWar.Plateau.testPlateau;
+import VirtualWar.Plateau.Plateau;
 import VirtualWar.Unites.*;
 
 public class Main{
@@ -34,7 +34,7 @@ public class Main{
 	 * Plateau de jeu
 	 */
 	private static JFrame f;
-	private static testPlateau plat;
+	private static Plateau plat;
 
 	/**
 	 * Vue du plateau
@@ -48,7 +48,7 @@ public class Main{
 	 * @return 
 	 */
 	
-	public static void initFenetre(testPlateau p){
+	public static void initFenetre(Plateau p){
 		f = new JFrame();
 		f.setTitle("VirtualWar");
 		f.setSize(config_PlateauX*p.getTaille()+17, config_PlateauY*p.getTaille()+40);
@@ -136,7 +136,7 @@ public class Main{
 		config_PlateauY = j.config_TaillePlateauY();
 
 		// Cr�ation du plateau
-		plat = new testPlateau(config_PlateauY, config_PlateauY);
+		plat = new Plateau(config_PlateauY, config_PlateauY);
 		// Cr�ation de la vue
 		Vue vue_plat = new Vue(plat);
 		
