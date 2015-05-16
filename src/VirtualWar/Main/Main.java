@@ -1,8 +1,13 @@
 package VirtualWar.Main;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.GridLayout;
 import java.util.Scanner;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 import VirtualWar.Actions.Deplacement;
 import VirtualWar.Actions.Action;
@@ -54,13 +59,76 @@ public class Main{
 	 * @return 
 	 */
 	
-	public static void initFenetre(Plateau p){
+	public static void initFenetre(Plateau p, Jeu j){
+		//Initialisation de la fenetre
 		f = new JFrame();
 		f.setTitle("VirtualWar");
-		f.setSize(config_PlateauX*p.getTaille()+17, config_PlateauY*p.getTaille()+40);
 		f.setLocation(100, 100);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		f.getContentPane().add(p);
+		
+		//Création des panels
+		JPanel principal = new JPanel(new GridLayout(1, 2, 10, 0));
+		JPanel interf = new JPanel(new GridLayout(2, 1, 0, 5));
+		
+		JPanel recap = new JPanel(new GridLayout(1, 2));
+		JPanel recap_j1 = new JPanel(new GridLayout(2, 1));
+		JPanel recap_j2 = new JPanel(new GridLayout(2, 1));
+		JPanel recap_j1_titre = new JPanel();
+		JPanel recap_j2_titre = new JPanel();
+		JPanel recap_j1_contenu = new JPanel();
+		JPanel recap_j2_contenu = new JPanel();
+		
+		JPanel actions = new JPanel();
+		
+		JLabel j1 = new JLabel("Equipe bleue (j1)");
+		JLabel j2 = new JLabel("Equipe rouge (j2)");
+		
+		//Colore les Panels pour les distinguer
+		principal.setBackground(Color.BLACK);
+		//recap_j1.setBackground(Color.YELLOW);
+		//recap_j2.setBackground(Color.MAGENTA);
+		recap_j1_titre.setBackground(Color.BLUE);
+		recap_j2_titre.setBackground(Color.RED);
+		recap_j1_contenu.setBackground(new Color(139,217,250));
+		recap_j2_contenu.setBackground(new Color(250, 139, 139));
+		actions.setBackground(Color.darkGray);
+		interf.setBackground(Color.GRAY);
+		
+		//Nommage des équipes
+		recap_j1_titre.add(j1);
+		recap_j2_titre.add(j2);
+		
+		//Ajout des robots de l'équipe bleue dans l'interface
+		recap_j1.add(recap_j1_titre);
+		for(Robot r : j.getRobots_Equipe1()){
+			recap_j1_contenu.add(new JLabel(r.toString()));
+		}
+		recap_j1.add(recap_j1_contenu);
+		
+		//Ajout des robots de l'équipe rouge dans l'interface
+		recap_j2.add(recap_j2_titre );
+		for(Robot r : j.getRobots_Equipe1()){
+			recap_j2_contenu.add(new JLabel(r.toString()));
+		}
+		recap_j2.add(recap_j2_contenu);
+		
+		recap.add(recap_j1);
+		recap.add(recap_j2);
+		
+		
+		//Configuration de l'interface
+
+		interf.setPreferredSize(new Dimension(100, p.getHeight()));
+		interf.add(recap);
+		interf.add(actions);
+		
+		//Configuration de la fenetre principale
+		principal.add(p);
+		principal.add(interf);
+		
+		//Ajout du panel principal dans la fenetre puis affichage
+		f.getContentPane().add(principal);
+		f.pack();
 		f.setVisible(true);
 	}
 	
@@ -171,7 +239,7 @@ public class Main{
 		// Crï¿½ation de la vue
 		Vue vue_plat = new Vue(plat);
 		
-		initFenetre(plat);
+		initFenetre(plat, j);
 		//TODO
 		//Fenetre f = new Fenetre(vue_plat1);
 

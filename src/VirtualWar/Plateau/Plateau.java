@@ -1,6 +1,7 @@
 package VirtualWar.Plateau;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -69,6 +70,7 @@ public class Plateau extends JPanel{
 		this.hauteur = hauteur;
 		this.largeur = largeur;
 		plateau = new Cellule[hauteur][largeur];
+		this.setPreferredSize(new Dimension(largeur*taille, hauteur*taille));
 		initialiser();
 	}
 	
