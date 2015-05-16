@@ -4,6 +4,7 @@ import java.util.Scanner;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+import VirtualWar.Actions.Deplacement;
 import VirtualWar.Actions.Action;
 import VirtualWar.Actions.Attaque;
 import VirtualWar.Plateau.Coordonnees;
@@ -84,51 +85,39 @@ public class Main{
 						+ robotSelectionne 
 						+ "\n"
 						+ "Choisissez l'action du robot \n"
-						+ "1.Déplacement \n"
+						+ "1.Dï¿½placement \n"
 						+ "2.Tir \n");
 				choix = Integer.parseInt(saisie);
 				}catch(Exception e){
 					if(saisie == null)
 						System.exit(0);
-					JOptionPane.showMessageDialog(null, "Erreur ! \n '" + saisie + "' \n ne fait pas partie des réponses possibles." );
+					JOptionPane.showMessageDialog(null, "Erreur ! \n '" + saisie + "' \n ne fait pas partie des rï¿½ponses possibles." );
 				}
 			if(choix == 1){
-				int choix_x = 0;
-				int choix_y = 0;
-				boolean deplacementNonAutorise = true;
-				while(deplacementNonAutorise){
-					while(choix_x <= 0 || choix_x > config_PlateauX || choix_y <= 0 || choix_y > config_PlateauY){
-						choix_x = 0;
-						choix_y = 0;
-						String saisie1 = "";
-						try{
-							saisie = JOptionPane.showInputDialog("x:");
-							choix_x = Integer.parseInt(saisie);
-							saisie1 = JOptionPane.showInputDialog("y:");
-							choix_y = Integer.parseInt(saisie1);
-							}catch(Exception e){
-								if(saisie == null)
-									System.exit(0);
-								JOptionPane.showMessageDialog(null, "Les coordonnees ne fonctionnent pas" );
-							}
+
+				boolean deplacementPossible = false;
+				while(!deplacementPossible){
+					int x, y, a, b;
+					String saisie1 = "";
+					try{
+						saisie = JOptionPane.showInputDialog("x:");
+						x = Integer.parseInt(saisie);
+						saisie1 = JOptionPane.showInputDialog("y:");
+						y = Integer.parseInt(saisie1);
+						Deplacement dep = new Deplacement(robotSelectionne, x, y);
+						a = robotSelectionne.getCoordonnees().getX();
+						b = robotSelectionne.getCoordonnees().getY();
+						deplacementPossible = dep.move();
+						if (deplacementPossible && plat.estVide(x, y)) {
+							plat.vider(new Coordonnees(a, b));
+							plat.setRobot(x, y, robotSelectionne);
+							f.repaint();
+						}
+					}catch(Exception e){
+						JOptionPane.showMessageDialog(null, "Ces coordonnees ne fonctionnent pas" );
 					}
-					//TODO
-					Coordonnees newCoord = new Coordonnees(choix_x, choix_y);
-					if(plat.estVide(choix_x, choix_y)){
-						deplacementNonAutorise = false;
-						plat.Vider(robotSelectionne.getCoordonnees().getX(), robotSelectionne.getCoordonnees().getY());
-						plat.setRobot(choix_x, choix_y, robotSelectionne);
-						f.repaint();
-					} else{
-						JOptionPane.showMessageDialog(f, "Déplacement impossible, veuillez réessayer");
-					}
-					/*if(testDeplacement(robotSelectionne.getCoordonnees(), newCoord )){
-						plat.Vider(robotSelectionne.getCoordonnees().getX(), robotSelectionne.getCoordonnees().getY());
-						plat.setRobot(choix_x, choix_y, robotSelectionne);
-						deplacementNonPossible = false;
-						f.repaint();
-					}*/
 				}
+				
 			}
 			//Fonction de tir
 			else{
@@ -227,7 +216,7 @@ public class Main{
 			while ((c_1 != 1) && (c_1 != 2) && (c_1 != 3) && (c_1 != 4)) {
 				try{
 				saisie = JOptionPane.showInputDialog("Que voulez vous faire ? \n "
-						+ "1.Sélectionner un robot \n "
+						+ "1.Sï¿½lectionner un robot \n "
 						+ "2.Afficher mes robots \n "
 						+ "3.Ajouter un robot \n"
 						+ "4.Changer de joueur");
@@ -235,7 +224,7 @@ public class Main{
 				}catch(Exception e){
 					if(saisie == null)
 						System.exit(0);
-					JOptionPane.showMessageDialog(null, "Erreur ! \n '" + saisie + "' \n ne fait pas partie des réponses possibles." );
+					JOptionPane.showMessageDialog(null, "Erreur ! \n '" + saisie + "' \n ne fait pas partie des rï¿½ponses possibles." );
 				}
 			}
 
@@ -279,7 +268,7 @@ public class Main{
 				int cc_1 = 0;
 				while ((cc_1 != 1) && (cc_1 != 2) && (cc_1 != 3)) {
 					try{
-					saisie = JOptionPane.showInputDialog("Quelle unité ? \n "
+					saisie = JOptionPane.showInputDialog("Quelle unitï¿½ ? \n "
 							+ "1.Piegeur \n "
 							+ "2.Tireur \n "
 							+ "3.Char \n");
@@ -287,7 +276,7 @@ public class Main{
 					}catch(Exception e){
 						if(saisie == null)
 							System.exit(0);
-						JOptionPane.showMessageDialog(null, "Erreur ! \n '" + saisie + "' \n ne fait pas partie des réponses possibles." );
+						JOptionPane.showMessageDialog(null, "Erreur ! \n '" + saisie + "' \n ne fait pas partie des rï¿½ponses possibles." );
 					}
 				}
 				
@@ -386,7 +375,7 @@ public class Main{
 
 /*
  * 				
-*	Création d'un faux robot (Test)			  
+*	Crï¿½ation d'un faux robot (Test)			  
 *				 
 *				
 *				

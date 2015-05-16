@@ -6,26 +6,22 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 
-
-
-
-
-
 import VirtualWar.Unites.*;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Set;
+import java.util.HashSet;
 import java.util.Random;
 
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
+@SuppressWarnings("serial")
 public class Plateau extends JPanel{
 	
 	private Cellule[][] plateau;
-	static List<Coordonnees> obstacle = new ArrayList<Coordonnees>();
+	static Set<Coordonnees> obstacles = new HashSet<Coordonnees>();
 	private int hauteur;
 	private int largeur;
 	private File f;
@@ -135,6 +131,7 @@ public class Plateau extends JPanel{
 				}
 			}
 		}
+		generationObstacles((int)(largeur*hauteur*0.25));
 	}
 	
 	public int getTaille(){
@@ -257,6 +254,7 @@ public class Plateau extends JPanel{
 			Case a = new Case(x, y);
 			a.setTypeCase(3);
 			plateau[x][y] = a;
+			obstacles.add(new Coordonnees(x,y));
 		}
 	}
 	/**
@@ -273,30 +271,66 @@ public class Plateau extends JPanel{
 	 * @param y est l'ordonnï¿½e de la case ï¿½ vider.
 
 	 */
-	public void Vider(int x, int y) {
-		if(!plateau[x][y].estBase()){
-			plateau[x][y].videCase();
+	public void vider(Coordonnees c) {
+		if(!plateau[c.getX()][c.getY()].estBase()){
+			plateau[c.getX()][c.getY()].videCase();
 		}
 	}
 	
     /**
      * Genere aleatoirement les obstacles sur le plateau.
-     * @param nbObstacle Le nombre d'obstacles souhaités sur le plateau lors de la partie
+     * @param nbObstacle Le nombre d'obstacles souhaitï¿½s sur le plateau lors de la partie
      * @param plateau 
      */
-    public void generationObstacle(int nbObstacle){
-    	Random aleatoire = new Random();
-
-    	
-    	while (nbObstacle>0){
-    		int x =aleatoire.nextInt(largeur-1)+1;
-    		int y =aleatoire.nextInt(hauteur-1);
-    		Coordonnees coord = new Coordonnees(x,y);
-    		if(obstacle.contains(coord)==false){
-    			this.setObstacle(x,y);
-    			obstacle.add(coord);
-    			nbObstacle=nbObstacle-1;
+    public void generationObstacles(int nbObstacles){
+    	Set<Coordonnees> path = buildPath();
+    	Random alea = new Random();
+    	int x, y;
+    	while (nbObstacles > 0) {
+    		x = alea.nextInt(largeur);
+    		y = alea.nextInt(hauteur);
+    		if (!path.contains(new Coordonnees(x,y))) {
+    			setObstacle(x,y);
+    			nbObstacles--;
     		}
     	}
     }
+    
+    private Set<Coordonnees> buildPath() {
+    	Set<Coordonnees> path = new HashSet<Coordonnees>();
+    	path.add(new Coordonnees(0,1));
+    	path.add(new Coordonnees(1,0));
+    	path.add(new Coordonnees(1,1));
+    	path.add(new Coordonnees(largeur-1, hauteur-2));
+    	path.add(new Coordonnees(largeur-2, hauteur-1));
+    	path.add(new Coordonnees(largeur-2, hauteur-2));
+    	Random alea = new Random();
+    	Coordonnees c = new Coordonnees(0,0);
+		path.add(c);
+    	boolean endOfPath = false;
+    	boolean directionX;
+    	while (!endOfPath) {
+    		if (c.getX()==largeur-1) {
+    			directionX = false;
+    		} else if (c.getY()==hauteur-1) {
+    			directionX = true;
+    		} else {
+    			directionX = alea.nextBoolean();
+    		}
+    		
+    		if (directionX) {
+        		c = c.addCords(new Coordonnees(1,0));
+    			path.add(c);
+    		} else {
+    			c = c.addCords(new Coordonnees(0,1));
+    			path.add(c);
+    		}
+    		
+    		if (c.getX()==largeur-1 && c.getY()==hauteur-1) {
+    			endOfPath=true;
+    		}
+    	}
+    	return path;
+    }
+    
 }
