@@ -11,6 +11,9 @@ import VirtualWar.Unites.Robot;
  */
 public class Deplacement extends Action{
 
+	int porteeDeplacement;
+	int coutDeplacement;
+	
 	/**
 	 * Construit un déplacement avec des coordonnées à appliquer au robot sélectionné
 	 * @param robot - le robot qui effectue le déplacement
@@ -18,6 +21,8 @@ public class Deplacement extends Action{
 	 */
 	public Deplacement(Robot robot, int x, int y) {
 		super(robot, new Coordonnees(x,y));
+		porteeDeplacement = robot.getDepMax();
+		coutDeplacement = robot.getCoutDep();
 	}
 
 	public void agit() {

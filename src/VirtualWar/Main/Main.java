@@ -114,6 +114,8 @@ public class Main{
 							f.repaint();
 						}
 					}catch(Exception e){
+						if(saisie == null || saisie1 == null)
+							System.exit(0);
 						JOptionPane.showMessageDialog(null, "Ces coordonnees ne fonctionnent pas" );
 					}
 				}
