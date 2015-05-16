@@ -20,7 +20,7 @@ public class Deplacement extends Action{
 
 	@Override
 	/** Attribue au robot de nouvelles coordonnées */
-	void agit() {
+	public void agit() {
 		int a, b, x, y;
 		a = getDirection().getX();
 		b = getDirection().getY();
