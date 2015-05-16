@@ -38,7 +38,7 @@ public class Deplacement extends Action {
 		x = r.getCoordonnees().getX();
 		y = r.getCoordonnees().getY();
 		if (r instanceof Char) {
-			if (((a == x) && (b >= y-r.getDepMax() || b <= y+r.getDepMax())) || ((b == y) && (a >= x-r.getDepMax() || a <= x+r.getDepMax()))) {
+			if (((a == x) && (b >= y-r.getDepMax() && b <= y+r.getDepMax())) || ((b == y) && (a >= x-r.getDepMax() && a <= x+r.getDepMax()))) {
 				r.setCoordonnees(getDirection());
 				r.setEnergie(r.getEnergie()-coutEnergie);
 				return true;
