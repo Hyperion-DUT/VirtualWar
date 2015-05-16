@@ -25,7 +25,7 @@ public class Main{
 	private static final int minPlateauY = 11;
 
 	// **Variables d'execution**//
-	
+	private static Jeu j;
 	/**
 	 * Config -> Taille du plateau
 	 */
@@ -108,9 +108,17 @@ public class Main{
 						a = robotSelectionne.getCoordonnees().getX();
 						b = robotSelectionne.getCoordonnees().getY();
 						deplacementPossible = dep.move();
-						if (deplacementPossible && plat.estVide(x, y)) {
-							plat.vider(new Coordonnees(a, b));
-							plat.setRobot(x, y, robotSelectionne);
+						if (deplacementPossible && (plat.estVide(x, y) || plat.estMine(x, y))) {
+							if(plat.estMine(x, y)){
+								plat.vider(new Coordonnees(a, b));
+								Robot p = new Piegeur();
+								j.robotAttaque(robotSelectionne, p);
+								plat.setRobot(x, y, robotSelectionne);
+							}
+							else{
+								plat.vider(new Coordonnees(a, b));
+								plat.setRobot(x, y, robotSelectionne);
+							}
 							f.repaint();
 						}
 					}catch(Exception e){
@@ -123,10 +131,10 @@ public class Main{
 			}
 			//Fonction de tir
 			else{
-				int choix_x = 0;
-				int choix_y = 0;
+				int choix_x = -1;
+				int choix_y = -1;
 				
-				while(choix_x <= 0 || choix_x > config_PlateauX || choix_y <= 0 || choix_y > config_PlateauY){
+				while(choix_x < 0 || choix_x > config_PlateauX || choix_y < 0 || choix_y > config_PlateauY){
 					choix_x = 0;
 					choix_y = 0;
 					String saisie1 = "";
@@ -142,17 +150,17 @@ public class Main{
 					}
 					
 				}
-				Coordonnees newCoord = new Coordonnees(choix_x, choix_y);
-				
-				Action action = new Attaque(robotSelectionne, newCoord);
-				action.agit();
+				if(plat.estVide(choix_x, choix_y)) {
+					plat.setMine(choix_x, choix_y);
+					f.repaint();
+				}
 			}
 		}
 	}
 	public static void main(String args[]) {
 
 		// Nouveau jeu
-		Jeu j = new Jeu();
+		j = new Jeu();
 
 		//Configuration du plateau
 		config_PlateauX = j.config_TaillePlateauX();

@@ -37,7 +37,7 @@ public class Deplacement extends Action{
 		x = getRobot().getCoordonnees().getX();
 		y = getRobot().getCoordonnees().getY();
 		if (getRobot() instanceof Char) {
-			if (((a == x) && (b == y-2 || b == y+2)) || ((b == y) && (a == x-2 || a == x+2))) {
+			if ((a-x <= porteeDeplacement && b-y == 0) || (a-x == 0 && b-y <= porteeDeplacement)) {
 				getRobot().setCoordonnees(getDirection());
 				return true;
 			}
