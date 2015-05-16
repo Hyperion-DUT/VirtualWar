@@ -19,7 +19,7 @@ public class Deplacement extends Action{
 
 	@Override
 	/** Attribue au robot de nouvelles coordonnées */
-	void agit() {
+	public void agit() {
 		super.getRobot().setCoordonnees(super.getDirection());
 	}
 
