@@ -1,5 +1,6 @@
 package VirtualWar.Actions;
 import VirtualWar.Plateau.Coordonnees;
+import VirtualWar.Unites.Char;
 import VirtualWar.Unites.Robot;
 
 /**
@@ -20,7 +21,17 @@ public class Deplacement extends Action{
 	@Override
 	/** Attribue au robot de nouvelles coordonnées */
 	void agit() {
-		super.getRobot().setCoordonnees(super.getDirection());
+		int a, b, x, y;
+		a = getDirection().getX();
+		b = getDirection().getY();
+		x = getRobot().getCoordonnees().getX();
+		y = getRobot().getCoordonnees().getY();
+		if (getRobot() instanceof Char) {
+			if ((a == x) && (b == y-2 || b == y+2)) getRobot().setCoordonnees(getDirection());
+			if ((b == y) &&	(a == x-2 || a == x+2)) getRobot().setCoordonnees(getDirection());
+		} else {
+			if ((a >= x-1 && a <= x+1) && (b >= y-1 && b <= y+1)) getRobot().setCoordonnees(getDirection());
+		}
 	}
 
 }
