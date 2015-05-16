@@ -1,11 +1,12 @@
 package VirtualWar.Main;
-
 import java.util.Scanner;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import VirtualWar.Actions.Deplacement;
+import VirtualWar.Actions.Action;
+import VirtualWar.Actions.Attaque;
 import VirtualWar.Plateau.Coordonnees;
 import VirtualWar.Plateau.Plateau;
 import VirtualWar.Plateau.Vue;
@@ -13,7 +14,6 @@ import VirtualWar.Unites.Char;
 import VirtualWar.Unites.Piegeur;
 import VirtualWar.Unites.Robot;
 import VirtualWar.Unites.Tireur;
-
 
 public class Main{
 
@@ -85,13 +85,13 @@ public class Main{
 						+ robotSelectionne 
 						+ "\n"
 						+ "Choisissez l'action du robot \n"
-						+ "1.Déplacement \n"
+						+ "1.D�placement \n"
 						+ "2.Tir \n");
 				choix = Integer.parseInt(saisie);
 				}catch(Exception e){
 					if(saisie == null)
 						System.exit(0);
-					JOptionPane.showMessageDialog(null, "Erreur ! \n '" + saisie + "' \n ne fait pas partie des réponses possibles." );
+					JOptionPane.showMessageDialog(null, "Erreur ! \n '" + saisie + "' \n ne fait pas partie des r�ponses possibles." );
 				}
 			if(choix == 1){
 

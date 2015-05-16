@@ -1,12 +1,9 @@
 ﻿package VirtualWar.Actions;
-
 import javax.swing.JOptionPane;
 
 import VirtualWar.Plateau.Coordonnees;
 import VirtualWar.Unites.Char;
 import VirtualWar.Unites.Robot;
-
-
 
 /**
  * La classe Deplacement représente le déplacement effectué par un Robot, par le biais du robot sélectionné et des coordonnées saisies.
@@ -41,7 +38,7 @@ public class Deplacement extends Action {
 		x = r.getCoordonnees().getX();
 		y = r.getCoordonnees().getY();
 		if (r instanceof Char) {
-			if (((a == x) && (b >= y-r.getDepMax() && b <= y+r.getDepMax())) || ((b == y) && (a >= x-r.getDepMax() && a <= x+r.getDepMax()))) {
+			if (((a == x) && (b >= y-r.getDepMax() || b <= y+r.getDepMax())) || ((b == y) && (a >= x-r.getDepMax() || a <= x+r.getDepMax()))) {
 				r.setCoordonnees(getDirection());
 				r.setEnergie(r.getEnergie()-coutEnergie);
 				return true;

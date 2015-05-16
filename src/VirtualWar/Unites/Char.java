@@ -18,18 +18,18 @@ public class Char extends Robot {
 	 */
 	public Char(Vue vue,int x, int y, int equipe){
 		super(vue, x, y, equipe);
-		setEnergieInitiale(60);
-		setEnergie(60);
-		setDepMax(2);
-		setPortee(10);
-		setCoutDep(5);
-		setEquipe(equipe);
-		typeRobot = "c";
+		super.setEnergieInitiale(60);
+		super.setEnergie(60);
+		super.setDepMax(2);
+		super.setPortee(10);
+		super.setCoutDep(5);
+		super.setEquipe(equipe);
+		super.typeRobot = "c";
 	}
 
 	@Override
 	public boolean peutTirer() {
-		if (getEnergie() > 0) return true;
+		if (super.getEnergie() > 0) return true;
 		return false;
 	}
 
@@ -47,7 +47,7 @@ public class Char extends Robot {
 
 	@Override
 	/**
-	 * Retourne les dï¿½gats des tirs. 
+	 * Retourne les dégats des tirs. 
 	 */
 	public int getDegatTir() { return 6; }
 
