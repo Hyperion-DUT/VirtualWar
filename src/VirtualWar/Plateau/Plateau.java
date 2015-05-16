@@ -273,15 +273,15 @@ public class Plateau extends JPanel{
 	 * @param y est l'ordonnï¿½e de la case ï¿½ vider.
 
 	 */
-	public void Vider(int x, int y) {
-		if(!plateau[x][y].estBase()){
-			plateau[x][y].videCase();
+	public void vider(Coordonnees c) {
+		if(!plateau[c.getX()][c.getY()].estBase()){
+			plateau[c.getX()][c.getY()].videCase();
 		}
 	}
 	
     /**
      * Genere aleatoirement les obstacles sur le plateau.
-     * @param nbObstacle Le nombre d'obstacles souhaités sur le plateau lors de la partie
+     * @param nbObstacle Le nombre d'obstacles souhaitï¿½s sur le plateau lors de la partie
      * @param plateau 
      */
     public void generationObstacle(int nbObstacle){

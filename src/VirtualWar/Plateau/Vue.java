@@ -3,7 +3,7 @@ import VirtualWar.Unites.Robot;
 
 public class Vue {
 	/**
-	 * booleen qui donne ou non la visibilité sur un unité.
+	 * booleen qui donne ou non la visibilitï¿½ sur un unitï¿½.
 	 */
 	private boolean estVisible;
 	
@@ -20,23 +20,23 @@ public class Vue {
 		this.plateau = plat;
 	}
 	/**
-	 * Retourne le robot sur la case dont les coordonnées sont placées en paramatre
-	 * @param coord contient deux int correspondant à l'abscisse et à l'ordonnée de la case.
+	 * Retourne le robot sur la case dont les coordonnï¿½es sont placï¿½es en paramatre
+	 * @param coord contient deux int correspondant ï¿½ l'abscisse et ï¿½ l'ordonnï¿½e de la case.
 	 * @return
 	 */
 	public Robot getRobot(Coordonnees coord){
 		return plateau.getRobot(coord.getX(), coord.getY());
 	}
 	/**
-	 * Retourne les coordonnées de la base d'une equipe
-	 * @param equipe l'equipe à laquelle appartient la base.
-	 * @return ensemble de 2 int donnant les coordoonées.(x puis y)
+	 * Retourne les coordonnï¿½es de la base d'une equipe
+	 * @param equipe l'equipe ï¿½ laquelle appartient la base.
+	 * @return ensemble de 2 int donnant les coordoonï¿½es.(x puis y)
 	 */
 	public Coordonnees getBase(int equipe){
 		return plateau.getBase(equipe);
 	}
 	/**
-	 * Retourne un booleen indiquant si la case de coordonnées placée en paramatre contient une mine.
+	 * Retourne un booleen indiquant si la case de coordonnï¿½es placï¿½e en paramatre contient une mine.
 	 * @param coord
 	 * @return vrai si la case contient une  mine, faux sinon.
 	 */
@@ -44,7 +44,7 @@ public class Vue {
 		return plateau.estMine(coord.getX(), coord.getY());
 	}
 	/**
-	 * Retourne un booleen indiquant si la case de coordonnées placée en paramatre contient un robot.
+	 * Retourne un booleen indiquant si la case de coordonnï¿½es placï¿½e en paramatre contient un robot.
 	 * @param coord
 	 * @return vrai si la case contient un robot, faux sinon.
 	 */
@@ -52,7 +52,7 @@ public class Vue {
 		return plateau.estRobot(coord.getX(), coord.getY());
 	}
 	/**
-	 * Retourne un booleen indiquant si la case de coordonnées placée en paramatre contient un robot.
+	 * Retourne un booleen indiquant si la case de coordonnï¿½es placï¿½e en paramatre contient un robot.
 	 * @param coord
 	 * @return vrai si la case contient un obstacle, faux sinon.
 	 */
@@ -60,7 +60,7 @@ public class Vue {
 		return plateau.estObstacle(coord.getX(), coord.getY());
 	}
 	/**
-	 * Retourne un booleen indiquant si la case de coordonnées placée en paramatre contient une base.
+	 * Retourne un booleen indiquant si la case de coordonnï¿½es placï¿½e en paramatre contient une base.
 	 * @param coord
 	 * @return vrai si la case contient une base, faux sinon.
 	 */
@@ -68,14 +68,14 @@ public class Vue {
 		return plateau.estBase(coord.getX(), coord.getY());
 	}
 	/**
-	 * Pose une mine sur la case dont les coordonnées sont placées en parametre.
+	 * Pose une mine sur la case dont les coordonnï¿½es sont placï¿½es en parametre.
 	 * @param coord
 	 */
 	public void setMine(Coordonnees coord){
 		plateau.setMine(coord.getX(), coord.getY());
 	}
 	/**
-	 * Place le robot placé en parametre sur la case de coordonnées placées en parametre.
+	 * Place le robot placï¿½ en parametre sur la case de coordonnï¿½es placï¿½es en parametre.
 	 * @param coord
 	 * @param robot
 	 */
@@ -83,14 +83,14 @@ public class Vue {
 		plateau.setRobot(coord.getX(), coord.getY() ,robot);
 	}
 	/**
-	 * Place un obstacle sur la case dont les coordonnées sont placées en parametre.
+	 * Place un obstacle sur la case dont les coordonnï¿½es sont placï¿½es en parametre.
 	 * @param coord
 	 */
 	public void setObstacle(Coordonnees coord){
 		plateau.setObstacle(coord.getX(), coord.getY());
 	}
 	/**
-	 * Place la base de l'equipe placée en parametre sur la case de coordonnées placées en parametre.
+	 * Place la base de l'equipe placï¿½e en parametre sur la case de coordonnï¿½es placï¿½es en parametre.
 	 * @param coord
 	 * @param equipe
 	 */
@@ -98,11 +98,11 @@ public class Vue {
 		plateau.setBase(coord.getX(), coord.getY(), equipe);
 	}
 	/**
-	 * vide la case dont les coordonnées sont placées en parametre.
+	 * vide la case dont les coordonnï¿½es sont placï¿½es en parametre.
 	 * @param coord
 	 */
-	public void Vider(Coordonnees coord){
-		plateau.Vider(coord.getX(),coord.getY());
+	public void vider(Coordonnees c){
+		plateau.vider(c);
 	}
 	/**
 	 *
