@@ -1,12 +1,11 @@
 package VirtualWar.Main;
+
 import java.util.Scanner;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import VirtualWar.Actions.Deplacement;
-import VirtualWar.Actions.Action;
-import VirtualWar.Actions.Attaque;
 import VirtualWar.Plateau.Coordonnees;
 import VirtualWar.Plateau.Plateau;
 import VirtualWar.Plateau.Vue;
@@ -14,6 +13,7 @@ import VirtualWar.Unites.Char;
 import VirtualWar.Unites.Piegeur;
 import VirtualWar.Unites.Robot;
 import VirtualWar.Unites.Tireur;
+
 
 public class Main{
 

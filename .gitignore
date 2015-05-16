@@ -1,5 +1,4 @@
+
+
 *.class
-bin/VirtualWar/Actions/Deplacement.class
-*.class
-bin/VirtualWar/Main/Main.class
-src/VirtualWar/Actions/Deplacement.java
+/bin/

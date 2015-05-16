@@ -1,9 +1,12 @@
 ﻿package VirtualWar.Actions;
+
 import javax.swing.JOptionPane;
 
 import VirtualWar.Plateau.Coordonnees;
 import VirtualWar.Unites.Char;
 import VirtualWar.Unites.Robot;
+
+
 
 /**
  * La classe Deplacement représente le déplacement effectué par un Robot, par le biais du robot sélectionné et des coordonnées saisies.
