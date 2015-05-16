@@ -55,7 +55,7 @@ public class Jeu extends JFrame{
 			if (r1 instanceof Tireur || r1 instanceof Char)
 				r2.subitTir(r1);
 			else if (r1 instanceof Piegeur)
-				r2.subitMine(r1);
+				r2.subitMine();
 			return true;
 		} else {
 			JOptionPane.showMessageDialog(null, "[ATTAQUE] Vous ne pouvez pas attaquer un robot de votre équipe");

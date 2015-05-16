@@ -9,10 +9,10 @@ import VirtualWar.Unites.Robot;
  * La classe Deplacement représente le déplacement effectué par un Robot, par le biais du robot sélectionné et des coordonnées saisies.
  * @author Cyrille
  */
-public class Deplacement extends Action{
+public class Deplacement extends Action {
 
-	int porteeDeplacement;
-	int coutDeplacement;
+	private int portee;
+	private int coutEnergie;
 	
 	/**
 	 * Construit un déplacement avec des coordonnées à appliquer au robot sélectionné
@@ -21,8 +21,8 @@ public class Deplacement extends Action{
 	 */
 	public Deplacement(Robot robot, int x, int y) {
 		super(robot, new Coordonnees(x,y));
-		porteeDeplacement = robot.getDepMax();
-		coutDeplacement = robot.getCoutDep();
+		portee = robot.getDepMax();
+		coutEnergie = robot.getCoutDep();
 	}
 
 	public void agit() {
@@ -31,19 +31,22 @@ public class Deplacement extends Action{
 	
 	/** Attribue au robot de nouvelles coordonnées */
 	public boolean move() {
+		Robot r = getRobot();
 		int a, b, x, y;
 		a = getDirection().getX();
 		b = getDirection().getY();
-		x = getRobot().getCoordonnees().getX();
-		y = getRobot().getCoordonnees().getY();
-		if (getRobot() instanceof Char) {
-			if ((a-x <= porteeDeplacement && b-y == 0) || (a-x == 0 && b-y <= porteeDeplacement)) {
-				getRobot().setCoordonnees(getDirection());
+		x = r.getCoordonnees().getX();
+		y = r.getCoordonnees().getY();
+		if (r instanceof Char) {
+			if (((a == x) && (b >= y-r.getDepMax() || b <= y+r.getDepMax())) || ((b == y) && (a >= x-r.getDepMax() || a <= x+r.getDepMax()))) {
+				r.setCoordonnees(getDirection());
+				r.setEnergie(r.getEnergie()-coutEnergie);
 				return true;
 			}
 		} else {
-			if ((a >= x-1 && a <= x+1) && (b >= y-1 && b <= y+1)) {
-				getRobot().setCoordonnees(getDirection());
+			if ((a >= x-r.getDepMax() && a <= x+r.getDepMax()) && (b >= y-r.getDepMax() && b <= y+r.getDepMax())) {
+				r.setCoordonnees(getDirection());
+				r.setEnergie(r.getEnergie()-coutEnergie);
 				return true;
 			}
 		}

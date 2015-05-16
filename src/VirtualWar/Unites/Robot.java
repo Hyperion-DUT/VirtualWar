@@ -42,6 +42,10 @@ public abstract class Robot {
 	/** L'historique des déplacements du Robots, sous forme de liste de Coordonnees */
 	private ArrayList<Coordonnees> histoDeplacements = new ArrayList<Coordonnees>();
 
+	
+	public Robot(){
+		
+	}
 	/**
 	 * Construit un Robot non-typé, associé à une vue, une équipe, et des coordonnées
 	 * @param vue - la vue associée au Robot
@@ -209,7 +213,7 @@ public abstract class Robot {
 	/**
 	 * Actualise l'énergie du Robot en fonction des dégâts de la mine activée
 	 */
-	public  void subitMine(Robot rob) { energie -= rob.getDegatMine(); }
+	public  void subitMine() { energie -= new Piegeur().getDegatMine(); }
 
 	/**
 	 * Attribue une quantité d'énergie à récupérer lorsque le Robot est en base

@@ -27,6 +27,10 @@ public class Piegeur extends Robot {
 		super.typeRobot = "p";
 	}
 
+	public Piegeur() {
+		super();
+	}
+
 	@Override
 	public boolean peutTirer() { return false; }
 
@@ -39,7 +43,6 @@ public class Piegeur extends Robot {
 	@Override
 	public int getDegatTir() { return 0; }
 
-	@Override
 	public int getDegatMine() { return 2; }
 
 }
