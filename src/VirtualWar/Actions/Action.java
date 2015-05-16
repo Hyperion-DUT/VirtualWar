@@ -47,6 +47,6 @@ public abstract class Action {
 	/**
 	 * M�thode -> Pour �x�cuter l'action
 	 */
-	abstract void agit();
+	public abstract void agit();
 
 }

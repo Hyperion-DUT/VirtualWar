@@ -31,7 +31,7 @@ public class Attaque extends Action {
 	/**
 	 * Cette methode modifie la portee d'attaque en fonction de l'unite et modifie l'energie de l'unité et de sa cible apres l'attaque
 	 */
-	void agit() {
+	public void agit() {
 		
 		if (this.getRobot() instanceof Tireur){
 			porteeAttaque=3;

@@ -4,11 +4,19 @@ import java.util.Scanner;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+<<<<<<< HEAD
 import VirtualWar.Actions.Deplacement;
+=======
+import VirtualWar.Actions.Action;
+import VirtualWar.Actions.Attaque;
+>>>>>>> eed7e3b30c950e50e97094c237c055b34b406f02
 import VirtualWar.Plateau.Coordonnees;
-import VirtualWar.Plateau.Vue;
 import VirtualWar.Plateau.Plateau;
-import VirtualWar.Unites.*;
+import VirtualWar.Plateau.Vue;
+import VirtualWar.Unites.Char;
+import VirtualWar.Unites.Piegeur;
+import VirtualWar.Unites.Robot;
+import VirtualWar.Unites.Tireur;
 
 public class Main{
 
@@ -89,6 +97,7 @@ public class Main{
 					JOptionPane.showMessageDialog(null, "Erreur ! \n '" + saisie + "' \n ne fait pas partie des rï¿½ponses possibles." );
 				}
 			if(choix == 1){
+<<<<<<< HEAD
 				boolean deplacementPossible = false;
 				while(!deplacementPossible){
 					int x, y, a, b;
@@ -109,12 +118,65 @@ public class Main{
 						}
 					}catch(Exception e){
 						JOptionPane.showMessageDialog(null, "Ces coordonnees ne fonctionnent pas" );
+=======
+				int choix_x = 0;
+				int choix_y = 0;
+				boolean deplacementNonAutorise = true;
+				while(deplacementNonAutorise){
+					while(choix_x <= 0 || choix_x > config_PlateauX || choix_y <= 0 || choix_y > config_PlateauY){
+						choix_x = 0;
+						choix_y = 0;
+						String saisie1 = "";
+						try{
+							saisie = JOptionPane.showInputDialog("x:");
+							choix_x = Integer.parseInt(saisie);
+							saisie1 = JOptionPane.showInputDialog("y:");
+							choix_y = Integer.parseInt(saisie1);
+							}catch(Exception e){
+								if(saisie == null)
+									System.exit(0);
+								JOptionPane.showMessageDialog(null, "Les coordonnees ne fonctionnent pas" );
+							}
+					}
+					//TODO
+					Coordonnees newCoord = new Coordonnees(choix_x, choix_y);
+					if(plat.estVide(choix_x, choix_y)){
+						deplacementNonAutorise = false;
+						plat.Vider(robotSelectionne.getCoordonnees().getX(), robotSelectionne.getCoordonnees().getY());
+						plat.setRobot(choix_x, choix_y, robotSelectionne);
+						f.repaint();
+					} else{
+						JOptionPane.showMessageDialog(f, "Déplacement impossible, veuillez réessayer");
+>>>>>>> eed7e3b30c950e50e97094c237c055b34b406f02
 					}
 				}
 				
 			}
+			//Fonction de tir
 			else{
-				//TODO
+				int choix_x = 0;
+				int choix_y = 0;
+				
+				while(choix_x <= 0 || choix_x > config_PlateauX || choix_y <= 0 || choix_y > config_PlateauY){
+					choix_x = 0;
+					choix_y = 0;
+					String saisie1 = "";
+					try{
+						saisie = JOptionPane.showInputDialog("x:");
+						choix_x = Integer.parseInt(saisie);
+						saisie1 = JOptionPane.showInputDialog("y:");
+						choix_y = Integer.parseInt(saisie1);
+					}catch(Exception e){
+							if(saisie == null)
+								System.exit(0);
+							JOptionPane.showMessageDialog(null, "Les coordonnees ne fonctionnent pas" );
+					}
+					
+				}
+				Coordonnees newCoord = new Coordonnees(choix_x, choix_y);
+				
+				Action action = new Attaque(robotSelectionne, newCoord);
+				action.agit();
 			}
 		}
 	}

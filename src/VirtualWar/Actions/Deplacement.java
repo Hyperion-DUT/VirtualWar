@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 package VirtualWar.Actions;
 import javax.swing.JOptionPane;
 
+=======
+﻿package VirtualWar.Actions;
+>>>>>>> eed7e3b30c950e50e97094c237c055b34b406f02
 import VirtualWar.Plateau.Coordonnees;
 import VirtualWar.Unites.*;
 
