@@ -5,10 +5,10 @@ import VirtualWar.Plateau.Coordonnees;
 import VirtualWar.Unites.*;
 
 /**
- * La classe Deplacement représente le déplacement effectué par un Robot, par le biais du robot sélectionné et des coordonnées saisies.
+ * La classe Deplacement représente le déplacement effectué par un Robot, par le biais du robot sélectionné et des coordonnées de destination saisies.
  * @author Cyrille
  */
-public class Deplacement extends Action{
+public class Deplacement extends Action {
 
 	/**
 	 * Construit un déplacement avec des coordonnées à appliquer au robot sélectionné
@@ -19,11 +19,15 @@ public class Deplacement extends Action{
 		super(robot, new Coordonnees(x, y));
 	}
 
+	/** Attribue au robot de nouvelles coordonnées */
 	public void agit() {
 		move();
 	}
 	
-	/** Attribue au robot de nouvelles coordonnées */
+	/**
+	 * Retourne vrai si le déplacement a pu être effectué normalement, faux s'il n'a pas pu se faire
+	 * @return vrai en cas de déplacement du robot, faux si le déplacement échoue
+	 */
 	public boolean move() {
 		int a, b, x, y;
 		a = getDirection().getX();

@@ -38,6 +38,31 @@ public class Coordonnees {
 		return Y;
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + X;
+		result = prime * result + Y;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Coordonnees other = (Coordonnees) obj;
+		if (X != other.X)
+			return false;
+		if (Y != other.Y)
+			return false;
+		return true;
+	}
+
 	// M�thode -> toString() , par d�faut , pour afficher les coordonn�es sous
 	// forme de chaine
 	public String toString() {
