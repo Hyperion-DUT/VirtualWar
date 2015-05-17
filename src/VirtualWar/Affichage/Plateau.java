@@ -44,6 +44,12 @@ public class Plateau extends JPanel{
 	private BufferedImage tank_red;
 	private BufferedImage wall;
 
+	/**
+	 * constructeur acceptant une hauteur et une largeur
+	 * @param hauteur
+	 * @param largeur
+	 */
+
 	public Plateau(int hauteur, int largeur) {
 		super();
 		try{
@@ -76,8 +82,10 @@ public class Plateau extends JPanel{
 		this.setPreferredSize(new Dimension(largeur*taille, hauteur*taille));
 		initialiser();
 	}
-	
-	//Equipe 1 = bleu, Equipe 2 = rouge
+	/**
+	 * Permet de dessiner les changements apportés à la classe quand on repaint()
+	 */
+
 	public void paintComponent(Graphics g){
 		super.paintComponents(g);
 		//TODO Parcourir le tableau de case et afficher le contenu
@@ -123,6 +131,9 @@ public class Plateau extends JPanel{
 		}
 			
 	}
+	/**
+	 * Permet de générer des cases, des bases ainsi que des obstacles sur le plateau
+	 */
 	
 	public void initialiser() {
 		for (int i = 0; i < hauteur; i++) {
@@ -138,11 +149,18 @@ public class Plateau extends JPanel{
 		}
 		generationObstacles((int)(largeur*hauteur*0.25));
 	}
-	
+	/**
+	 * retourne la taille du plateau
+	 */
 	public int getTaille(){
 		return taille;
 	}
 	
+	/**
+	 * Retourne les coordonnées de la base de l'équipe en paramètre
+	 * @param equipe
+	 * @return
+	 */
 	public Coordonnees getBase(int equipe) {
 		for (int y = 0; y < hauteur; y++) {
 			for (int x = 0; x < largeur; x++) {
