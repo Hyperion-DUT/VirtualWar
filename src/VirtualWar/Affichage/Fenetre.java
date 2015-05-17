@@ -34,6 +34,11 @@ public class Fenetre extends JFrame{
 	
 	private Jeu jeu;
 	
+	/**
+	 * Constructeur prenant en param√®tre un plateau et un jeu
+	 * @param p
+	 * @param j
+	 */
 	public Fenetre(Plateau p, Jeu j){
 		super();
 		jeu = j;
@@ -41,7 +46,7 @@ public class Fenetre extends JFrame{
 		this.setLocation(100, 100);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	
-		//CrÈation des panels
+		//Cr√©ation des panels
 		principal = new JPanel(new GridLayout(1, 2, 10, 0));
 		interf = new JPanel(new GridLayout(2, 1, 0, 5));
 	
@@ -69,15 +74,15 @@ public class Fenetre extends JFrame{
 		actions.setBackground(Color.darkGray);
 		interf.setBackground(Color.GRAY);
 	
-		//Nommage des Èquipes
+		//Nommage des √©quipes
 		recap_j1_titre.add(j1);
 		recap_j2_titre.add(j2);
 	
-		//Ajout des robots de l'Èquipe bleue dans l'interface
+		//Ajout des robots de l'√©quipe bleue dans l'interface
 		recap_j1.add(recap_j1_titre);
 		recap_j1.add(recap_j1_contenu);
 	
-		//Ajout des robots de l'Èquipe rouge dans l'interface
+		//Ajout des robots de l'√©quipe rouge dans l'interface
 		recap_j2.add(recap_j2_titre );
 		recap_j2.add(recap_j2_contenu);
 	
