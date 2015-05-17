@@ -28,6 +28,9 @@ public class Char extends Robot {
 	}
 
 	@Override
+	/**
+	 * retourne vrai si l'unite a suffisamment d'energie pour tirer faux sinon
+	 */
 	public boolean peutTirer() {
 		if (super.getEnergie() > 0) return true;
 		return false;

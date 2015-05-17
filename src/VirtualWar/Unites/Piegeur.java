@@ -32,17 +32,32 @@ public class Piegeur extends Robot {
 	}
 
 	@Override
+	/**
+	 * Renvoie si il est possible de tirer 
+	 */
 	public boolean peutTirer() { return false; }
 
 	@Override
+	/**
+	 * Renvoie le cout de l'action de l'unite selectionnee.
+	 */
 	public int getCoutAction() { return 2; }
 
 	@Override
+	/**
+	 * Renvoie le cout de deplacement de l'unite selectionnee.
+	 */
 	public int getCoutDep() { return 2; }
 
 	@Override
+	/**
+	 * Renvoie les degats infliges par l'unite (ici zero car elle est incapable de tirer).
+	 */
 	public int getDegatTir() { return 0; }
 
+	/**
+	 * Renvoie les degats infliges par les mines posees par l'unite.
+	 */
 	public int getDegatMine() { return 2; }
 
 }

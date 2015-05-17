@@ -300,7 +300,10 @@ public class Plateau extends JPanel{
     		}
     	}
     }
-    
+    /**
+     * Creer un chemin libre obligatoire reliant les deux bases.
+     * @return un tableau de coordonnees
+     */
     private Set<Coordonnees> buildPath() {
     	Set<Coordonnees> path = new HashSet<Coordonnees>();
     	path.add(new Coordonnees(0,1));
