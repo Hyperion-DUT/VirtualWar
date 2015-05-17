@@ -71,6 +71,10 @@ public class Main{
 			}
 		}*/
 	}
+	/**
+	 * méthode permettant de choisir entre "se déplacer" ou "attaquer" avec le robot
+	 * @param robotSelectionne
+	 */
 	
 	public static void choixAction(Robot robotSelectionne){
 		int choix = 0;
@@ -170,7 +174,10 @@ public class Main{
 			}
 		}
 	}
-	
+	/**
+	 * Main
+	 * @param args
+	 */
 	
 	public static void main(String args[]) {
 
