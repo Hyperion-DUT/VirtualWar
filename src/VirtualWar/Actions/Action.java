@@ -9,10 +9,7 @@ import VirtualWar.Unites.Robot;
  */
 public abstract class Action {
 
-	/** Direction de l'action */
 	private Coordonnees direction;
-
-	/** Robot qui est source de l'action */
 	private Robot robot;
 
 	/**
