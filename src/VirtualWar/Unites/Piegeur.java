@@ -33,6 +33,7 @@ public class Piegeur extends Robot {
 
 	@Override
 	/**
+	 * Renvoie si il est possible de tirer 
 	 */
 	public boolean peutTirer() { return false; }
 
