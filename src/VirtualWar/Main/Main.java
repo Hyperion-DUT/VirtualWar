@@ -45,13 +45,7 @@ public class Main{
 
 	private static Vue vue_plat;
 
-	/**
-	 * _main
-	 * 
-	 * @param args
-	 * @return 
-	 */
-	
+
 	public static boolean testDeplacement(Coordonnees robot, Coordonnees arrive){
 		if(robot == arrive){
 			return true;
@@ -395,11 +389,3 @@ public class Main{
 	}
 
 }
-
-/*
- * 				
-*	Cr�ation d'un faux robot (Test)			  
-*				 
-*				
-*				
-*/
