@@ -13,7 +13,7 @@ public class Energie extends JPanel{
 	private ArrayList<Robot> listeRobots;
 	
 	/**
-	 * Constructeur 
+	 * Constructeur prenant en paramètre une liste de robots
 	 * @param listeRobots
 	 */
 	 
