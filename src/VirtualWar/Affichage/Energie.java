@@ -12,12 +12,20 @@ public class Energie extends JPanel{
 
 	private ArrayList<Robot> listeRobots;
 	
+	/**
+	 * Constructeur 
+	 * @param listeRobots
+	 */
+	 
 	public Energie(ArrayList<Robot> listeRobots){
-		System.out.println("Cr�ation");
+		System.out.println("Création");
 		this.listeRobots = listeRobots;
 		initUI();
 
 	}
+	/**
+	 * méthode permettant d'afficher l'énergie des robots 
+	 */
 	
 	public void initUI(){
 		System.out.println("InitUI(): ");
