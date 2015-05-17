@@ -6,14 +6,8 @@ package VirtualWar.Plateau;
  */
 public class Coordonnees {
 
-	/**
-	 * Coordonnée X
-	 */
-	private int X;
 
-	/**
-	 * Coordonnée Y
-	 */
+	private int X;
 	private int Y;
 
 	/**
