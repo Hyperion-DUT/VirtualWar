@@ -14,7 +14,7 @@ public class Vue {
 		
 	}
 	/**
-	 * 
+	 * constructeur acceptant un plateau
 	 * @param plat
 	 */
 	public Vue(Plateau plat){
@@ -106,21 +106,21 @@ public class Vue {
 		plateau.vider(c);
 	}
 	/**
-	 *
+	 * Retourne vrai si l'unité est visible, faux sinon
 	 * @return
 	 */
 	public boolean estVisible() {
 		return estVisible;
 	}
 	/**
-	 * 
+	 * Permet de modifier la visibilité d'une unité
 	 * @param estVisible
 	 */
 	public void setVisible(boolean estVisible) {
 		this.estVisible = estVisible;
 	}
 	/**
-	 * 
+	 *  Permet d'afficher le tableau
 	 */
 	public String toString(){
 		return plateau.toString();
