@@ -120,7 +120,7 @@ public class Vue {
 		this.estVisible = estVisible;
 	}
 	/**
-	 *  Permet d'afficher le tableau
+	 *  Permet d'afficher le plateau
 	 */
 	public String toString(){
 		return plateau.toString();
