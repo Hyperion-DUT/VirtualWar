@@ -23,34 +23,26 @@ import VirtualWar.Unites.Tireur;
 
 public class Main{
 
-	// **Saisie utilisateur**//
+
 	private static Scanner s = new Scanner(System.in);
 	
-	// **Constantes d'execution**/
+
 	private static final int minPlateauX = 11;
 	private static final int minPlateauY = 11;
 
-	// **Variables d'execution**//
+
 	private static Jeu j;
-	/**
-	 * Config -> Taille du plateau
-	 */
+
 	private static int config_PlateauX, config_PlateauY;
 
-	/**
-	 * Jeu -> Joueur courrant
-	 */
+
 	private static int joueurActuel = 1;
 
-	/**
-	 * Plateau de jeu
-	 */
+
 	private static Fenetre f;
 	private static Plateau plat;
 
-	/**
-	 * Vue du plateau
-	 */
+
 	private static Vue vue_plat;
 
 	/**
