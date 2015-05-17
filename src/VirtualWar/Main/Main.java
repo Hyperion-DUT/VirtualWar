@@ -66,7 +66,7 @@ public class Main{
 		f.setLocation(100, 100);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		//Cr�ation des panels
+		//Création des panels
 		JPanel principal = new JPanel(new GridLayout(1, 2, 10, 0));
 		JPanel interf = new JPanel(new GridLayout(2, 1, 0, 5));
 		
@@ -94,18 +94,18 @@ public class Main{
 		actions.setBackground(Color.darkGray);
 		interf.setBackground(Color.GRAY);
 		
-		//Nommage des �quipes
+		//Nommage des équipes
 		recap_j1_titre.add(j1);
 		recap_j2_titre.add(j2);
 		
-		//Ajout des robots de l'�quipe bleue dans l'interface
+		//Ajout des robots de l'équipe bleue dans l'interface
 		recap_j1.add(recap_j1_titre);
 		for(Robot r : j.getRobots_Equipe1()){
 			recap_j1_contenu.add(new JLabel(r.toString()));
 		}
 		recap_j1.add(recap_j1_contenu);
 		
-		//Ajout des robots de l'�quipe rouge dans l'interface
+		//Ajout des robots de l'équipe rouge dans l'interface
 		recap_j2.add(recap_j2_titre );
 		for(Robot r : j.getRobots_Equipe1()){
 			recap_j2_contenu.add(new JLabel(r.toString()));
@@ -132,6 +132,13 @@ public class Main{
 		f.setVisible(true);
 	}
 	
+	/**
+	 * Test la possibilité du déplacement
+	 * @param robot
+	 * @param arrive
+	 * @return
+	 */
+	
 	public static boolean testDeplacement(Coordonnees robot, Coordonnees arrive){
 		if(robot == arrive){
 			return true;
@@ -144,6 +151,13 @@ public class Main{
 		}*/
 	}
 	
+	/**
+	 * méthode permettant de choisir l'action du robot sélectionné
+	 * 
+	 * @param robotSelectionne
+	 */
+	
+	
 	public static void choixAction(Robot robotSelectionne){
 		int choix = 0;
 		while(choix < 1 || choix > 2){
@@ -153,13 +167,13 @@ public class Main{
 						+ robotSelectionne 
 						+ "\n"
 						+ "Choisissez l'action du robot \n"
-						+ "1.D�placement \n"
+						+ "1.Dï¿½placement \n"
 						+ "2.Tir \n");
 				choix = Integer.parseInt(saisie);
 				}catch(Exception e){
 					if(saisie == null)
 						System.exit(0);
-					JOptionPane.showMessageDialog(null, "Erreur ! \n '" + saisie + "' \n ne fait pas partie des r�ponses possibles." );
+					JOptionPane.showMessageDialog(null, "Erreur ! \n '" + saisie + "' \n ne fait pas partie des rï¿½ponses possibles." );
 				}
 			if(choix == 1){
 
@@ -225,6 +239,12 @@ public class Main{
 			}
 		}
 	}
+	
+	/**
+	 * main
+	 * @param args
+	 */
+	
 	public static void main(String args[]) {
 
 		// Nouveau jeu
@@ -234,9 +254,9 @@ public class Main{
 		config_PlateauX = j.config_TaillePlateauX();
 		config_PlateauY = j.config_TaillePlateauY();
 
-		// Cr�ation du plateau
+		// Crï¿½ation du plateau
 		plat = new Plateau(config_PlateauY, config_PlateauY);
-		// Cr�ation de la vue
+		// Crï¿½ation de la vue
 		Vue vue_plat = new Vue(plat);
 		
 		initFenetre(plat, j);
@@ -287,14 +307,14 @@ public class Main{
 			f.repaint();
 			
 			
-			// Choix 1 - Demande de l'action � executer
+			// Choix 1 - Demande de l'action ï¿½ executer
 			int c_1 = 0;
 			String saisie = "";
-			// V�rification donn�es utilisateur
+			// Vï¿½rification donnï¿½es utilisateur
 			while ((c_1 != 1) && (c_1 != 2) && (c_1 != 3) && (c_1 != 4)) {
 				try{
 				saisie = JOptionPane.showInputDialog("Que voulez vous faire ? \n "
-						+ "1.S�lectionner un robot \n "
+						+ "1.Sï¿½lectionner un robot \n "
 						+ "2.Afficher mes robots \n "
 						+ "3.Ajouter un robot \n"
 						+ "4.Changer de joueur");
@@ -302,7 +322,7 @@ public class Main{
 				}catch(Exception e){
 					if(saisie == null)
 						System.exit(0);
-					JOptionPane.showMessageDialog(null, "Erreur ! \n '" + saisie + "' \n ne fait pas partie des r�ponses possibles." );
+					JOptionPane.showMessageDialog(null, "Erreur ! \n '" + saisie + "' \n ne fait pas partie des rï¿½ponses possibles." );
 				}
 			}
 
@@ -346,7 +366,7 @@ public class Main{
 				int cc_1 = 0;
 				while ((cc_1 != 1) && (cc_1 != 2) && (cc_1 != 3)) {
 					try{
-					saisie = JOptionPane.showInputDialog("Quelle unit� ? \n "
+					saisie = JOptionPane.showInputDialog("Quelle unitï¿½ ? \n "
 							+ "1.Piegeur \n "
 							+ "2.Tireur \n "
 							+ "3.Char \n");
@@ -354,7 +374,7 @@ public class Main{
 					}catch(Exception e){
 						if(saisie == null)
 							System.exit(0);
-						JOptionPane.showMessageDialog(null, "Erreur ! \n '" + saisie + "' \n ne fait pas partie des r�ponses possibles." );
+						JOptionPane.showMessageDialog(null, "Erreur ! \n '" + saisie + "' \n ne fait pas partie des rï¿½ponses possibles." );
 					}
 				}
 				
@@ -453,7 +473,7 @@ public class Main{
 
 /*
  * 				
-*	Cr�ation d'un faux robot (Test)			  
+*	Crï¿½ation d'un faux robot (Test)			  
 *				 
 *				
 *				
