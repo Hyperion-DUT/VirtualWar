@@ -6,34 +6,54 @@ package VirtualWar.Plateau;
  */
 public class Coordonnees {
 
-	// Coordonn�e X
+	/**
+	 * Coordonnée X
+	 */
 	private int X;
 
-	// Coordonn�e Y
+	/**
+	 * Coordonnée Y
+	 */
 	private int Y;
 
-	// Constructeur -> Par d�faut
+	/**
+	 * Constructeur par défaut
+	 */
 	public Coordonnees() {
 
 	}
 
-	// Constructeur -> Acceptant un abscisse et une ordonn�e
+	/**
+	 * Constructeur acceptant des coordonnées
+	 * @param X abscisse de la cellule
+	 * @param Y coordonnée de la cellule
+	 */
 	public Coordonnees(int X, int Y) {
 		this.X = X;
 		this.Y = Y;
 	}
 
-	// M�thode -> Pour ajouter une coordonn�e
+	/**
+	 * méthode ajout des coordonnées
+	 * @param coords nouvelles coordonnées
+	 * @return
+	 */
 	public Coordonnees addCords(Coordonnees coords) {
 		return new Coordonnees(X + coords.getX(), Y + coords.getY());
 	}
 
-	// M�thode -> Pour avoir X
+	/**
+	 * permet de récupérer X
+	 * @return
+	 */
 	public int getX() {
 		return X;
 	}
 
-	// M�thode -> Pour avoir Y
+	/**
+	 * permet de récupérer Y
+	 * @return
+	 */
 	public int getY() {
 		return Y;
 	}
@@ -63,8 +83,12 @@ public class Coordonnees {
 		return true;
 	}
 
-	// M�thode -> toString() , par d�faut , pour afficher les coordonn�es sous
-	// forme de chaine
+	
+	/**
+	 * méthode permettant d'afficher les coordonnées sous forme de chaine
+	 * 
+	 */
+
 	public String toString() {
 		return "[Coordonnees] X -> " + X + " , Y -> " + Y;
 	}
