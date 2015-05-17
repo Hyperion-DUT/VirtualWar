@@ -8,17 +8,25 @@ import VirtualWar.Plateau.Vue;
 
 
 public class Tireur extends Robot {
-
+	 /**
+	  * abscisse
+	  */
 	int x;
+	/**
+	   * ordonnÃ©e
+	  */
 	int y;
+	/**
+	  * Ã©quipe du robot
+	  */
 	int equipe;
 	
 	/**
-	 * Construit un tireur avec ses caracteristiques de base en fonction de la vue du robot ses coordonnées et son equipe.
-	 * @param vue_robot la vue du robot crée
+	 * Construit un tireur avec ses caracteristiques de base en fonction de la vue du robot ses coordonnÃ©es et son equipe.
+	 * @param vue_robot la vue du robot crÃ©e
 	 * @param X abscisse de la case du robot
-	 * @param Y ordonnée de la case du robot
-	 * @param Equipe l'equipe à laquelle appartient le robot.
+	 * @param Y ordonnÃ©e de la case du robot
+	 * @param Equipe l'equipe Ã  laquelle appartient le robot.
 	 */
 	public Tireur(Vue vue_robot,int x, int y, int equipe){
 		super(vue_robot, x, y, equipe);
@@ -35,7 +43,7 @@ public class Tireur extends Robot {
 
 	@Override
 	/**
-	 * Retourne vrai si le robot a suffisament d'énergie pour tirer.
+	 * Retourne vrai si le robot a suffisament d'Ã©nergie pour tirer.
 	 */
 	public boolean peutTirer() {
 	 return getEnergie() >= 2;
@@ -43,7 +51,7 @@ public class Tireur extends Robot {
 
 	@Override
 	/**
-	 * Retourne le coût de l'action du robot
+	 * Retourne le coÃ»t de l'action du robot
 	 */
 	public int getCoutAction() {
 		return 2;
@@ -51,7 +59,7 @@ public class Tireur extends Robot {
 
 	@Override
 	/**
-	 * Retourne le cout de déplacement du robot.
+	 * Retourne le cout de dÃ©placement du robot.
 	 */
 	public int getCoutDep() {
 		return 1;
@@ -59,7 +67,7 @@ public class Tireur extends Robot {
 	
 	@Override
 	/**
-	 * Retourne les dégats du tir du robot.
+	 * Retourne les dÃ©gats du tir du robot.
 	 */
 	public int getDegatTir() {
 		return 2;
