@@ -3,9 +3,7 @@ import VirtualWar.Affichage.Plateau;
 import VirtualWar.Unites.Robot;
 
 public class Vue {
-	/**
-	 * booleen qui donne ou non la visibilit� sur un unit�.
-	 */
+
 	private boolean estVisible;
 	
 	private Plateau plateau;
