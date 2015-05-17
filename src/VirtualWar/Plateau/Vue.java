@@ -1,4 +1,5 @@
 package VirtualWar.Plateau;
+import VirtualWar.Affichage.Plateau;
 import VirtualWar.Unites.Robot;
 
 public class Vue {

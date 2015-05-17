@@ -12,8 +12,9 @@ import javax.swing.JPanel;
 import VirtualWar.Actions.Deplacement;
 import VirtualWar.Actions.Action;
 import VirtualWar.Actions.Attaque;
+import VirtualWar.Affichage.Fenetre;
+import VirtualWar.Affichage.Plateau;
 import VirtualWar.Plateau.Coordonnees;
-import VirtualWar.Plateau.Plateau;
 import VirtualWar.Plateau.Vue;
 import VirtualWar.Unites.Char;
 import VirtualWar.Unites.Piegeur;
@@ -44,7 +45,7 @@ public class Main{
 	/**
 	 * Plateau de jeu
 	 */
-	private static JFrame f;
+	private static Fenetre f;
 	private static Plateau plat;
 
 	/**
@@ -58,79 +59,6 @@ public class Main{
 	 * @param args
 	 * @return 
 	 */
-	
-	public static void initFenetre(Plateau p, Jeu j){
-		//Initialisation de la fenetre
-		f = new JFrame();
-		f.setTitle("VirtualWar");
-		f.setLocation(100, 100);
-		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		//Création des panels
-		JPanel principal = new JPanel(new GridLayout(1, 2, 10, 0));
-		JPanel interf = new JPanel(new GridLayout(2, 1, 0, 5));
-		
-		JPanel recap = new JPanel(new GridLayout(1, 2));
-		JPanel recap_j1 = new JPanel(new GridLayout(2, 1));
-		JPanel recap_j2 = new JPanel(new GridLayout(2, 1));
-		JPanel recap_j1_titre = new JPanel();
-		JPanel recap_j2_titre = new JPanel();
-		JPanel recap_j1_contenu = new JPanel();
-		JPanel recap_j2_contenu = new JPanel();
-		
-		JPanel actions = new JPanel();
-		
-		JLabel j1 = new JLabel("Equipe bleue (j1)");
-		JLabel j2 = new JLabel("Equipe rouge (j2)");
-		
-		//Colore les Panels pour les distinguer
-		principal.setBackground(Color.BLACK);
-		//recap_j1.setBackground(Color.YELLOW);
-		//recap_j2.setBackground(Color.MAGENTA);
-		recap_j1_titre.setBackground(Color.BLUE);
-		recap_j2_titre.setBackground(Color.RED);
-		recap_j1_contenu.setBackground(new Color(139,217,250));
-		recap_j2_contenu.setBackground(new Color(250, 139, 139));
-		actions.setBackground(Color.darkGray);
-		interf.setBackground(Color.GRAY);
-		
-		//Nommage des équipes
-		recap_j1_titre.add(j1);
-		recap_j2_titre.add(j2);
-		
-		//Ajout des robots de l'équipe bleue dans l'interface
-		recap_j1.add(recap_j1_titre);
-		for(Robot r : j.getRobots_Equipe1()){
-			recap_j1_contenu.add(new JLabel(r.toString()));
-		}
-		recap_j1.add(recap_j1_contenu);
-		
-		//Ajout des robots de l'équipe rouge dans l'interface
-		recap_j2.add(recap_j2_titre );
-		for(Robot r : j.getRobots_Equipe1()){
-			recap_j2_contenu.add(new JLabel(r.toString()));
-		}
-		recap_j2.add(recap_j2_contenu);
-		
-		recap.add(recap_j1);
-		recap.add(recap_j2);
-		
-		
-		//Configuration de l'interface
-
-		interf.setPreferredSize(new Dimension(100, p.getHeight()));
-		interf.add(recap);
-		interf.add(actions);
-		
-		//Configuration de la fenetre principale
-		principal.add(p);
-		principal.add(interf);
-		
-		//Ajout du panel principal dans la fenetre puis affichage
-		f.getContentPane().add(principal);
-		f.pack();
-		f.setVisible(true);
-	}
 	
 	public static boolean testDeplacement(Coordonnees robot, Coordonnees arrive){
 		if(robot == arrive){
@@ -175,16 +103,21 @@ public class Main{
 						Deplacement dep = new Deplacement(robotSelectionne, x, y);
 						a = robotSelectionne.getCoordonnees().getX();
 						b = robotSelectionne.getCoordonnees().getY();
-						deplacementPossible = dep.move();
+						deplacementPossible = dep.canMove();
 						if (deplacementPossible && (plat.estVide(x, y) || plat.estMine(x, y))) {
 							if(plat.estMine(x, y)){
+								plat.vider(new Coordonnees(x, y));
 								plat.vider(new Coordonnees(a, b));
 								Robot p = new Piegeur();
-								j.robotAttaque(robotSelectionne, p);
+								j.robotAttaque(p, robotSelectionne);
+								dep.move();
+								System.out.println(robotSelectionne.getEnergie());
 								plat.setRobot(x, y, robotSelectionne);
 							}
 							else{
 								plat.vider(new Coordonnees(a, b));
+								dep.move();
+								System.out.println(robotSelectionne.getEnergie());
 								plat.setRobot(x, y, robotSelectionne);
 							}
 							f.repaint();
@@ -195,14 +128,17 @@ public class Main{
 						JOptionPane.showMessageDialog(null, "Ces coordonnees ne fonctionnent pas" );
 					}
 				}
+
+				f.repaint();
 				
 			}
 			//Fonction de tir
 			else{
 				int choix_x = -1;
 				int choix_y = -1;
-				
-				while(choix_x < 0 || choix_x > config_PlateauX || choix_y < 0 || choix_y > config_PlateauY){
+				boolean peutTirer = false;
+				Robot robotAttaque = new Piegeur();
+				while((choix_x < 0 || choix_x > config_PlateauX || choix_y < 0 || choix_y > config_PlateauY) && !peutTirer){
 					choix_x = 0;
 					choix_y = 0;
 					String saisie1 = "";
@@ -211,6 +147,9 @@ public class Main{
 						choix_x = Integer.parseInt(saisie);
 						saisie1 = JOptionPane.showInputDialog("y:");
 						choix_y = Integer.parseInt(saisie1);
+						Attaque a = new Attaque(robotSelectionne, new Coordonnees(choix_x, choix_y));
+						robotAttaque = plat.getRobot(choix_x, choix_y);
+						peutTirer = a.peutAttaquer(robotAttaque);
 					}catch(Exception e){
 							if(saisie == null)
 								System.exit(0);
@@ -218,13 +157,21 @@ public class Main{
 					}
 					
 				}
-				if(plat.estVide(choix_x, choix_y)) {
-					plat.setMine(choix_x, choix_y);
-					f.repaint();
+				if(peutTirer){
+					if(robotSelectionne instanceof Piegeur){
+						if(plat.estVide(choix_x, choix_y)) {
+							plat.setMine(choix_x, choix_y);
+							f.repaint();
+						}
+					}else{
+						j.robotAttaque(robotSelectionne, robotAttaque);
+					}
 				}
 			}
 		}
 	}
+	
+	
 	public static void main(String args[]) {
 
 		// Nouveau jeu
@@ -238,10 +185,6 @@ public class Main{
 		plat = new Plateau(config_PlateauY, config_PlateauY);
 		// Crï¿½ation de la vue
 		Vue vue_plat = new Vue(plat);
-		
-		initFenetre(plat, j);
-		//TODO
-		//Fenetre f = new Fenetre(vue_plat1);
 
 		// Acquisition des bases
 		Coordonnees Base1 = plat.getBase(1);
@@ -275,6 +218,9 @@ public class Main{
 		Robot chaR2 = new Char(vue_plat, cx_x-1, cx_y-1, joueurActuel);
 		plat.setRobot(cx_x-1, cx_y-1, chaR2);
 		j.ajouterRobot(joueurActuel, chaR2);
+		
+		//Affichage de la fenetre
+		f = new Fenetre(plat, j);
 		
 		// Affichage menu joueur
 		joueurActuel = 1;

@@ -35,21 +35,21 @@ public class Attaque extends Action {
 		
 		if (this.getRobot() instanceof Tireur){
 			porteeAttaque=3;
-			if(attaquerTir(robotCible)==true){
+			if(peutAttaquer(robotCible)==true){
 				this.getRobot().setEnergie(this.getRobot().getEnergie()-this.getRobot().getCoutAction());
 				robotCible.setEnergie(robotCible.getEnergie()-this.getRobot().getDegatTir());
 			}
 			
 		if (this.getRobot() instanceof Char){
 			porteeAttaque=10;
-			if(attaquerTir(robotCible)==true){
+			if(peutAttaquer(robotCible)==true){
 				this.getRobot().setEnergie(this.getRobot().getEnergie()-this.getRobot().getCoutAction());
 				robotCible.setEnergie(robotCible.getEnergie()-this.getRobot().getDegatTir());
 			}
 		}	
 		if (this.getRobot() instanceof Piegeur &&(robotCible instanceof Tireur || robotCible instanceof Piegeur || robotCible instanceof Char)){
 			porteeAttaque=1;
-			if(attaquerTir(robotCible)==true){
+			if(peutAttaquer(robotCible)==true){
 				this.getRobot().setEnergie(this.getRobot().getEnergie()-this.getRobot().getCoutAction());
 				robotCible.setEnergie(robotCible.getEnergie()-this.getRobot().getDegatMine());
 				}
@@ -62,7 +62,7 @@ public class Attaque extends Action {
 	 * @param robotCible
 	 * @return
 	 */
-		public boolean attaquerTir(Robot robotCible){
+		public boolean peutAttaquer(Robot robotCible){
 			if ((robotCible.getCoordonnees().getX()-this.getRobot().getCoordonnees().getX()<=porteeAttaque && robotCible.getCoordonnees().getX()-this.getRobot().getCoordonnees().getX()>-porteeAttaque) || (robotCible.getCoordonnees().getY()==this.getRobot().getCoordonnees().getY())){
 				return true;
 			}

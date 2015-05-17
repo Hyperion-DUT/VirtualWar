@@ -18,13 +18,13 @@ public class Char extends Robot {
 	 */
 	public Char(Vue vue,int x, int y, int equipe){
 		super(vue, x, y, equipe);
-		super.setEnergieInitiale(60);
-		super.setEnergie(60);
-		super.setDepMax(2);
-		super.setPortee(10);
-		super.setCoutDep(5);
-		super.setEquipe(equipe);
-		super.typeRobot = "c";
+		setEnergieInitiale(60);
+		setEnergie(60);
+		setDepMax(2);
+		setPortee(10);
+		setCoutDep(5);
+		setEquipe(equipe);
+		typeRobot = "Char";
 	}
 
 	@Override

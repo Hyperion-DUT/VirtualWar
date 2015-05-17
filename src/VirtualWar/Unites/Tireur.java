@@ -30,7 +30,7 @@ public class Tireur extends Robot {
 		setCoutTir(2);
 		setCoutDep(1);
 		setDegats(3);
-		super.typeRobot = "t";
+		typeRobot = "Tireur";
 	}
 
 	@Override

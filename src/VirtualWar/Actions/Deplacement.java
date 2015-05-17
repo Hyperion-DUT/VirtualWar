@@ -30,7 +30,18 @@ public class Deplacement extends Action {
 	}
 	
 	/** Attribue au robot de nouvelles coordonnées */
-	public boolean move() {
+	public void move() {
+		Robot r = getRobot();
+		if (r instanceof Char) {
+			r.setCoordonnees(getDirection());
+			r.setEnergie(r.getEnergie()-coutEnergie);
+		} else {
+			r.setCoordonnees(getDirection());
+			r.setEnergie(r.getEnergie()-coutEnergie);
+		}
+	}
+	
+	public boolean canMove() {
 		Robot r = getRobot();
 		int a, b, x, y;
 		a = getDirection().getX();
@@ -38,15 +49,11 @@ public class Deplacement extends Action {
 		x = r.getCoordonnees().getX();
 		y = r.getCoordonnees().getY();
 		if (r instanceof Char) {
-			if (((a == x) && (b >= y-r.getDepMax() || b <= y+r.getDepMax())) || ((b == y) && (a >= x-r.getDepMax() || a <= x+r.getDepMax()))) {
-				r.setCoordonnees(getDirection());
-				r.setEnergie(r.getEnergie()-coutEnergie);
+			if (((a == x) && (b >= y-r.getDepMax() || b <= y+r.getDepMax())) || ((b == y) && (a >= x-r.getDepMax() || a <= x+r.getDepMax())) && r.getEnergie() > coutEnergie ) {
 				return true;
 			}
 		} else {
-			if ((a >= x-r.getDepMax() && a <= x+r.getDepMax()) && (b >= y-r.getDepMax() && b <= y+r.getDepMax())) {
-				r.setCoordonnees(getDirection());
-				r.setEnergie(r.getEnergie()-coutEnergie);
+			if ((a >= x-r.getDepMax() && a <= x+r.getDepMax()) && (b >= y-r.getDepMax() && b <= y+r.getDepMax()) && r.getEnergie() > coutEnergie) {
 				return true;
 			}
 		}

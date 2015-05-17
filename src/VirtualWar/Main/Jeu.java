@@ -9,11 +9,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 
-import VirtualWar.Plateau.Vue;
+import VirtualWar.Actions.Deplacement;
 import VirtualWar.Unites.Char;
 import VirtualWar.Unites.Piegeur;
 import VirtualWar.Unites.Robot;

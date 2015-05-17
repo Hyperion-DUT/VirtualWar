@@ -1,4 +1,4 @@
-package VirtualWar.Plateau;
+package VirtualWar.Affichage;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -7,6 +7,10 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 
+import VirtualWar.Plateau.Base;
+import VirtualWar.Plateau.Case;
+import VirtualWar.Plateau.Cellule;
+import VirtualWar.Plateau.Coordonnees;
 import VirtualWar.Unites.*;
 
 import java.io.File;
@@ -43,7 +47,6 @@ public class Plateau extends JPanel{
 	public Plateau(int hauteur, int largeur) {
 		super();
 		try{
-			System.out.println(new File(".").getAbsolutePath());
 			this.f = new File("res/img/home_blue.png");
 			this.home_blue = ImageIO.read(f);
 			this.f = new File("res/img/home_red.png");

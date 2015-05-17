@@ -18,13 +18,13 @@ public class Piegeur extends Robot {
 	 */
 	public Piegeur(Vue vue, int x, int y, int equipe) {
 		super(vue, x, y, equipe);
-		super.setEnergieInitiale(50);
-		super.setEnergie(50);
-		super.setPortee(1);
-		super.setDepMax(1);
-		super.setRegenBase(2);
-		super.setCoutDep(2);
-		super.typeRobot = "p";
+		setEnergieInitiale(50);
+		setEnergie(50);
+		setPortee(1);
+		setDepMax(1);
+		setRegenBase(2);
+		setCoutDep(2);
+		typeRobot = "Piegeur";
 	}
 
 	public Piegeur() {
