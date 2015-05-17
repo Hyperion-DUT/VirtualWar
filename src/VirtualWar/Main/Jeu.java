@@ -19,30 +19,24 @@ import VirtualWar.Unites.Tireur;
 
 public class Jeu extends JFrame{
 
-	/**
-	 * Entrée utilisateur
-	 */
+
 	private Scanner s = new Scanner(System.in);
 
-	/**
-	 * Nombre de robots présents sur le plateau durant la partie
-	 */
+
 	private int nbRobots;
 
-	/**
-	 * Equipes -> Robots
-	 */
+
 	private ArrayList<Robot> r_eq1 = new ArrayList<Robot>();
 	private ArrayList<Robot> r_eq2 = new ArrayList<Robot>();
 
 	/**
-	 * Constructeur par défaut
+	 * Constructeur par dÃ©faut
 	 */
 	public Jeu() {
 	}
 
 	/**
-	 * Fonction pour attaquer un robot (r1 -> robot attaquant, r2-> robot ciblé)
+	 * Fonction pour attaquer un robot (r1 -> robot attaquant, r2-> robot ciblÃ©)
 	 * 
 	 * @param r1
 	 * @param r2
@@ -56,13 +50,13 @@ public class Jeu extends JFrame{
 				r2.subitMine();
 			return true;
 		} else {
-			JOptionPane.showMessageDialog(null, "[ATTAQUE] Vous ne pouvez pas attaquer un robot de votre �quipe");
+			JOptionPane.showMessageDialog(null, "[ATTAQUE] Vous ne pouvez pas attaquer un robot de votre équipe");
 		}
 		return false;
 	}
 
 	/**
-	 * Fonction pour déterminer si la partie est terminée et retourner l'équipe gagnante 
+	 * Fonction pour dÃ©terminer si la partie est terminÃ©e et retourner l'Ã©quipe gagnante 
 	 * @return
 	 */
 	public int partieTerminee() {
@@ -73,7 +67,7 @@ public class Jeu extends JFrame{
 	}
 
 	/**
-	 * Fonction pour ajouter un robot dans une équipe
+	 * Fonction pour ajouter un robot dans une Ã©quipe
 	 * 
 	 * @param equipe
 	 * @param r
@@ -87,7 +81,7 @@ public class Jeu extends JFrame{
 	}
 
 	/**
-	 * Fonction pour retirer un robot d'une equipe spécifique
+	 * Fonction pour retirer un robot d'une equipe spÃ©cifique
 	 * 
 	 * @param equipe
 	 * @param r
@@ -133,7 +127,7 @@ public class Jeu extends JFrame{
 				// Saisie
 				saisie = JOptionPane.showInputDialog("Veuillez entrer la largeur du plateau (X): \n Attention ! (La taille minimum est de 11)");
 				s_x = Integer.parseInt(saisie);
-				// V�rification saisie
+				// Vï¿½rification saisie
 				if (s_x < 11)
 					JOptionPane.showMessageDialog(null, "Attention ! (La taille minimum est de 11)");
 				if (saisie == null){
@@ -144,7 +138,7 @@ public class Jeu extends JFrame{
 				
 				if(saisie == null)
 					System.exit(0);
-				JOptionPane.showMessageDialog(null, "Erreur ! \n '" + saisie + "' \n n'est pas un nombre r�el" );
+				JOptionPane.showMessageDialog(null, "Erreur ! \n '" + saisie + "' \n n'est pas un nombre réel" );
 				
 			} catch(Exception e){
 				e.printStackTrace();
@@ -169,14 +163,14 @@ public class Jeu extends JFrame{
 				// Demande utilisateur
 				saisie = JOptionPane.showInputDialog("Veuillez entrer la largeur du plateau (Y): \n Attention ! (La taille minimum est de 11)");
 				s_y = Integer.parseInt(saisie);
-				// V�rification saisie
+				// Vï¿½rification saisie
 				if (s_y < 11)
 					JOptionPane.showMessageDialog(null, "Attention ! (La taille minimum est de 11)");
 			} catch (Exception e) {
 				// Erreur lors de la saisie
 				if(saisie == null)
 					System.exit(0);
-				JOptionPane.showMessageDialog(null, "Erreur ! \n '" + saisie + "' \n n'est pas un nombre r�el" );
+				JOptionPane.showMessageDialog(null, "Erreur ! \n '" + saisie + "' \n n'est pas un nombre réel" );
 			}
 		}
 		// Retourne la hauteur
