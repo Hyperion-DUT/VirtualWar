@@ -41,6 +41,10 @@ public class Deplacement extends Action {
 		}
 	}
 	
+	/**
+	 * Retourne si le robot peut se déplacer là où on le lui demande
+	 * @return
+	 */
 	public boolean canMove() {
 		Robot r = getRobot();
 		int a, b, x, y;
