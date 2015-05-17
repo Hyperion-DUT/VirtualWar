@@ -7,26 +7,18 @@ import VirtualWar.Unites.Robot;
  *
  */
 abstract public class Cellule {
-	/**
-	 * Definition des variables definissant les mines et les bases. Ce sont des r�els
-	 */
+
 	protected int mine;
 	protected int base;
-	/**
-	 * D�finition de la variable qui renvoie si la case est un obstacle ou non. C'est un booleen.
-	 */
+
 	protected boolean obstacle;
 	/**
 	 * 
 	 */
 	public String image;
-	/**
-	 * Coordonn�es de la cellule.
-	 */
+
 	private Coordonnees coord;
-	/**
-	 * robot se trouvant sur la cellule
-	 */
+
 	protected Robot robot;
 	
 	/**
