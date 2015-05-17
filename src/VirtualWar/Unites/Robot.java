@@ -15,31 +15,31 @@ import VirtualWar.Plateau.Vue;
 
 public abstract class Robot {
 	
-	/**	Le type du robot, qui sera défini par la suite dans les classes-filles */
+
 	protected String typeRobot;
-	/** L'équipe d'appartenance du Robot */
+
 	private int equipe;
-	/** La portée d'attaque du Robot */
+
 	private int portee;
-	/** La portée de déplacement du Robot */
+
 	private int depMax;
-	/** L'énergie courante du Robot */
+
 	private int energie;
-	/** L'énergie maximale du Robot, celle qu'il possède initialement */
+
 	private int energieInitiale;
-	/** La quantité d'énergie récupérée par le Robot en base */
+
 	private int regenBase;
-	/** Le coût d'un tir en énergie */
+
 	private int coutTir;
-	/** Le coût d'un déplacement en énergie */
+
 	private int coutDep;
-	/** La perte d'énergie causée par le Robot */
+
 	private int degats;
-	/**	La vue associée au Robot */
+
 	private Vue vue = new Vue();
-	/** La position actuelle du Robot, sous forme de Coordonnees */
+
 	private Coordonnees coord;
-	/** L'historique des déplacements du Robots, sous forme de liste de Coordonnees */
+
 	private ArrayList<Coordonnees> histoDeplacements = new ArrayList<Coordonnees>();
 
 	
