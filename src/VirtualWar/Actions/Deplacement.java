@@ -42,7 +42,7 @@ public class Deplacement extends Action {
 	}
 	
 	/**
-	 * Retourne si le robot peut se déplacer là où on le lui demande
+	 * Retourne vrai si le robot peut se déplacer à la position demandée, sinon retourne faux
 	 * @return
 	 */
 	public boolean canMove() {
