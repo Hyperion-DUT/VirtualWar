@@ -58,7 +58,7 @@ public class Main{
 		}*/
 	}
 	/**
-	 * méthode permettant de choisir entre "se déplacer" ou "attaquer" avec le robot
+	 * methode permettant de choisir entre "se deplacer" ou "attaquer" avec le robot
 	 * @param robotSelectionne
 	 */
 	
@@ -71,13 +71,13 @@ public class Main{
 						+ robotSelectionne 
 						+ "\n"
 						+ "Choisissez l'action du robot \n"
-						+ "1.D�placement \n"
+						+ "1.Delacement \n"
 						+ "2.Tir \n");
 				choix = Integer.parseInt(saisie);
 				}catch(Exception e){
 					if(saisie == null)
 						System.exit(0);
-					JOptionPane.showMessageDialog(null, "Erreur ! \n '" + saisie + "' \n ne fait pas partie des r�ponses possibles." );
+					JOptionPane.showMessageDialog(null, "Erreur ! \n '" + saisie + "' \n ne fait pas partie des reonses possibles." );
 				}
 			if(choix == 1){
 
@@ -241,7 +241,7 @@ public class Main{
 				}catch(Exception e){
 					if(saisie == null)
 						System.exit(0);
-					JOptionPane.showMessageDialog(null, "Erreur ! \n '" + saisie + "' \n ne fait pas partie des r�ponses possibles." );
+					JOptionPane.showMessageDialog(null, "Erreur ! \n '" + saisie + "' \n ne fait pas partie des reonses possibles." );
 				}
 			}
 
@@ -293,7 +293,7 @@ public class Main{
 					}catch(Exception e){
 						if(saisie == null)
 							System.exit(0);
-						JOptionPane.showMessageDialog(null, "Erreur ! \n '" + saisie + "' \n ne fait pas partie des r�ponses possibles." );
+						JOptionPane.showMessageDialog(null, "Erreur ! \n '" + saisie + "' \n ne fait pas partie des reonses possibles." );
 					}
 				}
 				

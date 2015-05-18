@@ -150,7 +150,8 @@ public class Plateau extends JPanel{
 		generationObstacles((int)(largeur*hauteur*0.25));
 	}
 	/**
-	 * retourne la taille du plateau
+	 * Retourne la taille du plateau
+	 * @return
 	 */
 	public int getTaille(){
 		return taille;

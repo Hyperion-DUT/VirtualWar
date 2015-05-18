@@ -25,3 +25,5 @@ que le code sera près pour la soutenance.
 Les conditions de travail de ce jalon ont été mitigées. En effet, pendant les vacances il y a eu peu de communication et de participation au projet, ce 
 qui fait que l'état d'avancement de celui-ci a du être retardé quelque peu. 
 En tout cas, moi et mon équipe essayons de faire du mieux que nous pouvons pour que le Projet VirtualWar soit le plus abouti possible. 
+
+PS: Je n'arrive pas à générer la javadoc, à cause d'une erreur d'encodage ou je sais pas trop quoi... Mais toutes les fonctions ont été documentées.
