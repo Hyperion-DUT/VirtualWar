@@ -24,12 +24,8 @@ public class Deplacement extends Action {
 		coutEnergie = robot.getCoutDep();
 	}
 
-	public void agit() {
-		move();
-	}
-	
 	/** Attribue au robot de nouvelles coordonnées */
-	public void move() {
+	public void agit() {
 		Robot r = getRobot();
 		if (r instanceof Char) {
 			r.setCoordonnees(getDirection());
