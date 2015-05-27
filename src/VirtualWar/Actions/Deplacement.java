@@ -52,11 +52,11 @@ public class Deplacement extends Action {
 		x = r.getCoordonnees().getX();
 		y = r.getCoordonnees().getY();
 		if (r instanceof Char) {
-			if (((a == x) && (b >= y-r.getDepMax() || b <= y+r.getDepMax())) || ((b == y) && (a >= x-r.getDepMax() || a <= x+r.getDepMax())) && r.getEnergie() > coutEnergie ) {
+			if (r.getEnergie() > coutEnergie && ((a == x) && (b >= y-r.getDepMax() && b <= y+r.getDepMax())) || ((b == y) && (a >= x-r.getDepMax() && a <= x+r.getDepMax())) ) {
 				return true;
 			}
 		} else {
-			if ((a >= x-r.getDepMax() && a <= x+r.getDepMax()) && (b >= y-r.getDepMax() && b <= y+r.getDepMax()) && r.getEnergie() > coutEnergie) {
+			if (r.getEnergie() > coutEnergie && (a >= x-r.getDepMax() && a <= x+r.getDepMax()) && (b >= y-r.getDepMax() && b <= y+r.getDepMax()) ) {
 				return true;
 			}
 		}
