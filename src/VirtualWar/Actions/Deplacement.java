@@ -48,11 +48,17 @@ public class Deplacement extends Action {
 		x = r.getCoordonnees().getX();
 		y = r.getCoordonnees().getY();
 		if (r instanceof Char) {
-			if (r.getEnergie() > coutEnergie && ((a == x) && (b >= y-r.getDepMax() && b <= y+r.getDepMax())) || ((b == y) && (a >= x-r.getDepMax() && a <= x+r.getDepMax())) ) {
+			if (r.getEnergie() > coutEnergie && 
+				!r.getVue().estObstacle(new Coordonnees(x-1,y)) && !r.getVue().estObstacle(new Coordonnees(x+1,y)) &&
+				!r.getVue().estObstacle(new Coordonnees(x,y-1)) && !r.getVue().estObstacle(new Coordonnees(x,y+1)) &&
+				((a == x) && (b >= y-r.getDepMax() && b <= y+r.getDepMax())) ||
+				((b == y) && (a >= x-r.getDepMax() && a <= x+r.getDepMax())) ) {
 				return true;
 			}
 		} else {
-			if (r.getEnergie() > coutEnergie && (a >= x-r.getDepMax() && a <= x+r.getDepMax()) && (b >= y-r.getDepMax() && b <= y+r.getDepMax()) ) {
+			if (r.getEnergie() > coutEnergie &&
+				(a >= x-r.getDepMax() && a <= x+r.getDepMax()) &&
+				(b >= y-r.getDepMax() && b <= y+r.getDepMax()) ) {
 				return true;
 			}
 		}
