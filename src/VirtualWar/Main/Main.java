@@ -100,13 +100,13 @@ public class Main{
 								plat.vider(new Coordonnees(a, b));
 								Robot p = new Piegeur();
 								j.robotAttaque(p, robotSelectionne);
-								dep.move();
+								dep.agit();
 								System.out.println(robotSelectionne.getEnergie());
 								plat.setRobot(x, y, robotSelectionne);
 							}
 							else{
 								plat.vider(new Coordonnees(a, b));
-								dep.move();
+								dep.agit();
 								System.out.println(robotSelectionne.getEnergie());
 								plat.setRobot(x, y, robotSelectionne);
 							}
