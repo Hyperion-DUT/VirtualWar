@@ -1,3 +1,7 @@
+/*
+* @author Jules
+*/
+
 package VirtualWar.Main;
 import java.awt.Color;
 import java.awt.Dimension;
