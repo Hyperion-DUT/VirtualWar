@@ -76,7 +76,7 @@ public class Main{
 				choix = Integer.parseInt(saisie);
 				}catch(Exception e){
 					if(saisie == null)
-						System.exit(0);
+						f.setVisible(false);
 					JOptionPane.showMessageDialog(null, "Erreur ! \n '" + saisie + "' \n ne fait pas partie des reonses possibles." );
 				}
 			if(choix == 1){
@@ -165,7 +165,7 @@ public class Main{
 	 * @param args
 	 */
 	
-	public static void main(String args[]) {
+	public Main(){
 
 		// Nouveau jeu
 		j = new Jeu();
@@ -233,7 +233,7 @@ public class Main{
 			while ((c_1 != 1) && (c_1 != 2) && (c_1 != 3) && (c_1 != 4)) {
 				try{
 				saisie = JOptionPane.showInputDialog("Que voulez vous faire ? \n "
-						+ "1.S�lectionner un robot \n "
+						+ "1.Selectionner un robot \n "
 						+ "2.Afficher mes robots \n "
 						+ "3.Ajouter un robot \n"
 						+ "4.Changer de joueur");
